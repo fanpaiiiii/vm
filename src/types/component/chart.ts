@@ -25,7 +25,7 @@
  * - 图表事件处理
  *
  * @module types/component/chart
- * @author Art Design Pro Team
+ * @author VM Team
  */
 import type { EChartsOption } from 'echarts'
 

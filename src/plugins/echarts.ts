@@ -5,7 +5,7 @@
  * echarts 核心库（~800KB）将被分离到独立 chunk，仅在图表初始化时加载。
  *
  * @module plugins/echarts
- * @author Art Design Pro Team
+ * @author VM Team
  */
 
 // 缓存已加载的 echarts 实例

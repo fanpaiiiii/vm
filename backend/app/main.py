@@ -18,7 +18,7 @@ from app.api.country_lookup import router as country_lookup_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    logger.info("🚀 外贸团队协作工具 API 启动中...")
+    logger.info("🚀 VM 外贸工具 API 启动中...")
     init_db()
     logger.info("✅ 数据库初始化完成")
     yield
@@ -31,7 +31,7 @@ limiter = Limiter(key_func=get_remote_address, default_limits=[settings.RATE_LIM
 app = FastAPI(
     title=settings.APP_NAME,
     version=settings.APP_VERSION,
-    description="阿里巴巴国际站卖家的团队协作工具后端API",
+    description="VM 外贸工具后端API — 产品管理、供应商、运费计算、汇率",
     lifespan=lifespan,
 )
 

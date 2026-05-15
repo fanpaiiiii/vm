@@ -46,7 +46,7 @@
  * ```
  *
  * @module useChart
- * @author Art Design Pro Team
+ * @author VM Team
  */
 
 import { loadEcharts } from '@/plugins/echarts'

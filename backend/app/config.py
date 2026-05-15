@@ -6,7 +6,7 @@ import secrets
 
 
 class Settings(BaseSettings):
-    APP_NAME: str = "外贸团队协作工具 API"
+    APP_NAME: str = "VM 外贸工具 API"
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = False
 
