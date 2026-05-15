@@ -7,7 +7,7 @@ export const foreignTradeRoutes: AppRouteRecord = {
   path: '/foreign-trade',
   name: 'ForeignTrade',
   redirect: '/foreign-trade/dashboard',
-  component: () => import('@views/index/index.vue'),
+  component: '/index/index',
   meta: {
     title: 'menus.foreignTrade.title',
     icon: 'ep:goods',
@@ -16,7 +16,7 @@ export const foreignTradeRoutes: AppRouteRecord = {
     {
       path: 'dashboard',
       name: 'ForeignTradeDashboard',
-      component: () => import('@views/foreign-trade/dashboard/index.vue'),
+      component: '/foreign-trade/dashboard',
       meta: {
         title: 'menus.foreignTrade.dashboard',
         icon: 'ep:data-board',
@@ -34,7 +34,7 @@ export const foreignTradeRoutes: AppRouteRecord = {
         {
           path: 'list',
           name: 'ForeignTradeProductsList',
-          component: () => import('@views/foreign-trade/products/list/index.vue'),
+          component: '/foreign-trade/products/list',
           meta: {
             title: 'menus.foreignTrade.productsList',
             icon: 'ep:list',
@@ -43,7 +43,7 @@ export const foreignTradeRoutes: AppRouteRecord = {
         {
           path: 'add',
           name: 'ForeignTradeProductsAdd',
-          component: () => import('@views/foreign-trade/products/add/index.vue'),
+          component: '/foreign-trade/products/add',
           meta: {
             title: 'menus.foreignTrade.productsAdd',
             icon: 'ep:plus',
@@ -52,7 +52,7 @@ export const foreignTradeRoutes: AppRouteRecord = {
         {
           path: 'edit/:id',
           name: 'ForeignTradeProductsEdit',
-          component: () => import('@views/foreign-trade/products/edit/index.vue'),
+          component: '/foreign-trade/products/edit',
           meta: {
             title: 'menus.foreignTrade.productsEdit',
             icon: 'ep:edit',
@@ -62,7 +62,7 @@ export const foreignTradeRoutes: AppRouteRecord = {
         {
           path: 'detail/:id',
           name: 'ForeignTradeProductsDetail',
-          component: () => import('@views/foreign-trade/products/detail/index.vue'),
+          component: '/foreign-trade/products/detail',
           meta: {
             title: 'menus.foreignTrade.productsDetail',
             icon: 'ep:view',
@@ -83,7 +83,7 @@ export const foreignTradeRoutes: AppRouteRecord = {
         {
           path: 'list',
           name: 'ForeignTradeSuppliersList',
-          component: () => import('@views/foreign-trade/suppliers/list/index.vue'),
+          component: '/foreign-trade/suppliers/list',
           meta: {
             title: 'menus.foreignTrade.suppliersList',
             icon: 'ep:list',
@@ -92,7 +92,7 @@ export const foreignTradeRoutes: AppRouteRecord = {
         {
           path: 'add',
           name: 'ForeignTradeSuppliersAdd',
-          component: () => import('@views/foreign-trade/suppliers/add/index.vue'),
+          component: '/foreign-trade/suppliers/add',
           meta: {
             title: 'menus.foreignTrade.suppliersAdd',
             icon: 'ep:plus',
@@ -101,7 +101,7 @@ export const foreignTradeRoutes: AppRouteRecord = {
         {
           path: 'edit/:id',
           name: 'ForeignTradeSuppliersEdit',
-          component: () => import('@views/foreign-trade/suppliers/edit/index.vue'),
+          component: '/foreign-trade/suppliers/edit',
           meta: {
             title: 'menus.foreignTrade.suppliersEdit',
             icon: 'ep:edit',
@@ -113,7 +113,7 @@ export const foreignTradeRoutes: AppRouteRecord = {
     {
       path: 'shipping',
       name: 'ForeignTradeShipping',
-      component: () => import('@views/foreign-trade/shipping/index.vue'),
+      component: '/foreign-trade/shipping',
       meta: {
         title: 'menus.foreignTrade.shipping',
         icon: 'ep:van',
@@ -122,7 +122,7 @@ export const foreignTradeRoutes: AppRouteRecord = {
     {
       path: 'spreadsheet',
       name: 'ForeignTradeSpreadsheet',
-      component: () => import('@views/foreign-trade/spreadsheet/index.vue'),
+      component: '/foreign-trade/spreadsheet',
       meta: {
         title: 'menus.foreignTrade.spreadsheet',
         icon: 'ep:document',
@@ -140,7 +140,7 @@ export const foreignTradeRoutes: AppRouteRecord = {
         {
           path: 'users',
           name: 'ForeignTradeSettingsUsers',
-          component: () => import('@views/foreign-trade/settings/users/index.vue'),
+          component: '/foreign-trade/settings/users',
           meta: {
             title: 'menus.foreignTrade.settingsUsers',
             icon: 'ep:user',
@@ -149,7 +149,7 @@ export const foreignTradeRoutes: AppRouteRecord = {
         {
           path: 'exchange-rate',
           name: 'ForeignTradeSettingsExchangeRate',
-          component: () => import('@views/foreign-trade/settings/exchange-rate/index.vue'),
+          component: '/foreign-trade/settings/exchange-rate',
           meta: {
             title: 'menus.foreignTrade.settingsExchangeRate',
             icon: 'ep:money',
@@ -158,7 +158,7 @@ export const foreignTradeRoutes: AppRouteRecord = {
         {
           path: 'shipping-channels',
           name: 'ForeignTradeSettingsShippingChannels',
-          component: () => import('@views/foreign-trade/settings/shipping-channels/index.vue'),
+          component: '/foreign-trade/settings/shipping-channels',
           meta: {
             title: 'menus.foreignTrade.settingsShippingChannels',
             icon: 'ep:ship',
