@@ -26,6 +26,14 @@
               />
             </ElFormItem>
 
+            <ElFormItem prop="email">
+              <ElInput
+                class="custom-height"
+                v-model.trim="formData.email"
+                placeholder="请输入邮箱"
+              />
+            </ElFormItem>
+
             <ElFormItem prop="password">
               <ElInput
                 class="custom-height"
@@ -94,6 +102,7 @@
 
   interface RegisterForm {
     username: string
+    email: string
     password: string
     confirmPassword: string
     agreement: boolean
@@ -118,6 +127,7 @@
 
   const formData = reactive<RegisterForm>({
     username: '',
+    email: '',
     password: '',
     confirmPassword: '',
     agreement: false
@@ -184,6 +194,10 @@
         trigger: 'blur'
       }
     ],
+    email: [
+      { required: true, message: '请输入邮箱', trigger: 'blur' },
+      { type: 'email', message: '请输入正确的邮箱格式', trigger: 'blur' }
+    ],
     password: [
       { required: true, validator: validatePassword, trigger: 'blur' },
       { min: PASSWORD_MIN_LENGTH, message: t('register.rule.passwordLength'), trigger: 'blur' }
@@ -205,6 +219,7 @@
 
       await fetchRegister({
         username: formData.username,
+        email: formData.email,
         password: formData.password
       })
 

@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from typing import Optional
 from app.database import get_db
 from app.models.user import User
-from app.schemas.user import UserCreate, UserLogin, UserResponse, Token, UserUpdate, UserListResponse
+from app.schemas.user import UserCreate, UserLogin, UserResponse, Token, UserUpdate, UserListResponse, AdminCreateUser
 from app.utils.auth import (
     get_password_hash,
     verify_password,
@@ -68,7 +68,13 @@ async def update_me(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    for field, value in update_data.model_dump(exclude_unset=True).items():
+    update_dict = update_data.model_dump(exclude_unset=True)
+    # 如果包含密码，需要哈希处理
+    if "password" in update_dict:
+        password = update_dict.pop("password")
+        if password:
+            current_user.hashed_password = get_password_hash(password)
+    for field, value in update_dict.items():
         setattr(current_user, field, value)
     db.commit()
     db.refresh(current_user)
@@ -108,7 +114,7 @@ async def list_users(
 
 @router.post("/users", response_model=UserResponse, summary="创建用户")
 async def create_user(
-    user_data: UserCreate,
+    user_data: AdminCreateUser,
     db: Session = Depends(get_db),
     current_user: User = Depends(require_admin),
 ):
@@ -123,6 +129,7 @@ async def create_user(
         email=user_data.email,
         hashed_password=get_password_hash(user_data.password),
         full_name=user_data.full_name or "",
+        role=user_data.role or "user",
     )
     db.add(user)
     db.commit()
@@ -147,7 +154,13 @@ async def update_user(
     if user_id == current_user.id and update_data.role:
         raise HTTPException(status_code=400, detail="不能修改自己的角色")
 
-    for field, value in update_data.model_dump(exclude_unset=True).items():
+    update_dict = update_data.model_dump(exclude_unset=True)
+    # 如果包含密码，需要哈希处理
+    if "password" in update_dict:
+        password = update_dict.pop("password")
+        if password:
+            user.hashed_password = get_password_hash(password)
+    for field, value in update_dict.items():
         setattr(user, field, value)
     db.commit()
     db.refresh(user)

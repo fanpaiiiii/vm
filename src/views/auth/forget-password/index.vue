@@ -42,6 +42,8 @@
 </template>
 
 <script setup lang="ts">
+  import { ElMessage } from 'element-plus'
+
   defineOptions({ name: 'ForgetPassword' })
 
   const router = useRouter()
@@ -50,7 +52,9 @@
   const username = ref('')
   const loading = ref(false)
 
-  const register = async () => {}
+  const register = async () => {
+    ElMessage.info('密码重置功能暂未开放，请联系管理员重置密码')
+  }
 
   const toLogin = () => {
     router.push({ name: 'Login' })

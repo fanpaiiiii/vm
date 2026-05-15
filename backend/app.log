@@ -1290,3 +1290,223 @@ WHERE users.id = ?
  LIMIT ? OFFSET ?
 2026-05-15 01:40:16,821 - sqlalchemy.engine.Engine - INFO - [cached since 3.669e+04s ago] (2, 1, 0)
 2026-05-15 01:40:16,825 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-05-15 01:44:27,681 - trade_team - INFO - 🚀 外贸团队协作工具 API 启动中...
+2026-05-15 01:44:27,684 - trade_team - INFO - ✅ 数据库初始化完成
+2026-05-15 01:44:27,688 - trade_team - INFO - 👋 API 关闭
+2026-05-15 01:44:37,543 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 01:44:37,546 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?
+2026-05-15 01:44:37,547 - sqlalchemy.engine.Engine - INFO - [cached since 3.696e+04s ago] ('admin', 1, 0)
+2026-05-15 01:44:38,083 - trade_team - INFO - 用户登录: admin
+2026-05-15 01:44:38,085 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-05-15 01:44:38,110 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 01:44:38,111 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-05-15 01:44:38,111 - sqlalchemy.engine.Engine - INFO - [cached since 3.695e+04s ago] (1, 1, 0)
+2026-05-15 01:44:38,261 - httpx - INFO - HTTP Request: GET https://api.frankfurter.app/latest?from=CNY&to=USD "HTTP/1.1 301 Moved Permanently"
+2026-05-15 01:44:38,289 - httpx - INFO - HTTP Request: GET https://api.frankfurter.dev/v1/latest?from=CNY&to=USD "HTTP/1.1 200 OK"
+2026-05-15 01:44:38,291 - trade_team - INFO - 汇率查询: CNY -> USD
+2026-05-15 01:44:38,293 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-05-15 02:24:37,398 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:24:37,401 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:24:37,402 - sqlalchemy.engine.Engine - INFO - [cached since 3.936e+04s ago] ('admin', 1, 0)
+2026-05-15 02:24:37,948 - trade_team - INFO - 用户登录: admin
+2026-05-15 02:24:37,951 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-05-15 02:25:44,649 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:44,654 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:44,654 - sqlalchemy.engine.Engine - INFO - [cached since 3.943e+04s ago] ('admin', 1, 0)
+2026-05-15 02:25:45,180 - trade_team - INFO - 用户登录: admin
+2026-05-15 02:25:45,184 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-05-15 02:25:45,215 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:45,217 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:45,217 - sqlalchemy.engine.Engine - INFO - [cached since 3.943e+04s ago] ('admin', 1, 0)
+2026-05-15 02:25:45,764 - trade_team - INFO - 用户登录: admin
+2026-05-15 02:25:45,769 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-05-15 02:25:45,801 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:45,802 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:45,802 - sqlalchemy.engine.Engine - INFO - [cached since 3.942e+04s ago] (1, 1, 0)
+2026-05-15 02:25:45,806 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-05-15 02:25:45,884 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:45,887 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:45,887 - sqlalchemy.engine.Engine - INFO - [cached since 3.943e+04s ago] ('testuser1', 1, 0)
+2026-05-15 02:25:45,888 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:45,889 - sqlalchemy.engine.Engine - INFO - [cached since 2741s ago] ('test1@example.com', 1, 0)
+2026-05-15 02:25:46,393 - sqlalchemy.engine.Engine - INFO - INSERT INTO users (username, email, hashed_password, full_name, role, is_active, avatar) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id, created_at, updated_at
+2026-05-15 02:25:46,396 - sqlalchemy.engine.Engine - INFO - [cached since 2741s ago] ('testuser1', 'test1@example.com', '$2b$12$70wPrjCUr4Q8QC7/Nasq/.1ceutJieiF6iJrr6OE/t8g.q3WkWFTS', 'Test User', 'member', 1, '')
+2026-05-15 02:25:46,399 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-05-15 02:25:46,414 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:46,415 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.email, users.hashed_password, users.full_name, users.role, users.is_active, users.avatar, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-05-15 02:25:46,415 - sqlalchemy.engine.Engine - INFO - [cached since 2741s ago] (2,)
+2026-05-15 02:25:46,416 - trade_team - INFO - 新用户注册: testuser1
+2026-05-15 02:25:46,430 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-05-15 02:25:46,450 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:46,451 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:46,465 - sqlalchemy.engine.Engine - INFO - [cached since 3.942e+04s ago] (1, 1, 0)
+2026-05-15 02:25:46,478 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users) AS anon_1
+2026-05-15 02:25:46,478 - sqlalchemy.engine.Engine - INFO - [generated in 0.00053s] ()
+2026-05-15 02:25:46,482 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users ORDER BY users.created_at DESC
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:46,482 - sqlalchemy.engine.Engine - INFO - [generated in 0.00044s] (20, 0)
+2026-05-15 02:25:46,489 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-05-15 02:25:46,569 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:46,570 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:46,570 - sqlalchemy.engine.Engine - INFO - [cached since 3.942e+04s ago] (1, 1, 0)
+2026-05-15 02:25:46,574 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:46,574 - sqlalchemy.engine.Engine - INFO - [cached since 3.942e+04s ago] (2, 1, 0)
+2026-05-15 02:25:46,580 - sqlalchemy.engine.Engine - INFO - UPDATE users SET full_name=?, updated_at=CURRENT_TIMESTAMP WHERE users.id = ?
+2026-05-15 02:25:46,581 - sqlalchemy.engine.Engine - INFO - [generated in 0.00122s] ('Updated Name', 2)
+2026-05-15 02:25:46,582 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-05-15 02:25:46,590 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:46,591 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.email, users.hashed_password, users.full_name, users.role, users.is_active, users.avatar, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-05-15 02:25:46,591 - sqlalchemy.engine.Engine - INFO - [cached since 2741s ago] (2,)
+2026-05-15 02:25:46,594 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+2026-05-15 02:25:46,594 - sqlalchemy.engine.Engine - INFO - [generated in 0.00052s] (1,)
+2026-05-15 02:25:46,596 - trade_team - INFO - 管理员 admin 更新用户: testuser1
+2026-05-15 02:25:46,599 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-05-15 02:25:46,657 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:46,657 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:46,658 - sqlalchemy.engine.Engine - INFO - [cached since 3.942e+04s ago] (1, 1, 0)
+2026-05-15 02:25:46,660 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:46,661 - sqlalchemy.engine.Engine - INFO - [cached since 3.942e+04s ago] (2, 1, 0)
+2026-05-15 02:25:46,664 - sqlalchemy.engine.Engine - INFO - DELETE FROM users WHERE users.id = ?
+2026-05-15 02:25:46,664 - sqlalchemy.engine.Engine - INFO - [generated in 0.00045s] (2,)
+2026-05-15 02:25:46,665 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-05-15 02:25:46,676 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:46,677 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+2026-05-15 02:25:46,678 - sqlalchemy.engine.Engine - INFO - [cached since 0.08376s ago] (1,)
+2026-05-15 02:25:46,679 - trade_team - INFO - 管理员 admin 删除用户: testuser1
+2026-05-15 02:25:46,681 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-05-15 02:25:46,866 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:46,867 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:46,868 - sqlalchemy.engine.Engine - INFO - [cached since 3.943e+04s ago] ('admin', 1, 0)
+2026-05-15 02:25:47,344 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-05-15 02:25:47,379 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:47,380 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:47,381 - sqlalchemy.engine.Engine - INFO - [cached since 3.943e+04s ago] ('normie', 1, 0)
+2026-05-15 02:25:47,383 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:47,383 - sqlalchemy.engine.Engine - INFO - [cached since 2743s ago] ('normie@example.com', 1, 0)
+2026-05-15 02:25:47,885 - sqlalchemy.engine.Engine - INFO - INSERT INTO users (username, email, hashed_password, full_name, role, is_active, avatar) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id, created_at, updated_at
+2026-05-15 02:25:47,885 - sqlalchemy.engine.Engine - INFO - [cached since 2743s ago] ('normie', 'normie@example.com', '$2b$12$1qEBRxCqHp4yt61Pp.K0qOLRaxSzGkJ7rmr7E8IcxpwYkhOd5PKYa', '', 'member', 1, '')
+2026-05-15 02:25:47,887 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-05-15 02:25:47,898 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:47,898 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.email, users.hashed_password, users.full_name, users.role, users.is_active, users.avatar, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-05-15 02:25:47,899 - sqlalchemy.engine.Engine - INFO - [cached since 2743s ago] (2,)
+2026-05-15 02:25:47,900 - trade_team - INFO - 新用户注册: normie
+2026-05-15 02:25:47,901 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-05-15 02:25:47,929 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:47,930 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:47,930 - sqlalchemy.engine.Engine - INFO - [cached since 3.942e+04s ago] (2, 1, 0)
+2026-05-15 02:25:47,932 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-05-15 02:25:48,065 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:48,066 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:48,068 - sqlalchemy.engine.Engine - INFO - [cached since 3.942e+04s ago] (1, 1, 0)
+2026-05-15 02:25:48,071 - sqlalchemy.engine.Engine - INFO - UPDATE users SET full_name=?, updated_at=CURRENT_TIMESTAMP WHERE users.id = ?
+2026-05-15 02:25:48,071 - sqlalchemy.engine.Engine - INFO - [cached since 1.492s ago] ('Admin Updated', 1)
+2026-05-15 02:25:48,073 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-05-15 02:25:48,079 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:48,080 - sqlalchemy.engine.Engine - INFO - SELECT users.id, users.username, users.email, users.hashed_password, users.full_name, users.role, users.is_active, users.avatar, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-05-15 02:25:48,081 - sqlalchemy.engine.Engine - INFO - [cached since 2743s ago] (1,)
+2026-05-15 02:25:48,085 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-05-15 02:25:48,156 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:48,157 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:48,157 - sqlalchemy.engine.Engine - INFO - [cached since 3.942e+04s ago] (1, 1, 0)
+2026-05-15 02:25:48,160 - sqlalchemy.engine.Engine - INFO - SELECT count(*) AS count_1 
+FROM (SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users) AS anon_1
+2026-05-15 02:25:48,161 - sqlalchemy.engine.Engine - INFO - [cached since 1.683s ago] ()
+2026-05-15 02:25:48,162 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users ORDER BY users.created_at DESC
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:48,163 - sqlalchemy.engine.Engine - INFO - [cached since 1.681s ago] (20, 0)
+2026-05-15 02:25:48,168 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-05-15 02:25:48,213 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:48,214 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:48,214 - sqlalchemy.engine.Engine - INFO - [cached since 3.942e+04s ago] (1, 1, 0)
+2026-05-15 02:25:48,216 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-05-15 02:25:48,216 - sqlalchemy.engine.Engine - INFO - [cached since 3.942e+04s ago] (2, 1, 0)
+2026-05-15 02:25:48,217 - sqlalchemy.engine.Engine - INFO - DELETE FROM users WHERE users.id = ?
+2026-05-15 02:25:48,218 - sqlalchemy.engine.Engine - INFO - [cached since 1.554s ago] (2,)
+2026-05-15 02:25:48,218 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-05-15 02:25:48,222 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-05-15 02:25:48,222 - sqlalchemy.engine.Engine - INFO - SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.hashed_password AS users_hashed_password, users.full_name AS users_full_name, users.role AS users_role, users.is_active AS users_is_active, users.avatar AS users_avatar, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+2026-05-15 02:25:48,223 - sqlalchemy.engine.Engine - INFO - [cached since 1.629s ago] (1,)
+2026-05-15 02:25:48,224 - trade_team - INFO - 管理员 admin 删除用户: normie
+2026-05-15 02:25:48,228 - sqlalchemy.engine.Engine - INFO - ROLLBACK

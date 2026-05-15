@@ -21,6 +21,15 @@ class UserUpdate(BaseModel):
     role: Optional[str] = None
     avatar: Optional[str] = None
     is_active: Optional[bool] = None
+    password: Optional[str] = None
+
+
+class AdminCreateUser(BaseModel):
+    username: str
+    email: str
+    password: str
+    full_name: Optional[str] = ""
+    role: Optional[str] = "user"
 
 
 class UserResponse(BaseModel):

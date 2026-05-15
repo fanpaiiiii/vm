@@ -251,10 +251,10 @@
     } catch (error) {
       // 处理 HttpError
       if (error instanceof HttpError) {
-        // console.log(error.code)
+        ElMessage.error(error.message || '登录失败')
       } else {
         // 处理非 HttpError
-        // ElMessage.error('登录失败，请稍后重试')
+        ElMessage.error('登录失败，请稍后重试')
         console.error('[Login] Unexpected error:', error)
       }
     } finally {
