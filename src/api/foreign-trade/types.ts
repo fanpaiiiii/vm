@@ -197,7 +197,7 @@ export interface ShippingChannel {
 export interface RegisterParams {
   username: string
   password: string
-  email: string
+  email?: string
   full_name?: string
 }
 

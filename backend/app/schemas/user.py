@@ -4,8 +4,8 @@ from datetime import datetime
 
 
 class UserCreate(BaseModel):
-    username: str = Field(min_length=1, max_length=50)
-    email: EmailStr
+    username: str = Field(min_length=2, max_length=50)
+    email: Optional[str] = ""
     password: str = Field(min_length=6)
     full_name: Optional[str] = ""
 
@@ -25,8 +25,8 @@ class UserUpdate(BaseModel):
 
 
 class AdminCreateUser(BaseModel):
-    username: str = Field(min_length=1, max_length=50)
-    email: EmailStr
+    username: str = Field(min_length=2, max_length=50)
+    email: Optional[str] = ""
     password: str = Field(min_length=6)
     full_name: Optional[str] = ""
     role: Optional[str] = "user"

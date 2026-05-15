@@ -26,12 +26,14 @@ async def register(user_data: UserCreate, db: Session = Depends(get_db)):
     # Check existing username
     if db.query(User).filter(User.username == user_data.username).first():
         raise HTTPException(status_code=400, detail="用户名已存在")
-    if db.query(User).filter(User.email == user_data.email).first():
-        raise HTTPException(status_code=400, detail="邮箱已被注册")
+    # Check email uniqueness only when provided
+    if user_data.email and user_data.email.strip():
+        if db.query(User).filter(User.email == user_data.email).first():
+            raise HTTPException(status_code=400, detail="邮箱已被注册")
 
     user = User(
         username=user_data.username,
-        email=user_data.email,
+        email=user_data.email or "",
         hashed_password=get_password_hash(user_data.password),
         full_name=user_data.full_name or "",
     )
