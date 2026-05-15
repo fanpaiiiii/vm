@@ -389,7 +389,7 @@ const currentPage = ref(1)
 const pageSize = 50
 const regionFilter = ref('全部')
 
-let searchTimer: ReturnType<typeof setTimeout> | null = null
+import { useDebounceFn } from '@vueuse/core'
 
 const regionOptions = computed(() => {
   const regions = new Set<string>(allCountries.value.map((c: any) => c.region).filter(Boolean))
@@ -434,23 +434,23 @@ const paginatedCountries = computed(() => {
   return filteredCountries.value.slice(start, start + pageSize)
 })
 
-// Debounced search
+const doSearch = useDebounceFn(async (val: string) => {
+  try {
+    const res = await fetchCountrySearch(val)
+    searchResults.value = (res as any)?.results || []
+    showDropdown.value = searchResults.value.length > 0
+  } catch {
+    searchResults.value = []
+  }
+}, 300)
+
 function onSearchInput(val: string) {
-  if (searchTimer) clearTimeout(searchTimer)
   if (!val || val.length < 1) {
     searchResults.value = []
     showDropdown.value = false
     return
   }
-  searchTimer = setTimeout(async () => {
-    try {
-      const res = await fetchCountrySearch(val)
-      searchResults.value = (res as any)?.results || []
-      showDropdown.value = searchResults.value.length > 0
-    } catch {
-      searchResults.value = []
-    }
-  }, 300)
+  doSearch(val)
 }
 
 function onClearSearch() {

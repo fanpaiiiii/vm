@@ -39,12 +39,24 @@ class _CacheEntry:
 class CountryService:
     """Country lookup service with lazy-loaded local data and cached API calls."""
 
+    MAX_CACHE_SIZE = 500
+
     def __init__(self):
         self._trade_db: Optional[dict] = None
         self._restcountries_cache: dict[str, _CacheEntry] = {}
         self._cities_cache: dict[str, _CacheEntry] = {}
         self._postal_cache: dict[str, _CacheEntry] = {}  # key: "{iso2}:{postal}"
         self._city_index: Optional[dict[str, list[str]]] = None  # city_lower -> [iso2, ...]
+
+    def _check_cache_size(self, cache: dict):
+        """Evict expired entries or clear if too large."""
+        if len(cache) > self.MAX_CACHE_SIZE:
+            now = time.time()
+            expired = [k for k, v in cache.items() if v.expired]
+            for k in expired:
+                del cache[k]
+            if len(cache) > self.MAX_CACHE_SIZE:
+                cache.clear()
 
     # ------------------------------------------------------------------
     # Lazy data loading
@@ -218,6 +230,7 @@ class CountryService:
         country_name = country_info.get("name_en", "")
         cities = await self._fetch_cities_from_api(country_name)
         if cities:
+            self._check_cache_size(self._cities_cache)
             self._cities_cache[iso2_upper] = _CacheEntry(cities)
             return cities
 
@@ -239,6 +252,7 @@ class CountryService:
 
         result = await self._fetch_postal_code(iso2_lower, postal_code)
         if result is not None:
+            self._check_cache_size(self._postal_cache)
             self._postal_cache[cache_key] = _CacheEntry(result)
             return result
 
@@ -343,6 +357,7 @@ class CountryService:
                 if resp.status_code == 200:
                     data = resp.json()
                     result = data[0] if isinstance(data, list) and data else data
+                    self._check_cache_size(self._restcountries_cache)
                     self._restcountries_cache[iso2] = _CacheEntry(result)
                     return result
                 else:

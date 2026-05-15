@@ -1,0 +1,53 @@
+/* 外贸工具通用样式 */
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.search-form {
+  margin-bottom: 16px;
+}
+
+.image-preview {
+  margin-top: 10px;
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 4px;
+  border: 1px solid #dcdfe6;
+}
+
+.image-upload-area {
+  width: 100%;
+}
+
+.upload-placeholder {
+  width: 200px;
+  height: 150px;
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #8c939d;
+  gap: 8px;
+
+  &:hover {
+    border-color: #409eff;
+    color: #409eff;
+  }
+}

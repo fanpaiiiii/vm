@@ -214,27 +214,27 @@ async def export_products(
     if status:
         query = query.filter(Product.status == status)
 
-    products = query.all()
+    def generate_csv():
+        header = [
+            "sku", "name", "link_1688", "image_url", "spec", "box_spec",
+            "size_variants", "unit_price", "sample_price", "shipping_cost",
+            "description", "status", "supplier_id",
+        ]
+        yield "\ufeff" + ",".join(header) + "\n"
+        count = 0
+        for p in query.yield_per(100):
+            row = [
+                p.sku, p.name, p.link_1688, p.image_url, p.spec, p.box_spec,
+                json.dumps(p.size_variants, ensure_ascii=False) if p.size_variants else "",
+                str(p.unit_price), str(p.sample_price), str(p.shipping_cost),
+                p.description, p.status, str(p.supplier_id or ""),
+            ]
+            yield ",".join(f'"{v}"' for v in row) + "\n"
+            count += 1
+        logger.info(f"产品导出: {count} 条")
 
-    output = io.StringIO()
-    writer = csv.writer(output)
-    writer.writerow([
-        "sku", "name", "link_1688", "image_url", "spec", "box_spec",
-        "size_variants", "unit_price", "sample_price", "shipping_cost",
-        "description", "status", "supplier_id",
-    ])
-    for p in products:
-        writer.writerow([
-            p.sku, p.name, p.link_1688, p.image_url, p.spec, p.box_spec,
-            json.dumps(p.size_variants, ensure_ascii=False) if p.size_variants else "",
-            p.unit_price, p.sample_price, p.shipping_cost,
-            p.description, p.status, p.supplier_id or "",
-        ])
-
-    output.seek(0)
-    logger.info(f"产品导出: {len(products)} 条")
     return StreamingResponse(
-        io.BytesIO(output.getvalue().encode("utf-8-sig")),
+        generate_csv(),
         media_type="text/csv",
         headers={"Content-Disposition": "attachment; filename=products.csv"},
     )
