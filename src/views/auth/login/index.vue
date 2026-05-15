@@ -276,7 +276,7 @@
         type: 'success',
         duration: 2500,
         zIndex: 10000,
-        message: `${t('login.success.message')}, ${systemName}!`
+        message: `${t('login.success.message')}, ${formData.username}!`
       })
     }, 1000)
   }
