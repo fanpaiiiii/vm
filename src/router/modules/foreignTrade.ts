@@ -147,6 +147,16 @@ export const foreignTradeRoutes: AppRouteRecord = {
       },
       children: [
         {
+          path: 'profile',
+          name: 'ForeignTradeSettingsProfile',
+          component: '/foreign-trade/settings/profile',
+          meta: {
+            title: '个人资料',
+            icon: 'ep:user',
+            isHideMenu: true,
+          },
+        },
+        {
           path: 'users',
           name: 'ForeignTradeSettingsUsers',
           component: '/foreign-trade/settings/users',
