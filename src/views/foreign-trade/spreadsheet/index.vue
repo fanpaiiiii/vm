@@ -251,13 +251,7 @@ const columns = [
 ]
 
 // 表格数据
-const tableData = ref<TableRow[]>([
-  { name: '无线蓝牙耳机', sku: 'BT-001', category: '电子产品', price_cny: 210, price_usd: 29.99, quantity: 100, supplier: '深圳蓝牙科技', status: '在售', notes: '' },
-  { name: '智能手表', sku: 'SW-002', category: '电子产品', price_cny: 350, price_usd: 49.99, quantity: 50, supplier: '东莞智能穿戴', status: '在售', notes: '' },
-  { name: '运动鞋', sku: 'SH-003', category: '服装', price_cny: 252, price_usd: 35.99, quantity: 200, supplier: '福建鞋业', status: '在售', notes: '' },
-  { name: 'LED台灯', sku: 'LP-004', category: '家居', price_cny: 161, price_usd: 22.99, quantity: 80, supplier: '中山照明', status: '清仓', notes: '' },
-  { name: '毛绒玩具', sku: 'TY-005', category: '玩具', price_cny: 112, price_usd: 15.99, quantity: 150, supplier: '义乌玩具厂', status: '在售', notes: '' },
-])
+const tableData = ref<TableRow[]>([])
 
 // ==================== 单元格选择 ====================
 function getCellRef(row: number, col: string): string {

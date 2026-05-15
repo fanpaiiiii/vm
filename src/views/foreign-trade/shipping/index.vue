@@ -187,7 +187,7 @@ function loadCustomChannels() {
 // 使用自定义渠道计算运费（本地计算）
 function calculateWithCustomChannels(chargeableWeight: number): ShippingOption[] {
   const options: ShippingOption[] = []
-  const usdCnyRate = foreignTradeStore.effectiveRates.USD_CNY || 7.245
+  const usdCnyRate = foreignTradeStore.effectiveRates.USD_CNY || 0
 
   for (const channel of customChannels.value) {
     if (!channel.enabled) continue

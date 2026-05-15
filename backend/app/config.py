@@ -6,14 +6,14 @@ import json
 class Settings(BaseSettings):
     APP_NAME: str = "外贸团队协作工具 API"
     APP_VERSION: str = "1.0.0"
-    DEBUG: bool = True
+    DEBUG: bool = False
 
     DATABASE_URL: str = "sqlite:///./trade_team.db"
-    SECRET_KEY: str = "change-this-to-a-random-secret-key-in-production"
+    SECRET_KEY: str = "ft-toolkit-prod-secret-key-2026-change-me"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 24 hours
     ALGORITHM: str = "HS256"
 
-    CORS_ORIGINS: str = '["http://localhost:5173","http://localhost:3000"]'
+    CORS_ORIGINS: str = '["http://localhost:5173","http://localhost:3000","http://localhost:3006","http://154.219.108.60:3006","http://154.219.108.60:3000"]'
     FRANKFURTER_API_URL: str = "https://api.frankfurter.app"
 
     # Rate limiting
@@ -24,7 +24,7 @@ class Settings(BaseSettings):
         try:
             return json.loads(self.CORS_ORIGINS)
         except (json.JSONDecodeError, TypeError):
-            return ["http://localhost:5173", "http://localhost:3000"]
+            return ["http://localhost:5173", "http://localhost:3006", "http://154.219.108.60:3006"]
 
     class Config:
         env_file = ".env"

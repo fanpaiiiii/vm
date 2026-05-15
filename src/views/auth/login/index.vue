@@ -143,15 +143,15 @@
     {
       key: 'admin',
       label: t('login.roles.admin'),
-      userName: 'admin',
-      password: 'admin123',
+      userName: '',
+      password: '',
       roles: ['R_ADMIN']
     },
     {
       key: 'user',
       label: t('login.roles.user'),
-      userName: 'admin',
-      password: 'admin123',
+      userName: '',
+      password: '',
       roles: ['R_USER']
     }
   ])
@@ -182,7 +182,7 @@
   const loading = ref(false)
 
   onMounted(() => {
-    setupAccount('admin')
+    // 生产环境：不自动填充账号密码
   })
 
   // 设置账号

@@ -72,10 +72,10 @@ export const useForeignTradeStore = defineStore(
       status_distribution: []
     })
     const exchangeRates = ref<Record<string, number>>({
-      USD_CNY: 7.245,
-      EUR_CNY: 7.892,
-      GBP_CNY: 9.158,
-      JPY_CNY: 0.0485
+      USD_CNY: 0,
+      EUR_CNY: 0,
+      GBP_CNY: 0,
+      JPY_CNY: 0
     })
     const manualRates = ref<Record<string, number>>({})
     const ratesLoading = ref(false)
@@ -279,16 +279,16 @@ export const useForeignTradeStore = defineStore(
             const rates = multiRes.rates
             exchangeRates.value = {
               USD_CNY: usdCny,
-              EUR_CNY: rates.EUR ? usdCny / rates.EUR : 7.89,
-              GBP_CNY: rates.GBP ? usdCny / rates.GBP : 9.15,
-              JPY_CNY: rates.JPY ? usdCny / rates.JPY : 0.048
+              EUR_CNY: rates.EUR ? usdCny / rates.EUR : 0,
+              GBP_CNY: rates.GBP ? usdCny / rates.GBP : 0,
+              JPY_CNY: rates.JPY ? usdCny / rates.JPY : 0
             }
           } else {
             exchangeRates.value = {
               USD_CNY: usdCny,
-              EUR_CNY: usdCny / 0.85,
-              GBP_CNY: usdCny / 0.73,
-              JPY_CNY: usdCny / 150
+              EUR_CNY: 0,
+              GBP_CNY: 0,
+              JPY_CNY: 0
             }
           }
           lastRateUpdate.value = new Date().toLocaleString('zh-CN')

@@ -188,13 +188,7 @@ interface TodoItem {
   done: boolean
 }
 
-const defaultTodos: TodoItem[] = [
-  { id: 1, text: '跟进LED灯带产品报价（客户John）', done: false },
-  { id: 2, text: '确认订单#20250512发货', done: false },
-  { id: 3, text: '联系供货商确认蓝牙耳机库存', done: false },
-  { id: 4, text: '更新USB充电线产品图片', done: false },
-  { id: 5, text: '回复客户关于MOQ的询盘', done: false }
-]
+const defaultTodos: TodoItem[] = []
 
 const STORAGE_KEY = 'foreign-trade-todos'
 const todos = ref<TodoItem[]>([])
@@ -205,10 +199,10 @@ function loadTodos() {
     if (saved) {
       todos.value = JSON.parse(saved)
     } else {
-      todos.value = defaultTodos
+      todos.value = []
     }
   } catch {
-    todos.value = defaultTodos
+    todos.value = []
   }
 }
 
