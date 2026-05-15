@@ -165,8 +165,9 @@
 import { ref, onMounted } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import type { ShippingChannel } from '@/api/foreign-trade/types'
+import { STORAGE_KEYS } from '@/constants/storage-keys'
 
-const LS_KEY = 'foreign_trade_shipping_channels'
+const LS_KEY = STORAGE_KEYS.SHIPPING_CHANNELS
 
 // 默认渠道配置
 const defaultChannels: ShippingChannel[] = [

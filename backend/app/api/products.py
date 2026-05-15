@@ -21,6 +21,13 @@ from app.utils.logger import logger
 
 router = APIRouter(prefix="/api/products", tags=["产品"])
 
+ALLOWED_SORT_FIELDS = {'created_at', 'updated_at', 'name', 'sku', 'unit_price', 'status'}
+
+
+def sanitize_csv_value(value: str) -> str:
+    """Strip HTML tags from CSV values to prevent XSS."""
+    return re.sub(r'<[^>]+>', '', value)
+
 
 import threading
 _sku_lock = threading.Lock()
@@ -73,6 +80,8 @@ async def list_products(
     total = query.count()
 
     # Sorting
+    if sort_by not in ALLOWED_SORT_FIELDS:
+        sort_by = 'created_at'
     sort_column = getattr(Product, sort_by, Product.created_at)
     if sort_order == "desc":
         query = query.order_by(sort_column.desc())
@@ -164,6 +173,8 @@ async def import_products(
         raise HTTPException(status_code=400, detail="仅支持CSV文件")
 
     content = await file.read()
+    if len(content) > 5 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="CSV文件大小不能超过5MB")
     try:
         text = content.decode("utf-8-sig")
     except UnicodeDecodeError:
@@ -181,16 +192,16 @@ async def import_products(
 
             product = Product(
                 sku=sku,
-                name=row.get("name", ""),
-                link_1688=row.get("link_1688", ""),
-                image_url=row.get("image_url", ""),
-                spec=row.get("spec", ""),
-                box_spec=row.get("box_spec", ""),
+                name=sanitize_csv_value(row.get("name", "")),
+                link_1688=sanitize_csv_value(row.get("link_1688", "")),
+                image_url=sanitize_csv_value(row.get("image_url", "")),
+                spec=sanitize_csv_value(row.get("spec", "")),
+                box_spec=sanitize_csv_value(row.get("box_spec", "")),
                 size_variants=json.loads(row.get("size_variants", "null")) if row.get("size_variants") else None,
                 unit_price=float(row.get("unit_price", 0)),
                 sample_price=float(row.get("sample_price", 0)),
                 shipping_cost=float(row.get("shipping_cost", 0)),
-                description=row.get("description", ""),
+                description=sanitize_csv_value(row.get("description", "")),
                 status=row.get("status", "active"),
                 created_by=current_user.id,
             )
@@ -229,7 +240,10 @@ async def export_products(
                 str(p.unit_price), str(p.sample_price), str(p.shipping_cost),
                 p.description, p.status, str(p.supplier_id or ""),
             ]
-            yield ",".join(f'"{v}"' for v in row) + "\n"
+            yield ",".join(
+                (lambda s: '"' + s.replace('"', '""') + '"' if (',' in s or '"' in s or '\n' in s) else s)(str(v) if v is not None else '')
+                for v in row
+            ) + "\n"
             count += 1
         logger.info(f"产品导出: {count} 条")
 

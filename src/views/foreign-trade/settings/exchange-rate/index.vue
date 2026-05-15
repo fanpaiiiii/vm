@@ -121,8 +121,9 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import { useForeignTradeStore } from '@/store/modules/foreign-trade'
 import { storeToRefs } from 'pinia'
 import { fetchExchangeRate } from '@/api/foreign-trade/statistics'
+import { STORAGE_KEYS } from '@/constants/storage-keys'
 
-const LS_KEY = 'foreign_trade_manual_rates'
+const LS_KEY = STORAGE_KEYS.MANUAL_RATES
 
 const foreignTradeStore = useForeignTradeStore()
 const { effectiveRates: apiRates, lastRateUpdate } = storeToRefs(foreignTradeStore)

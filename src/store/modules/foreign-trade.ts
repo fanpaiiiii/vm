@@ -36,9 +36,7 @@ import type {
   SupplierSearchParams,
   ShippingCalcParams
 } from '@/api/foreign-trade/types'
-
-const MANUAL_RATES_KEY = 'foreign_trade_manual_rates'
-const SHIPPING_CHANNELS_KEY = 'foreign_trade_shipping_channels'
+import { STORAGE_KEYS } from '@/constants/storage-keys'
 
 export const useForeignTradeStore = defineStore(
   'foreignTradeStore',
@@ -102,7 +100,7 @@ export const useForeignTradeStore = defineStore(
     // 加载手动汇率
     function loadManualRates() {
       try {
-        const saved = localStorage.getItem(MANUAL_RATES_KEY)
+        const saved = localStorage.getItem(STORAGE_KEYS.MANUAL_RATES)
         if (saved) {
           manualRates.value = JSON.parse(saved)
         }
@@ -114,19 +112,19 @@ export const useForeignTradeStore = defineStore(
     // 设置手动汇率
     function setManualRates(rates: Record<string, number>) {
       manualRates.value = rates
-      localStorage.setItem(MANUAL_RATES_KEY, JSON.stringify(rates))
+      localStorage.setItem(STORAGE_KEYS.MANUAL_RATES, JSON.stringify(rates))
     }
 
     // 清除手动汇率
     function clearManualRates() {
       manualRates.value = {}
-      localStorage.removeItem(MANUAL_RATES_KEY)
+      localStorage.removeItem(STORAGE_KEYS.MANUAL_RATES)
     }
 
     // 加载物流渠道配置
     function loadShippingChannelsConfig(): ShippingChannel[] {
       try {
-        const saved = localStorage.getItem(SHIPPING_CHANNELS_KEY)
+        const saved = localStorage.getItem(STORAGE_KEYS.SHIPPING_CHANNELS)
         if (saved) {
           return JSON.parse(saved)
         }

@@ -12,11 +12,11 @@ class Settings(BaseSettings):
 
     DATABASE_URL: str = "sqlite:///./trade_team.db"
     SECRET_KEY: str = os.getenv("SECRET_KEY", secrets.token_hex(32))
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 24 hours
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 8  # 8 hours
     ALGORITHM: str = "HS256"
 
     CORS_ORIGINS: str = '["http://localhost:5173","http://localhost:3006","http://154.219.108.60","http://154.219.108.60:3006"]'
-    FRANKFURTER_API_URL: str = "https://api.frankfurter.app"
+    FRANKFURTER_API_URL: str = "https://api.frankfurter.dev"
 
     # Rate limiting
     RATE_LIMIT: str = "100/minute"

@@ -145,8 +145,9 @@ import { ElMessage } from 'element-plus'
 import { fetchCalculateShipping } from '@/api/foreign-trade/shipping'
 import { useForeignTradeStore } from '@/store/modules/foreign-trade'
 import type { ShippingOption, ShippingChannel } from '@/api/foreign-trade/types'
+import { STORAGE_KEYS } from '@/constants/storage-keys'
 
-const LS_KEY = 'foreign_trade_shipping_channels'
+const LS_KEY = STORAGE_KEYS.SHIPPING_CHANNELS
 const foreignTradeStore = useForeignTradeStore()
 
 const calculating = ref(false)

@@ -1,7 +1,8 @@
 import collections
+import threading
 import time
 import httpx
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, HTTPException, Query
 from app.models.user import User
 from app.utils.auth import get_current_user
 from app.utils.logger import logger
@@ -14,23 +15,26 @@ class LRUCache:
         self._cache: collections.OrderedDict = collections.OrderedDict()
         self._maxsize = maxsize
         self._ttl = ttl
+        self._lock = threading.Lock()
 
     def get(self, key: str):
-        if key in self._cache:
-            value, ts = self._cache[key]
-            if time.time() - ts < self._ttl:
-                self._cache.move_to_end(key)
-                return value
-            else:
-                del self._cache[key]
-        return None
+        with self._lock:
+            if key in self._cache:
+                value, ts = self._cache[key]
+                if time.time() - ts < self._ttl:
+                    self._cache.move_to_end(key)
+                    return value
+                else:
+                    del self._cache[key]
+            return None
 
     def set(self, key: str, value):
-        if key in self._cache:
-            del self._cache[key]
-        elif len(self._cache) >= self._maxsize:
-            self._cache.popitem(last=False)
-        self._cache[key] = (value, time.time())
+        with self._lock:
+            if key in self._cache:
+                del self._cache[key]
+            elif len(self._cache) >= self._maxsize:
+                self._cache.popitem(last=False)
+            self._cache[key] = (value, time.time())
 
 _cache = LRUCache(maxsize=20, ttl=600)
 CACHE_TTL = 600
@@ -123,14 +127,7 @@ async def get_all_rates(
         return await _fetch_rates(base)
     except Exception as e:
         logger.error(f"全币种汇率请求失败: {e}")
-        return {
-            "base": base.upper(),
-            "date": "error",
-            "rates": {},
-            "currencies": CURRENCY_NAMES,
-            "popular": POPULAR_CURRENCIES,
-            "source": "Error",
-        }
+        raise HTTPException(status_code=502, detail=f"汇率服务暂时不可用: {str(e)}")
 
 
 @router.get("", summary="获取实时汇率")
@@ -152,13 +149,7 @@ async def get_exchange_rate(
         }
     except Exception as e:
         logger.error(f"汇率API请求失败: {e}")
-        return {
-            "base": base.upper(),
-            "target": target.upper(),
-            "rate": None,
-            "date": "error",
-            "source": "Error",
-        }
+        raise HTTPException(status_code=502, detail=f"汇率服务暂时不可用: {str(e)}")
 
 
 @router.get("/multi", summary="获取多币种汇率")
@@ -181,4 +172,4 @@ async def get_multi_rates(
         }
     except Exception as e:
         logger.error(f"汇率API请求失败: {e}")
-        return {"base": base.upper(), "date": "error", "rates": {}, "source": "Error"}
+        raise HTTPException(status_code=502, detail=f"汇率服务暂时不可用: {str(e)}")

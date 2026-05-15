@@ -55,6 +55,22 @@ class PostalCodeResponse(BaseModel):
     data: Optional[dict] = None
 
 
+class ShippingMethodItem(BaseModel):
+    carrier: str
+    method: Optional[str] = None
+    transit_days_min: Optional[int] = None
+    transit_days_max: Optional[int] = None
+    cost_reference: Optional[str] = None
+    source: Optional[str] = None
+
+
+class ShippingUpdateRequest(BaseModel):
+    methods: Optional[list[ShippingMethodItem]] = None
+    available: Optional[bool] = None
+    customs_clearance_days: Optional[int] = None
+    remote_area_surcharge: Optional[str] = None
+
+
 # ------------------------------------------------------------------
 # Endpoints
 # ------------------------------------------------------------------
@@ -133,14 +149,14 @@ async def lookup_postal_code(
 @router.put("/{iso2}/shipping", summary="更新国家物流方式")
 async def update_shipping_methods(
     iso2: str,
-    shipping_data: dict,
+    shipping_data: ShippingUpdateRequest,
     current_user: User = Depends(get_current_user),
 ):
     """Update shipping methods for a country. Requires admin role."""
     if current_user.role != "admin":
         raise HTTPException(status_code=403, detail="需要管理员权限")
     
-    result = await country_service.update_shipping(iso2, shipping_data)
+    result = await country_service.update_shipping(iso2, shipping_data.model_dump())
     if not result:
         raise HTTPException(status_code=404, detail=f"国家 {iso2} 不存在")
     return {"message": "更新成功", "iso2": iso2.upper()}

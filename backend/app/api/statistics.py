@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from sqlalchemy import func
+from sqlalchemy import func, case
 from app.database import get_db
 from app.models.product import Product
 from app.models.supplier import Supplier
@@ -15,8 +15,15 @@ async def get_dashboard(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    total_products = db.query(Product).count()
-    active_products = db.query(Product).filter(Product.status == "active").count()
+    # Combined query for total_products, active_products, and total_value
+    stats = db.query(
+        func.count(Product.id).label('total'),
+        func.count(case((Product.status == 'active', 1))).label('active'),
+        func.coalesce(func.sum(Product.unit_price), 0).label('total_value'),
+    ).first()
+    total_products = stats.total
+    active_products = stats.active
+    total_value_cny = round(float(stats.total_value or 0), 2)
     total_suppliers = db.query(Supplier).filter(Supplier.is_active == True).count()
 
     # 按状态统计
@@ -25,9 +32,6 @@ async def get_dashboard(
         .group_by(Product.status)
         .all()
     )
-
-    # 总价值（单价汇总，无库存字段时作为参考）
-    total_value_cny = db.query(func.coalesce(func.sum(Product.unit_price), 0)).scalar() or 0
 
     # 按供货商统计产品数量（top 10）
     supplier_dist = (
@@ -45,7 +49,7 @@ async def get_dashboard(
             "active_products": active_products,
             "total_suppliers": total_suppliers,
             "total_stock": 0,
-            "total_value_cny": round(total_value_cny, 2),
+            "total_value_cny": total_value_cny,
             "total_value_usd": 0,
         },
         "stock_alerts": {

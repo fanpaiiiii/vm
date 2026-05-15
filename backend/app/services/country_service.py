@@ -9,6 +9,7 @@ Integrates:
 """
 import json
 import os
+import tempfile
 import time
 import asyncio
 from typing import Optional
@@ -295,16 +296,21 @@ class CountryService:
             c for c in ALL_CARRIERS if c not in available_carriers
         ]
         
-        # Save to file
-        db_path = os.path.join(os.path.dirname(__file__), "..", "data", "trade_db.json")
+        # Save to file (atomic write)
+        db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'trade_db.json')
         try:
-            with open(db_path, "w", encoding="utf-8") as f:
-                json.dump(db, f, ensure_ascii=False, indent=2)
-            # Update in-memory cache
+            tmp_fd, tmp_path = tempfile.mkstemp(dir=os.path.dirname(db_path), suffix='.tmp')
+            try:
+                with os.fdopen(tmp_fd, 'w', encoding='utf-8') as f:
+                    json.dump(db, f, ensure_ascii=False, indent=2)
+                os.replace(tmp_path, db_path)  # atomic on POSIX
+            except:
+                os.unlink(tmp_path)
+                raise
             self._trade_db = db
             return True
         except Exception as e:
-            logger.error(f"Failed to save trade_db.json: {e}")
+            logger.error(f'Failed to save trade_db.json: {e}')
             return False
 
     # ------------------------------------------------------------------
