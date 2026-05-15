@@ -1,3 +1,4 @@
+import collections
 import time
 import httpx
 from fastapi import APIRouter, Depends, Query
@@ -7,8 +8,31 @@ from app.utils.logger import logger
 
 router = APIRouter(prefix="/api/exchange-rate", tags=["汇率"])
 
-# 汇率缓存（10分钟）
-_cache = {"data": None, "timestamp": 0}
+# 汇率缓存（10分钟，LRU限制最多20个key）
+class LRUCache:
+    def __init__(self, maxsize: int = 20, ttl: int = 600):
+        self._cache: collections.OrderedDict = collections.OrderedDict()
+        self._maxsize = maxsize
+        self._ttl = ttl
+
+    def get(self, key: str):
+        if key in self._cache:
+            value, ts = self._cache[key]
+            if time.time() - ts < self._ttl:
+                self._cache.move_to_end(key)
+                return value
+            else:
+                del self._cache[key]
+        return None
+
+    def set(self, key: str, value):
+        if key in self._cache:
+            del self._cache[key]
+        elif len(self._cache) >= self._maxsize:
+            self._cache.popitem(last=False)
+        self._cache[key] = (value, time.time())
+
+_cache = LRUCache(maxsize=20, ttl=600)
 CACHE_TTL = 600
 
 # open.er-api.com 免费API，支持 166 种货币，无限制
@@ -63,11 +87,10 @@ POPULAR_CURRENCIES = [
 
 async def _fetch_rates(base: str) -> dict:
     """从 open.er-api.com 获取汇率，带缓存"""
-    now = time.time()
     cache_key = f"rates_{base.upper()}"
-
-    if _cache.get(cache_key) and now - _cache.get(f"{cache_key}_ts", 0) < CACHE_TTL:
-        return _cache[cache_key]
+    cached = _cache.get(cache_key)
+    if cached:
+        return cached
 
     async with httpx.AsyncClient(timeout=15, follow_redirects=True) as client:
         resp = await client.get(f"{RATE_API_URL}/{base.upper()}")
@@ -86,8 +109,7 @@ async def _fetch_rates(base: str) -> dict:
         "source": "Open Exchange Rates API",
     }
 
-    _cache[cache_key] = result
-    _cache[f"{cache_key}_ts"] = now
+    _cache.set(cache_key, result)
     return result
 
 

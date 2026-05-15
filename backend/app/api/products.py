@@ -22,21 +22,21 @@ from app.utils.logger import logger
 router = APIRouter(prefix="/api/products", tags=["产品"])
 
 
+import threading
+_sku_lock = threading.Lock()
+from sqlalchemy import text
 def generate_next_sku(db: Session) -> str:
     """自动生成下一个 FT-XXXX 格式的 SKU"""
-    # 查询当前最大的 FT-XXXX 编号
-    latest = (
-        db.query(Product.sku)
-        .filter(Product.sku.like("FT-%"))
-        .all()
-    )
-    max_num = 0
-    for (sku_val,) in latest:
-        match = re.match(r"FT-(\d+)", sku_val)
-        if match:
-            num = int(match.group(1))
-            if num > max_num:
-                max_num = num
+    # 使用线程锁防止并发重复（SQLite不支持FOR UPDATE）
+    with _sku_lock:
+        result = db.execute(
+            text("SELECT sku FROM products WHERE sku LIKE 'FT-%' ORDER BY CAST(SUBSTR(sku, 4) AS INTEGER) DESC LIMIT 1")
+        ).fetchone()
+        if result:
+            match = re.match(r"FT-(\d+)", result[0])
+            max_num = int(match.group(1)) if match else 0
+        else:
+            max_num = 0
     return f"FT-{max_num + 1:04d}"
 
 
