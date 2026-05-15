@@ -1510,3 +1510,14 @@ WHERE users.id = ?
 2026-05-15 02:25:48,223 - sqlalchemy.engine.Engine - INFO - [cached since 1.629s ago] (1,)
 2026-05-15 02:25:48,224 - trade_team - INFO - 管理员 admin 删除用户: normie
 2026-05-15 02:25:48,228 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-05-15 02:31:00,727 - trade_team - INFO - 👋 API 关闭
+2026-05-15 02:31:16,982 - trade_team - INFO - 🚀 外贸团队协作工具 API 启动中...
+2026-05-15 02:31:16,986 - trade_team - INFO - ✅ 数据库初始化完成
+2026-05-15 02:32:00,461 - trade_team - INFO - 用户登录: admin
+2026-05-15 02:32:01,086 - trade_team - INFO - 管理员 admin 创建用户: testuser
+2026-05-15 02:32:01,716 - trade_team - INFO - 新用户注册: newuser
+2026-05-15 03:01:03,955 - httpx - INFO - HTTP Request: GET https://api.frankfurter.app/latest?from=USD&to=CNY "HTTP/1.1 301 Moved Permanently"
+2026-05-15 03:01:04,033 - httpx - INFO - HTTP Request: GET https://api.frankfurter.dev/v1/latest?from=USD&to=CNY "HTTP/1.1 200 OK"
+2026-05-15 03:01:04,036 - trade_team - INFO - 汇率查询: USD -> CNY
+2026-05-15 03:01:06,934 - httpx - INFO - HTTP Request: GET https://api.frankfurter.app/latest?from=USD&to=EUR%2CGBP%2CJPY "HTTP/1.1 301 Moved Permanently"
+2026-05-15 03:01:06,970 - httpx - INFO - HTTP Request: GET https://api.frankfurter.dev/v1/latest?from=USD&to=EUR%2CGBP%2CJPY "HTTP/1.1 200 OK"

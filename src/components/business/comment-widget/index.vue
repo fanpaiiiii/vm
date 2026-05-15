@@ -43,8 +43,16 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import CommentItem from './widget/CommentItem.vue'
-  import { commentList, Comment } from '@/mock/temp/commentDetail'
-  const comments = commentList
+
+  interface Comment {
+    id: number
+    author: string
+    content: string
+    time: string
+    replies?: Comment[]
+  }
+
+  const comments = ref<Comment[]>([])
 
   const newComment = ref<Partial<Comment>>({
     author: '',
