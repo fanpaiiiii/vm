@@ -181,7 +181,7 @@ function loadCustomChannels() {
       hasCustomChannels.value = customChannels.value.length > 0
     }
   } catch (e) {
-    console.error('加载物流渠道配置失败:', e)
+    // 加载失败
   }
 }
 
@@ -264,7 +264,7 @@ const handleCalculate = async () => {
     }
   } catch (e) {
     ElMessage.error('计算失败，请稍后重试')
-    console.error('运费计算失败:', e)
+    // 计算失败
   } finally {
     calculating.value = false
   }

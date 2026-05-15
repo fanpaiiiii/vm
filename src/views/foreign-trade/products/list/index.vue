@@ -109,7 +109,7 @@ import { ref, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useForeignTradeStore } from '@/store/modules/foreign-trade'
 import { fetchSuppliers } from '@/api/foreign-trade/suppliers'
-import type { Supplier } from '@/api/foreign-trade/types'
+import type { Supplier, Product } from '@/api/foreign-trade/types'
 
 const router = useRouter()
 const foreignTradeStore = useForeignTradeStore()
@@ -118,7 +118,7 @@ const loading = ref(false)
 const currentPage = ref(1)
 const pageSize = ref(10)
 const total = ref(0)
-const tableData = ref<any[]>([])
+const tableData = ref<Product[]>([])
 const supplierOptions = ref<Supplier[]>([])
 
 const searchForm = reactive({
@@ -160,15 +160,15 @@ const handleAdd = () => {
   router.push('/foreign-trade/products/add')
 }
 
-const handleView = (row: any) => {
+const handleView = (row: Product) => {
   router.push(`/foreign-trade/products/detail/${row.id}`)
 }
 
-const handleEdit = (row: any) => {
+const handleEdit = (row: Product) => {
   router.push(`/foreign-trade/products/edit/${row.id}`)
 }
 
-const handleDelete = async (row: any) => {
+const handleDelete = async (row: Product) => {
   const success = await foreignTradeStore.deleteProduct(row.id)
   if (success) {
     loadData()
@@ -195,7 +195,6 @@ const loadSupplierOptions = async () => {
     const res = await fetchSuppliers({ page: 1, page_size: 200 })
     if (res?.items) supplierOptions.value = res.items
   } catch (e) {
-    console.error('加载供货商列表失败:', e)
   }
 }
 </script>

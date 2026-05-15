@@ -182,7 +182,8 @@
     "privacyPolicy": "Privacy policy",
     "submitBtnText": "Register",
     "hasAccount": "Already have an account?",
-    "toLogin": "To login"
+    "toLogin": "To login",
+    "success": "Registration successful"
   },
   "lockScreen": {
     "pwdError": "Password error",

@@ -104,7 +104,7 @@ export const useWorktabStore = defineStore(
           query: tab.query as LocationQueryRaw
         })
       } catch (error) {
-        console.error('路由跳转失败:', error)
+        // 路由跳转失败
       }
     }
 
@@ -472,7 +472,7 @@ export const useWorktabStore = defineStore(
           current.value = {}
         }
       } catch (error) {
-        console.error('验证工作台标签页失败:', error)
+        // 验证失败
       }
     }
 

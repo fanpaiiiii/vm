@@ -182,7 +182,8 @@
     "privacyPolicy": "《隐私政策》",
     "submitBtnText": "注册",
     "hasAccount": "已有账号？",
-    "toLogin": "去登录"
+    "toLogin": "去登录",
+    "success": "注册成功"
   },
   "lockScreen": {
     "pwdError": "密码错误",

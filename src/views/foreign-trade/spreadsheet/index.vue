@@ -650,7 +650,7 @@ const handleImportFile = async (file: File) => {
       ElMessage.success(`成功导入 ${imported.length} 行数据`)
     } catch (err) {
       ElMessage.error('导入失败，请检查文件格式')
-      console.error('Import error:', err)
+      // 导入失败
     }
   }
   
@@ -673,7 +673,6 @@ const handleSaveToLocal = () => {
 
 const handleSave = () => {
   ElMessage.success('保存成功（开发中）')
-  console.log('Save to server:', tableData.value)
 }
 
 // ==================== 快捷键 ====================

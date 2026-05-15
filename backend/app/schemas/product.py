@@ -1,11 +1,12 @@
 from pydantic import BaseModel, field_validator
+from pydantic import Field as PydanticField
 from typing import Optional, List, Any
 from datetime import datetime
 
 
 class ProductCreate(BaseModel):
     sku: Optional[str] = None  # 可选，为空时自动生成 FT-XXXX
-    name: str  # 必填
+    name: str = PydanticField(max_length=200)  # 必填
     link_1688: Optional[str] = ""
     image_url: Optional[str] = ""
     spec: Optional[str] = ""
@@ -35,7 +36,7 @@ class ProductCreate(BaseModel):
 
 class ProductUpdate(BaseModel):
     sku: Optional[str] = None
-    name: Optional[str] = None
+    name: Optional[str] = PydanticField(None, max_length=200)
     link_1688: Optional[str] = None
     image_url: Optional[str] = None
     spec: Optional[str] = None

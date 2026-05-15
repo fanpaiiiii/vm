@@ -52,12 +52,10 @@ class CountryService:
     def _check_cache_size(self, cache: dict):
         """Evict expired entries or clear if too large."""
         if len(cache) > self.MAX_CACHE_SIZE:
-            now = time.time()
-            expired = [k for k, v in cache.items() if v.expired]
-            for k in expired:
+            # Delete oldest 20%
+            to_delete = len(cache) // 5
+            for k in list(cache.keys())[:to_delete]:
                 del cache[k]
-            if len(cache) > self.MAX_CACHE_SIZE:
-                cache.clear()
 
     # ------------------------------------------------------------------
     # Lazy data loading

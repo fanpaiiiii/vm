@@ -8,7 +8,7 @@ class Product(Base):
     __tablename__ = "products"
 
     id = Column(Integer, primary_key=True, index=True)
-    sku = Column(String(100), index=True, nullable=False)
+    sku = Column(String(100), unique=True, index=True, nullable=False)
     name = Column(String(200), nullable=False, index=True)
     link_1688 = Column(String(500), default="")
     image_url = Column(String(500), default="")

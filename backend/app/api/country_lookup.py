@@ -4,7 +4,7 @@ Country lookup API endpoints.
 Provides search, detail, cities, postal code lookup, and region summary.
 All endpoints require JWT authentication.
 """
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, Path
 from typing import Optional
 from pydantic import BaseModel
 from app.models.user import User
@@ -110,7 +110,7 @@ async def get_all_countries(
 
 @router.get("/{iso2}", summary="获取国家详情")
 async def get_country_detail(
-    iso2: str,
+    iso2: str = Path(max_length=2, pattern=r'^[A-Z]{2}$'),
     current_user: User = Depends(get_current_user),
 ):
     """Get full country detail with live API enrichment."""
@@ -122,7 +122,7 @@ async def get_country_detail(
 
 @router.get("/{iso2}/cities", response_model=CitiesResponse, summary="获取城市列表")
 async def get_cities(
-    iso2: str,
+    iso2: str = Path(max_length=2, pattern=r'^[A-Z]{2}$'),
     current_user: User = Depends(get_current_user),
 ):
     """Get cities for a country (from CountriesNow API)."""
@@ -137,8 +137,8 @@ async def get_cities(
 
 @router.get("/{iso2}/postal/{postal_code}", response_model=PostalCodeResponse, summary="邮编查询")
 async def lookup_postal_code(
-    iso2: str,
-    postal_code: str,
+    iso2: str = Path(max_length=2, pattern=r'^[A-Z]{2}$'),
+    postal_code: str = Path(...),
     current_user: User = Depends(get_current_user),
 ):
     """Lookup postal code (from Zippopotam.us)."""
@@ -148,8 +148,8 @@ async def lookup_postal_code(
 
 @router.put("/{iso2}/shipping", summary="更新国家物流方式")
 async def update_shipping_methods(
-    iso2: str,
     shipping_data: ShippingUpdateRequest,
+    iso2: str = Path(max_length=2, pattern=r'^[A-Z]{2}$'),
     current_user: User = Depends(get_current_user),
 ):
     """Update shipping methods for a country. Requires admin role."""

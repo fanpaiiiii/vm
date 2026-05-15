@@ -313,7 +313,7 @@ onMounted(async () => {
     form.image_url = product.image_url || ''
     form.spec = product.spec || ''
     form.box_spec = product.box_spec || ''
-    form.size_variants = (product.size_variants || []).map(v => ({
+    form.size_variants = (product.size_variants || []).map((v: any) => ({
       size: v.size,
       specs: [...v.specs],
       _adding: false,
@@ -332,7 +332,7 @@ onMounted(async () => {
     const res = await fetchSuppliers({ page_size: 100 })
     if (res) supplierOptions.value = res.items || []
   } catch (e) {
-    console.error('加载供货商列表失败:', e)
+    // 加载失败
   }
 })
 </script>

@@ -33,7 +33,7 @@ async def register(user_data: UserCreate, db: Session = Depends(get_db)):
 
     user = User(
         username=user_data.username,
-        email=user_data.email or "",
+        email=user_data.email or None,
         hashed_password=get_password_hash(user_data.password),
         full_name=user_data.full_name or "",
     )
@@ -123,15 +123,16 @@ async def create_user(
     """创建新用户（仅管理员）"""
     if db.query(User).filter(User.username == user_data.username).first():
         raise HTTPException(status_code=400, detail="用户名已存在")
-    if db.query(User).filter(User.email == user_data.email).first():
-        raise HTTPException(status_code=400, detail="邮箱已被注册")
+    if user_data.email and user_data.email.strip():
+        if db.query(User).filter(User.email == user_data.email).first():
+            raise HTTPException(status_code=400, detail="邮箱已被注册")
 
     user = User(
         username=user_data.username,
-        email=user_data.email,
+        email=user_data.email or None,
         hashed_password=get_password_hash(user_data.password),
         full_name=user_data.full_name or "",
-        role=user_data.role or "user",
+        role=user_data.role or "member",
     )
     db.add(user)
     db.commit()

@@ -68,7 +68,7 @@
                 手动设置
               </el-tag>
               <el-tag v-else type="info" size="small" style="margin-left: 8px">
-                使用实时汇率: {{ (apiRates as any)[item.key]?.toFixed(4) || '-' }}
+                使用实时汇率: {{ (apiRates as Record<string, number>)[item.key]?.toFixed(4) || '-' }}
               </el-tag>
               <el-button
                 v-if="manualRates[item.key]"
@@ -162,7 +162,7 @@ function loadManualRates() {
       })
     }
   } catch (e) {
-    console.error('加载手动汇率失败:', e)
+    // 加载失败
   }
 }
 

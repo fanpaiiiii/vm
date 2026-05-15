@@ -45,6 +45,17 @@ async def upload_image(
             detail=f"文件太大: {len(content) / 1024 / 1024:.1f}MB。最大允许: {MAX_FILE_SIZE / 1024 / 1024}MB"
         )
     
+    # Verify file content matches declared type
+    MAGIC_BYTES = {
+        'image/jpeg': [b'\xff\xd8\xff'],
+        'image/png': [b'\x89PNG'],
+        'image/gif': [b'GIF87a', b'GIF89a'],
+        'image/webp': [b'RIFF'],
+    }
+    expected_magic = MAGIC_BYTES.get(file.content_type, [])
+    if expected_magic and not any(content.startswith(m) for m in expected_magic):
+        raise HTTPException(status_code=400, detail='文件内容与声明的类型不匹配')
+    
     # 生成唯一文件名
     ext = os.path.splitext(file.filename)[1] if file.filename else ".jpg"
     filename = f"{uuid.uuid4().hex}{ext}"

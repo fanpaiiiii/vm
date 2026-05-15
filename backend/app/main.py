@@ -20,6 +20,8 @@ from app.api.country_lookup import router as country_lookup_router
 async def lifespan(app: FastAPI):
     logger.info("🚀 VM 外贸工具 API 启动中...")
     init_db()
+    if not settings.SECRET_KEY:
+        raise RuntimeError('SECRET_KEY environment variable is required')
     logger.info("✅ 数据库初始化完成")
     yield
     logger.info("👋 API 关闭")
@@ -43,7 +45,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origins_list,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 

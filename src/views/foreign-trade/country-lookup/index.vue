@@ -401,9 +401,8 @@ onMounted(async () => {
   loading.value = true
   try {
     const res = await fetchAllCountries()
-    allCountries.value = (res as any)?.countries || []
+    allCountries.value = res?.countries || []
   } catch (e) {
-    console.error('Failed to load countries:', e)
   } finally {
     loading.value = false
   }
@@ -437,7 +436,7 @@ const paginatedCountries = computed(() => {
 const doSearch = useDebounceFn(async (val: string) => {
   try {
     const res = await fetchCountrySearch(val)
-    searchResults.value = (res as any)?.results || []
+    searchResults.value = res?.results || []
     showDropdown.value = searchResults.value.length > 0
   } catch {
     searchResults.value = []
@@ -445,7 +444,7 @@ const doSearch = useDebounceFn(async (val: string) => {
 }, 300)
 
 function onSearchInput(val: string) {
-  if (!val || val.length < 1) {
+if (val.length < 2) {
     searchResults.value = []
     showDropdown.value = false
     return
@@ -482,7 +481,6 @@ async function selectCountry(iso2: string) {
     const res = await fetchCountryDetail(iso2)
     detail.value = res || {}
   } catch (e) {
-    console.error('Failed to load country detail:', e)
     detail.value = {}
   } finally {
     loading.value = false

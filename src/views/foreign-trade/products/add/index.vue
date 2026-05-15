@@ -315,7 +315,7 @@ onMounted(async () => {
     const res = await fetchSuppliers({ page_size: 100 })
     if (res) supplierOptions.value = res.items || []
   } catch (e) {
-    console.error('加载供货商列表失败:', e)
+    // 加载失败
   }
 })
 </script>

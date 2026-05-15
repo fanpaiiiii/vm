@@ -193,7 +193,7 @@ function loadChannels() {
       channels.value = JSON.parse(JSON.stringify(defaultChannels))
     }
   } catch (e) {
-    console.error('加载物流渠道配置失败:', e)
+    // 加载失败
     channels.value = JSON.parse(JSON.stringify(defaultChannels))
   }
 }

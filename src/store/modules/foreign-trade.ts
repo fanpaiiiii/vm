@@ -93,7 +93,7 @@ export const useForeignTradeStore = defineStore(
     })
 
     // ========== 运费计算状态 ==========
-    const shippingResult = ref<{ cost: number; days: number; billable_weight: number } | null>(null)
+    const shippingResult = ref<any>(null)
     const shippingChannels = ref<ShippingChannel[]>([])
     const shippingLoading = ref(false)
 
@@ -105,7 +105,7 @@ export const useForeignTradeStore = defineStore(
           manualRates.value = JSON.parse(saved)
         }
       } catch (e) {
-        console.error('加载手动汇率失败:', e)
+        // ignore
       }
     }
 
@@ -129,7 +129,7 @@ export const useForeignTradeStore = defineStore(
           return JSON.parse(saved)
         }
       } catch (e) {
-        console.error('加载物流渠道配置失败:', e)
+        // ignore
       }
       return []
     }
@@ -144,7 +144,6 @@ export const useForeignTradeStore = defineStore(
           productsTotal.value = res.total || 0
         }
       } catch (e: any) {
-        console.error('加载产品列表失败:', e)
         ElMessage.error(e?.message || '加载产品列表失败')
       } finally {
         productsLoading.value = false
@@ -157,7 +156,6 @@ export const useForeignTradeStore = defineStore(
         if (res) currentProduct.value = res
         return res
       } catch (e: any) {
-        console.error('加载产品详情失败:', e)
         ElMessage.error(e?.message || '加载产品详情失败')
         return null
       }
@@ -168,7 +166,6 @@ export const useForeignTradeStore = defineStore(
         const res = await fetchCreateProduct(params)
         return res
       } catch (e: any) {
-        console.error('创建产品失败:', e)
         ElMessage.error(e?.message || '创建产品失败')
         return null
       }
@@ -179,7 +176,6 @@ export const useForeignTradeStore = defineStore(
         const res = await fetchUpdateProduct(id, params)
         return res
       } catch (e: any) {
-        console.error('更新产品失败:', e)
         ElMessage.error(e?.message || '更新产品失败')
         return null
       }
@@ -191,7 +187,6 @@ export const useForeignTradeStore = defineStore(
         products.value = products.value.filter(p => p.id !== id)
         return true
       } catch (e: any) {
-        console.error('删除产品失败:', e)
         ElMessage.error(e?.message || '删除产品失败')
         return false
       }
@@ -207,7 +202,6 @@ export const useForeignTradeStore = defineStore(
           suppliersTotal.value = res.total || 0
         }
       } catch (e: any) {
-        console.error('加载供货商列表失败:', e)
         ElMessage.error(e?.message || '加载供货商列表失败')
       } finally {
         suppliersLoading.value = false
@@ -220,7 +214,6 @@ export const useForeignTradeStore = defineStore(
         if (res) currentSupplier.value = res
         return res
       } catch (e: any) {
-        console.error('加载供货商详情失败:', e)
         ElMessage.error(e?.message || '加载供货商详情失败')
         return null
       }
@@ -231,7 +224,6 @@ export const useForeignTradeStore = defineStore(
         const res = await fetchCreateSupplier(params)
         return res
       } catch (e: any) {
-        console.error('创建供货商失败:', e)
         ElMessage.error(e?.message || '创建供货商失败')
         return null
       }
@@ -242,7 +234,6 @@ export const useForeignTradeStore = defineStore(
         const res = await fetchUpdateSupplier(id, params)
         return res
       } catch (e: any) {
-        console.error('更新供货商失败:', e)
         ElMessage.error(e?.message || '更新供货商失败')
         return null
       }
@@ -254,7 +245,6 @@ export const useForeignTradeStore = defineStore(
         suppliers.value = suppliers.value.filter(s => s.id !== id)
         return true
       } catch (e: any) {
-        console.error('删除供货商失败:', e)
         ElMessage.error(e?.message || '删除供货商失败')
         return false
       }
@@ -266,7 +256,6 @@ export const useForeignTradeStore = defineStore(
         const res = await fetchDashboardStats()
         if (res) dashboardStats.value = res
       } catch (e: any) {
-        console.error('加载统计数据失败:', e)
         ElMessage.error(e?.message || '加载统计数据失败')
       }
     }
@@ -283,7 +272,6 @@ export const useForeignTradeStore = defineStore(
           lastRateUpdate.value = new Date().toLocaleString('zh-CN')
         }
       } catch (e: any) {
-        console.error('加载汇率失败:', e)
         ElMessage.error(e?.message || '加载汇率失败')
       } finally {
         ratesLoading.value = false
@@ -294,14 +282,13 @@ export const useForeignTradeStore = defineStore(
     async function calculateShipping(params: ShippingCalcParams) {
       shippingLoading.value = true
       try {
-        const res = await fetchCalculateShipping(params)
+        const res: any = await fetchCalculateShipping(params)
         if (res) {
-          shippingResult.value = res as any
-          shippingChannels.value = (res as any).channels || (res as any).options || []
+          shippingResult.value = res.options ? res : { options: res }
+          shippingChannels.value = res.options || res || []
         }
         return res
       } catch (e: any) {
-        console.error('运费计算失败:', e)
         ElMessage.error(e?.message || '运费计算失败')
         return null
       } finally {

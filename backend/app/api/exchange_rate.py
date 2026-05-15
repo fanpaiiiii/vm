@@ -123,6 +123,8 @@ async def get_all_rates(
     current_user: User = Depends(get_current_user),
 ):
     """一次获取所有币种汇率（166种），返回完整汇率表"""
+    if base.upper() not in CURRENCY_NAMES:
+        raise HTTPException(status_code=400, detail=f'不支持的货币: {base}')
     try:
         return await _fetch_rates(base)
     except Exception as e:
@@ -137,6 +139,8 @@ async def get_exchange_rate(
     current_user: User = Depends(get_current_user),
 ):
     """获取两种货币间的实时汇率"""
+    if base.upper() not in CURRENCY_NAMES:
+        raise HTTPException(status_code=400, detail=f'不支持的货币: {base}')
     try:
         data = await _fetch_rates(base)
         rates = data.get("rates", {})
@@ -159,6 +163,8 @@ async def get_multi_rates(
     current_user: User = Depends(get_current_user),
 ):
     """一次获取多个币种的汇率"""
+    if base.upper() not in CURRENCY_NAMES:
+        raise HTTPException(status_code=400, detail=f'不支持的货币: {base}')
     try:
         data = await _fetch_rates(base)
         all_rates = data.get("rates", {})

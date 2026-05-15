@@ -228,15 +228,16 @@
       }
 
       // 存储 token 和登录状态
-      userStore.setToken('Bearer ' + token, refreshToken)
+userStore.setToken(token, refreshToken)
       userStore.setLoginStatus(true)
       // 存储用户信息
       if (loginRes?.user) {
-        userStore.setUserInfo({
+userStore.setUserInfo({
           userId: String(loginRes.user.id),
           userName: loginRes.user.username,
           nickName: loginRes.user.full_name || loginRes.user.username,
           email: loginRes.user.email,
+          avatar: loginRes.user.avatar || '',
           roles: [loginRes.user.role === 'admin' ? 'R_ADMIN' : 'R_USER'],
           buttons: []
         } as any)
@@ -255,7 +256,6 @@
       } else {
         // 处理非 HttpError
         ElMessage.error('登录失败，请稍后重试')
-        console.error('[Login] Unexpected error:', error)
       }
     } finally {
       loading.value = false

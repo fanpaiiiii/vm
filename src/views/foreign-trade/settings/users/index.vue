@@ -81,7 +81,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
 import request from '@/utils/http'
 import { createUser, updateUser, toggleUserStatus, deleteUser } from '@/api/foreign-trade/users'
@@ -105,15 +105,15 @@ const userForm = reactive({
   is_active: true,
 })
 
-const userRules = {
+const userRules = computed(() => ({
   username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
   email: [
     { required: true, message: '请输入邮箱', trigger: 'blur' },
     { type: 'email' as const, message: '请输入正确的邮箱格式', trigger: 'blur' }
   ],
-  password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+  password: isEdit.value ? [] : [{ required: true, message: '请输入密码', trigger: 'blur' }],
   role: [{ required: true, message: '请选择角色', trigger: 'change' }],
-}
+}))
 
 const loadUsers = async () => {
   loading.value = true
@@ -157,9 +157,8 @@ const handleEdit = (row: UserInfo) => {
 
 const handleSubmitUser = async () => {
   if (!userFormRef.value) return
-  await userFormRef.value.validate(async (valid) => {
-    if (!valid) return
-
+  const valid = await userFormRef.value.validate().catch(() => false)
+  if (!valid) return
     submitting.value = true
     try {
       if (isEdit.value && editingUserId.value) {
@@ -183,25 +182,23 @@ const handleSubmitUser = async () => {
           role: userForm.role,
           is_active: userForm.is_active,
         })
-        ElMessage.success('用户创建成功')
-      }
-      dialogVisible.value = false
-      loadUsers()
-    } catch (e) {
-      console.error('操作失败:', e)
+      ElMessage.success('用户创建成功')
+    }
+    dialogVisible.value = false
+    loadUsers()
+    } catch (e: any) {
+      ElMessage.error(e?.response?.data?.detail || '操作失败')
     } finally {
       submitting.value = false
     }
-  })
 }
-
 const handleToggleStatus = async (row: UserInfo) => {
   try {
     await toggleUserStatus(row.id, !row.is_active)
     ElMessage.success(`用户已${row.is_active ? '禁用' : '启用'}`)
     loadUsers()
   } catch (e) {
-    console.error('操作失败:', e)
+    ElMessage.error('操作失败')
   }
 }
 
@@ -210,8 +207,8 @@ const handleDelete = async (row: UserInfo) => {
     await deleteUser(row.id)
     ElMessage.success('用户已删除')
     loadUsers()
-  } catch (e) {
-    console.error('删除失败:', e)
+  } catch (e: any) {
+    ElMessage.error(e?.response?.data?.detail || '删除失败')
   }
 }
 

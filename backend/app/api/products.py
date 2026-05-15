@@ -138,6 +138,8 @@ async def update_product(
     product = db.query(Product).filter(Product.id == product_id).first()
     if not product:
         raise HTTPException(status_code=404, detail="产品不存在")
+    if product.created_by != current_user.id and current_user.role != 'admin':
+        raise HTTPException(status_code=403, detail='无权操作此产品')
 
     for field, value in data.model_dump(exclude_unset=True).items():
         setattr(product, field, value)
@@ -156,6 +158,8 @@ async def delete_product(
     product = db.query(Product).filter(Product.id == product_id).first()
     if not product:
         raise HTTPException(status_code=404, detail="产品不存在")
+    if product.created_by != current_user.id and current_user.role != 'admin':
+        raise HTTPException(status_code=403, detail='无权操作此产品')
 
     db.delete(product)
     db.commit()
@@ -180,13 +184,20 @@ async def import_products(
     except UnicodeDecodeError:
         text = content.decode("gbk")
 
+    MAX_CSV_ROWS = 10000
+    VALID_STATUSES = {'active', 'inactive', 'draft'}
     reader = csv.DictReader(io.StringIO(text))
     created = 0
     errors = []
 
     for i, row in enumerate(reader, 1):
+        if i > MAX_CSV_ROWS:
+            errors.append(f'超过最大行数限制({MAX_CSV_ROWS})')
+            break
         try:
             sku = row.get("sku", "").strip()
+            if row.get('status', 'active') not in VALID_STATUSES:
+                row['status'] = 'active'
             if not sku:
                 sku = generate_next_sku(db)
 

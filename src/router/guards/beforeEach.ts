@@ -118,7 +118,7 @@ export function setupBeforeEachGuard(router: Router): void {
         console.error('[RouteGuard] 路由守卫处理失败:', error)
         closeLoading()
         // 临时：把错误信息写到页面上方便调试
-        document.title = 'ERROR: ' + errMsg
+        document.title = 'VM 外贸工具'
         next({ name: 'Exception500', query: { msg: errMsg.substring(0, 200) } })
       }
     }

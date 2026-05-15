@@ -1,5 +1,5 @@
 from pydantic import BaseModel, EmailStr, Field
-from typing import Optional, List
+from typing import Optional, List, Literal
 from datetime import datetime
 
 
@@ -18,10 +18,10 @@ class UserLogin(BaseModel):
 class UserUpdate(BaseModel):
     full_name: Optional[str] = None
     email: Optional[str] = None
-    role: Optional[str] = None
+    role: Optional[Literal['admin', 'manager', 'member']] = None
     avatar: Optional[str] = None
     is_active: Optional[bool] = None
-    password: Optional[str] = None
+    password: Optional[str] = Field(None, min_length=6)
 
 
 class AdminCreateUser(BaseModel):
@@ -29,7 +29,7 @@ class AdminCreateUser(BaseModel):
     email: Optional[str] = ""
     password: str = Field(min_length=6)
     full_name: Optional[str] = ""
-    role: Optional[str] = "user"
+    role: Optional[Literal['admin', 'manager', 'member']] = "member"
 
 
 class UserResponse(BaseModel):

@@ -129,7 +129,7 @@
         form.role = res.role || 'user'
       }
     } catch (e) {
-      console.error('加载个人信息失败:', e)
+      ElMessage.error('加载个人信息失败')
     }
   }
 
@@ -166,7 +166,7 @@
         // 同步到 store
         const userInfo = userStore.getUserInfo
         if (userInfo) {
-          userStore.setUserInfo({ ...userInfo, avatar: avatarUrl } as any)
+          userStore.setUserInfo({ ...userInfo, avatar: avatarUrl } as Api.Auth.UserInfo)
         }
         ElMessage.success('头像更新成功')
       }
@@ -194,9 +194,9 @@
         if (userInfo) {
           userStore.setUserInfo({
             ...userInfo,
-            full_name: form.full_name,
+            nickName: form.full_name,
             email: form.email,
-          } as any)
+          } as Api.Auth.UserInfo)
         }
         ElMessage.success('个人信息已更新')
       } catch (e) {

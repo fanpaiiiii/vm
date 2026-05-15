@@ -5,7 +5,7 @@ import request from '@/utils/http'
 
 /** 搜索国家 */
 export function fetchCountrySearch(q: string) {
-  return request.get({ url: `/api/country/search`, params: { q } })
+  return request.get<{ results: any[] }>({ url: `/api/country/search`, params: { q } })
 }
 
 /** 获取国家详情 */
@@ -30,5 +30,5 @@ export function fetchCountryRegions() {
 
 /** 获取所有国家 */
 export function fetchAllCountries() {
-  return request.get({ url: `/api/country/all` })
+  return request.get<{ countries: any[] }>({ url: `/api/country/all` })
 }

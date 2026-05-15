@@ -209,10 +209,12 @@
       })
 
       loading.value = false
-      ElMessage.success('注册成功')
+      ElMessage.success(t('register.success'))
       toLogin()
     } catch (error) {
-      console.error('表单验证失败:', error)
+      if ((error as any)?.message) {
+        ElMessage.error((error as any).message)
+      }
       loading.value = false
     }
   }

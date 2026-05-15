@@ -12,6 +12,9 @@ engine = create_engine(
     connect_args=connect_args,
     echo=settings.DEBUG,
     pool_pre_ping=True,  # PostgreSQL 连接健康检查
+    pool_size=10,
+    max_overflow=20,
+    pool_recycle=3600,
 )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

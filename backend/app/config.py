@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     DEBUG: bool = False
 
     DATABASE_URL: str = "sqlite:///./trade_team.db"
-    SECRET_KEY: str = os.getenv("SECRET_KEY", secrets.token_hex(32))
+    SECRET_KEY: str = os.getenv("SECRET_KEY", "")
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 8  # 8 hours
     ALGORITHM: str = "HS256"
 

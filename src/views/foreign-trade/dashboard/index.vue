@@ -251,7 +251,7 @@ const calcTo = ref('CNY')
 const sortedCurrencies = computed(() => {
   const rates = allRates.value
   const available = Object.keys(rates).filter(k => rates[k] > 0)
-  const popular = popularCurrencies.value.filter(c => available.includes(c))
+  const popular = popularCurrencies.value.filter((c: any) => available.includes(c))
   const rest = available.filter(c => !popular.includes(c)).sort()
   return [...popular, ...rest]
 })
