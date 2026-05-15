@@ -35,11 +35,11 @@ class AdminCreateUser(BaseModel):
 class UserResponse(BaseModel):
     id: int
     username: str
-    email: str
-    full_name: str
+    email: Optional[str] = ""
+    full_name: Optional[str] = ""
     role: str
     is_active: bool
-    avatar: str
+    avatar: Optional[str] = ""
     created_at: Optional[datetime] = None
     # 前端兼容字段
     userId: Optional[int] = None
@@ -56,8 +56,8 @@ class UserResponse(BaseModel):
         return cls(
             id=user.id,
             username=user.username,
-            email=user.email,
-            full_name=user.full_name,
+            email=user.email or "",
+            full_name=user.full_name or "",
             role=user.role,
             is_active=user.is_active,
             avatar=user.avatar or "",
