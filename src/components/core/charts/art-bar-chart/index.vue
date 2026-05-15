@@ -6,7 +6,8 @@
 <script setup lang="ts">
   import { useChartOps, useChartComponent } from '@/hooks/core/useChart'
   import { getCssVar } from '@/utils/ui'
-  import { graphic, type EChartsOption } from '@/plugins/echarts'
+  import { loadEcharts } from '@/plugins/echarts'
+  import type { EChartsOption } from 'echarts'
   import type { BarChartProps, BarDataItem } from '@/types/component/chart'
 
   defineOptions({ name: 'ArtBarChart' })
@@ -47,7 +48,7 @@
   })
 
   // 获取颜色配置
-  const getColor = (customColor?: string, index?: number) => {
+  const getColor = async (customColor?: string, index?: number) => {
     if (customColor) return customColor
 
     if (index !== undefined) {
@@ -55,6 +56,7 @@
     }
 
     // 默认渐变色
+    const { graphic } = await loadEcharts()
     return new graphic.LinearGradient(0, 0, 0, 1, [
       {
         offset: 0,
@@ -68,7 +70,8 @@
   }
 
   // 创建渐变色
-  const createGradientColor = (color: string) => {
+  const createGradientColor = async (color: string) => {
+    const { graphic } = await loadEcharts()
     return new graphic.LinearGradient(0, 0, 0, 1, [
       {
         offset: 0,
@@ -82,18 +85,18 @@
   }
 
   // 获取基础样式配置
-  const getBaseItemStyle = (
-    color: string | InstanceType<typeof graphic.LinearGradient> | undefined
+  const getBaseItemStyle = async (
+    color: string | any
   ) => ({
     borderRadius: props.borderRadius,
-    color: typeof color === 'string' ? createGradientColor(color) : color
+    color: typeof color === 'string' ? await createGradientColor(color) : color
   })
 
   // 创建系列配置
-  const createSeriesItem = (config: {
+  const createSeriesItem = async (config: {
     name?: string
     data: number[]
-    color?: string | InstanceType<typeof graphic.LinearGradient>
+    color?: string | any
     barWidth?: string | number
     stack?: string
   }) => {
@@ -104,7 +107,7 @@
       data: config.data,
       type: 'bar' as const,
       stack: config.stack,
-      itemStyle: getBaseItemStyle(config.color),
+      itemStyle: await getBaseItemStyle(config.color),
       barWidth: config.barWidth || props.barWidth,
       ...animationConfig
     }
@@ -142,7 +145,7 @@
       return true
     },
     watchSources: [() => props.data, () => props.xAxisData, () => props.colors],
-    generateOptions: (): EChartsOption => {
+    generateOptions: async (): Promise<EChartsOption> => {
       const options: EChartsOption = {
         grid: getGridWithLegend(props.showLegend && isMultipleData.value, props.legendPosition, {
           top: 15,
@@ -173,8 +176,8 @@
       // 生成系列数据
       if (isMultipleData.value) {
         const multiData = props.data as BarDataItem[]
-        options.series = multiData.map((item, index) => {
-          const computedColor = getColor(props.colors[index], index)
+        options.series = await Promise.all(multiData.map(async (item, index) => {
+          const computedColor = await getColor(props.colors[index], index)
 
           return createSeriesItem({
             name: item.name,
@@ -183,14 +186,14 @@
             barWidth: item.barWidth,
             stack: props.stack ? item.stack || 'total' : undefined
           })
-        })
+        }))
       } else {
         // 单数据情况
         const singleData = props.data as number[]
-        const computedColor = getColor()
+        const computedColor = await getColor()
 
         options.series = [
-          createSeriesItem({
+          await createSeriesItem({
             data: singleData,
             color: computedColor
           })

@@ -49,11 +49,12 @@
  * @author Art Design Pro Team
  */
 
-import { echarts, type EChartsOption } from '@/plugins/echarts'
+import { loadEcharts } from '@/plugins/echarts'
 import { storeToRefs } from 'pinia'
 import { useSettingStore } from '@/store/modules/setting'
 import { getCssVar } from '@/utils/ui'
 import type { BaseChartProps, ChartThemeConfig, UseChartOptions } from '@/types/component/chart'
+import type { EChartsOption } from 'echarts'
 
 // 图表主题配置
 export const useChartOps = (): ChartThemeConfig => ({
@@ -89,7 +90,7 @@ export function useChart(options: UseChartOptions = {}) {
   const { isDark, menuOpen, menuType } = storeToRefs(settingStore)
 
   const chartRef = ref<HTMLElement>()
-  let chart: echarts.ECharts | null = null
+  let chart: any = null
   let intersectionObserver: IntersectionObserver | null = null
   let pendingOptions: EChartsOption | null = null
   let resizeTimeoutId: number | null = null
@@ -394,7 +395,11 @@ export function useChart(options: UseChartOptions = {}) {
                 try {
                   // 元素变为可见，初始化图表
                   if (!chart) {
-                    chart = echarts.init(entry.target as HTMLElement)
+                    loadEcharts().then((ec) => {
+                      if (!isDestroyed && chartRef.value) {
+                        chart = ec.init(chartRef.value)
+                      }
+                    })
                   }
 
                   // 触发自定义事件，让组件处理动画逻辑
@@ -433,8 +438,11 @@ export function useChart(options: UseChartOptions = {}) {
     return rect.width > 0 && rect.height > 0 && rect.top < window.innerHeight && rect.bottom > 0
   }
 
-  // 图表初始化核心逻辑
-  const performChartInit = (options: EChartsOption) => {
+  // 图表初始化核心逻辑（异步加载 echarts）
+  const performChartInit = async (options: EChartsOption) => {
+    const echarts = await loadEcharts()
+    if (isDestroyed) return
+
     if (!chart && chartRef.value && !isDestroyed) {
       chart = echarts.init(chartRef.value)
       // 图表创建后立即设置监听器
@@ -627,7 +635,7 @@ interface UseChartComponentOptions<T extends BaseChartProps> {
   /** Props响应式对象 */
   props: T
   /** 图表配置生成函数 */
-  generateOptions: () => EChartsOption
+  generateOptions: () => EChartsOption | Promise<EChartsOption>
   /** 空数据检查函数 */
   checkEmpty?: () => boolean
   /** 自定义监听的响应式数据 */
@@ -660,7 +668,7 @@ export function useChartComponent<T extends BaseChartProps>(options: UseChartCom
 
   // 更新图表
   const updateChart = () => {
-    nextTick(() => {
+    nextTick(async () => {
       if (isEmpty.value) {
         // 处理空数据情况 - 显示自定义空状态div
         if (chart.getChartInstance()) {
@@ -670,7 +678,8 @@ export function useChartComponent<T extends BaseChartProps>(options: UseChartCom
       } else {
         // 有数据时移除空状态div并初始化图表
         emptyStateManager.remove()
-        initChart(generateOptions())
+        const options = await generateOptions()
+        initChart(options)
       }
     })
   }

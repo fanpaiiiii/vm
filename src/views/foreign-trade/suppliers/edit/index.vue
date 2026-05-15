@@ -152,6 +152,10 @@ const handleBack = () => router.push('/foreign-trade/suppliers/list')
 
 onMounted(async () => {
   const id = Number(route.params.id)
+  if (!id || isNaN(id)) {
+    router.replace('/foreign-trade/suppliers/list')
+    return
+  }
   const supplier = await foreignTradeStore.loadSupplierDetail(id)
   if (supplier) {
     Object.assign(form, {

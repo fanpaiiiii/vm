@@ -11,6 +11,7 @@ from app.config import settings
 from app.database import init_db
 from app.utils.logger import logger
 from app.api import auth, products, suppliers, exchange_rate, shipping, statistics, upload
+from app.api.country_lookup import router as country_lookup_router
 
 
 @asynccontextmanager
@@ -62,6 +63,7 @@ app.include_router(exchange_rate.router)
 app.include_router(shipping.router)
 app.include_router(statistics.router)
 app.include_router(upload.router)
+app.include_router(country_lookup_router)
 
 # 静态文件服务 - 上传文件
 UPLOAD_DIR = os.path.join(os.path.dirname(__file__), "..", "uploads")

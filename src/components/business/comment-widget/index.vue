@@ -48,8 +48,9 @@
     id: number
     author: string
     content: string
-    time: string
-    replies?: Comment[]
+    time?: string
+    replies: Comment[]
+    timestamp: string
   }
 
   const comments = ref<Comment[]>([])
@@ -71,8 +72,9 @@
       id: Date.now(),
       author: newComment.value.author.trim(),
       content: newComment.value.content.trim(),
-      timestamp: new Date().toISOString(),
-      replies: []
+      time: new Date().toISOString(),
+      replies: [],
+      timestamp: new Date().toISOString()
     })
 
     newComment.value.author = ''
@@ -88,13 +90,15 @@
 
     const comment = findComment(comments.value, commentId)
     if (comment) {
-      comment.replies.push({
+      if (!comment.replies) comment.replies = []
+      const reply: Comment = {
         id: Date.now(),
         author: replyAuthor.trim(),
         content: replyContent.trim(),
         timestamp: new Date().toISOString(),
         replies: []
-      })
+      }
+      comment.replies.push(reply)
       showReplyForm.value = null
       ElMessage.success('回复发布成功')
     }
@@ -104,8 +108,9 @@
     showReplyForm.value = showReplyForm.value === commentId ? null : commentId
   }
 
-  const findComment = (comments: Comment[], commentId: number): Comment | undefined => {
-    for (const comment of comments) {
+  const findComment = (comments: Comment[] | undefined, commentId: number): Comment | undefined => {
+    if (!comments) return undefined
+    for (const comment of comments!) {
       if (comment.id === commentId) {
         return comment
       }

@@ -27,3 +27,18 @@ export function fetchMultiExchangeRate(base: string, targets: string[]) {
     params: { base, targets: targets.join(',') }
   })
 }
+
+/** 获取全币种汇率 */
+export function fetchAllRates(base: string = 'USD') {
+  return request.get<{
+    base: string
+    date: string
+    rates: Record<string, number>
+    currencies: Record<string, string>
+    popular: string[]
+    source: string
+  }>({
+    url: '/api/exchange-rate/all',
+    params: { base }
+  })
+}

@@ -41,9 +41,32 @@ class UserResponse(BaseModel):
     is_active: bool
     avatar: str
     created_at: Optional[datetime] = None
+    # 前端兼容字段
+    userId: Optional[int] = None
+    userName: Optional[str] = None
+    roles: Optional[List[str]] = None
+    buttons: Optional[List[str]] = None
 
     class Config:
         from_attributes = True
+
+    @classmethod
+    def from_user(cls, user):
+        """从用户模型创建响应，自动填充前端兼容字段"""
+        return cls(
+            id=user.id,
+            username=user.username,
+            email=user.email,
+            full_name=user.full_name,
+            role=user.role,
+            is_active=user.is_active,
+            avatar=user.avatar or "",
+            created_at=user.created_at,
+            userId=user.id,
+            userName=user.username,
+            roles=[user.role] if user.role else ["user"],
+            buttons=[]
+        )
 
 
 class Token(BaseModel):

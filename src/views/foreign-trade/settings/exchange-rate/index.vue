@@ -68,7 +68,7 @@
                 手动设置
               </el-tag>
               <el-tag v-else type="info" size="small" style="margin-left: 8px">
-                使用实时汇率: {{ apiRates[item.key]?.toFixed(4) || '-' }}
+                使用实时汇率: {{ (apiRates as any)[item.key]?.toFixed(4) || '-' }}
               </el-tag>
               <el-button
                 v-if="manualRates[item.key]"
@@ -125,7 +125,7 @@ import { fetchExchangeRate } from '@/api/foreign-trade/statistics'
 const LS_KEY = 'foreign_trade_manual_rates'
 
 const foreignTradeStore = useForeignTradeStore()
-const { exchangeRates: apiRates, lastRateUpdate } = storeToRefs(foreignTradeStore)
+const { effectiveRates: apiRates, lastRateUpdate } = storeToRefs(foreignTradeStore)
 const loading = ref(false)
 const queryBase = ref('USD')
 const queryTarget = ref('CNY')

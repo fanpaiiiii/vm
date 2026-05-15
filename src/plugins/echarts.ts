@@ -1,76 +1,63 @@
 /**
- * ECharts 插件配置
+ * ECharts 插件配置 - 懒加载版本
  *
- * 按需导入 ECharts 图表和组件，减小打包体积。
- * 只注册项目中实际使用的图表类型和组件。
+ * 使用动态导入按需加载 ECharts，减小初始打包体积。
+ * echarts 核心库（~800KB）将被分离到独立 chunk，仅在图表初始化时加载。
  *
  * @module plugins/echarts
  * @author Art Design Pro Team
  */
 
-// ECharts 按需导入配置
-import * as echarts from 'echarts/core'
+// 缓存已加载的 echarts 实例
+let echartsPromise: Promise<typeof import('echarts/core')> | null = null
 
-// 导入图表类型
-import {
-  BarChart,
-  LineChart,
-  PieChart,
-  ScatterChart,
-  RadarChart,
-  MapChart,
-  CandlestickChart
-} from 'echarts/charts'
+/**
+ * 懒加载 ECharts 核心模块
+ * 首次调用时动态导入并注册所有需要的图表和组件，
+ * 后续调用直接返回缓存的 Promise。
+ */
+export async function loadEcharts() {
+  if (!echartsPromise) {
+    echartsPromise = (async () => {
+      const [echarts, chartsMod, componentsMod, renderersMod] = await Promise.all([
+        import('echarts/core'),
+        import('echarts/charts'),
+        import('echarts/components'),
+        import('echarts/renderers')
+      ])
 
-// 导入组件
-import {
-  TitleComponent,
-  TooltipComponent,
-  GridComponent,
-  LegendComponent,
-  DataZoomComponent,
-  MarkPointComponent,
-  MarkLineComponent,
-  ToolboxComponent,
-  BrushComponent,
-  GeoComponent,
-  VisualMapComponent
-} from 'echarts/components'
+      echarts.use([
+        // 图表类型
+        chartsMod.BarChart,
+        chartsMod.LineChart,
+        chartsMod.PieChart,
+        chartsMod.ScatterChart,
+        chartsMod.RadarChart,
+        chartsMod.MapChart,
+        chartsMod.CandlestickChart,
 
-// 导入渲染器
-import { CanvasRenderer } from 'echarts/renderers'
+        // 组件
+        componentsMod.TitleComponent,
+        componentsMod.TooltipComponent,
+        componentsMod.GridComponent,
+        componentsMod.LegendComponent,
+        componentsMod.DataZoomComponent,
+        componentsMod.MarkPointComponent,
+        componentsMod.MarkLineComponent,
+        componentsMod.ToolboxComponent,
+        componentsMod.BrushComponent,
+        componentsMod.GeoComponent,
+        componentsMod.VisualMapComponent,
 
-// 注册必要的组件
-echarts.use([
-  // 图表类型
-  BarChart,
-  LineChart,
-  PieChart,
-  ScatterChart,
-  RadarChart,
-  MapChart,
-  CandlestickChart,
+        // 渲染器
+        renderersMod.CanvasRenderer
+      ])
 
-  // 组件
-  TitleComponent,
-  TooltipComponent,
-  GridComponent,
-  LegendComponent,
-  DataZoomComponent,
-  MarkPointComponent,
-  MarkLineComponent,
-  ToolboxComponent,
-  BrushComponent,
-  GeoComponent,
-  VisualMapComponent,
+      return echarts
+    })()
+  }
+  return echartsPromise
+}
 
-  // 渲染器
-  CanvasRenderer
-])
-
-// 导出 echarts 实例和类型
-export { echarts }
+// Re-export types (these are type-only, no bundle impact)
 export type { EChartsOption, BarSeriesOption } from 'echarts'
-
-// 导出常用的图形工具
-export const graphic = echarts.graphic

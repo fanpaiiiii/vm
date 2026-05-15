@@ -1,70 +1,83 @@
-from pydantic import BaseModel
-from typing import Optional, List
+from pydantic import BaseModel, field_validator
+from typing import Optional, List, Any
 from datetime import datetime
 
 
 class ProductCreate(BaseModel):
-    name: str
-    sku: str
-    category: Optional[str] = ""
-    description: Optional[str] = ""
-    price_cny: Optional[float] = 0.0
-    price_usd: Optional[float] = 0.0
-    cost: Optional[float] = 0.0
-    weight: Optional[float] = 0.0
-    length: Optional[float] = 0.0
-    width: Optional[float] = 0.0
-    height: Optional[float] = 0.0
-    stock: Optional[int] = 0
-    min_order_qty: Optional[int] = 1
+    sku: Optional[str] = None  # 可选，为空时自动生成 FT-XXXX
+    name: str  # 必填
+    link_1688: Optional[str] = ""
     image_url: Optional[str] = ""
+    spec: Optional[str] = ""
+    box_spec: Optional[str] = ""
+    size_variants: Optional[List[dict]] = None
+    unit_price: Optional[float] = 0.0
+    sample_price: Optional[float] = 0.0
+    shipping_cost: Optional[float] = 0.0
+    description: Optional[str] = ""
     status: Optional[str] = "active"
     supplier_id: Optional[int] = None
-    tags: Optional[str] = ""
-    alibaba_link: Optional[str] = ""
+
+    @field_validator('supplier_id', mode='before')
+    @classmethod
+    def empty_str_to_none(cls, v):
+        if v == "" or v == "null" or v == "undefined":
+            return None
+        return v
+
+    @field_validator('unit_price', 'sample_price', 'shipping_cost', mode='before')
+    @classmethod
+    def empty_str_to_zero(cls, v):
+        if v == "" or v is None:
+            return 0.0
+        return v
 
 
 class ProductUpdate(BaseModel):
-    name: Optional[str] = None
     sku: Optional[str] = None
-    category: Optional[str] = None
-    description: Optional[str] = None
-    price_cny: Optional[float] = None
-    price_usd: Optional[float] = None
-    cost: Optional[float] = None
-    weight: Optional[float] = None
-    length: Optional[float] = None
-    width: Optional[float] = None
-    height: Optional[float] = None
-    stock: Optional[int] = None
-    min_order_qty: Optional[int] = None
+    name: Optional[str] = None
+    link_1688: Optional[str] = None
     image_url: Optional[str] = None
+    spec: Optional[str] = None
+    box_spec: Optional[str] = None
+    size_variants: Optional[List[dict]] = None
+    unit_price: Optional[float] = None
+    sample_price: Optional[float] = None
+    shipping_cost: Optional[float] = None
+    description: Optional[str] = None
     status: Optional[str] = None
     supplier_id: Optional[int] = None
-    tags: Optional[str] = None
-    alibaba_link: Optional[str] = None
+
+    @field_validator('supplier_id', mode='before')
+    @classmethod
+    def empty_str_to_none(cls, v):
+        if v == "" or v == "null" or v == "undefined":
+            return None
+        return v
+
+    @field_validator('unit_price', 'sample_price', 'shipping_cost', mode='before')
+    @classmethod
+    def empty_str_to_none_float(cls, v):
+        if v == "" or v == "null" or v == "undefined":
+            return None
+        return v
 
 
 class ProductResponse(BaseModel):
     id: int
-    name: str
     sku: str
-    category: str
-    description: str
-    price_cny: float
-    price_usd: float
-    cost: float
-    weight: float
-    length: float
-    width: float
-    height: float
-    stock: int
-    min_order_qty: int
+    name: str
+    link_1688: str
     image_url: str
+    spec: str
+    box_spec: str
+    size_variants: Optional[List[dict]] = None
+    unit_price: float
+    sample_price: float
+    shipping_cost: float
+    description: str
     status: str
     supplier_id: Optional[int] = None
-    tags: str
-    alibaba_link: str
     created_by: Optional[int] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None

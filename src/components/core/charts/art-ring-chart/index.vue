@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-  import type { EChartsOption } from '@/plugins/echarts'
+  import type { EChartsOption } from 'echarts'
   import { useChartOps, useChartComponent } from '@/hooks/core/useChart'
   import type { RingChartProps } from '@/types/component/chart'
 

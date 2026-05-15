@@ -41,7 +41,7 @@ async def register(user_data: UserCreate, db: Session = Depends(get_db)):
 
     token = create_access_token({"sub": str(user.id)})
     logger.info(f"新用户注册: {user.username}")
-    return Token(access_token=token, user=UserResponse.model_validate(user))
+    return Token(access_token=token, user=UserResponse.from_user(user))
 
 
 @router.post("/login", response_model=Token, summary="用户登录")
@@ -54,12 +54,12 @@ async def login(login_data: UserLogin, db: Session = Depends(get_db)):
 
     token = create_access_token({"sub": str(user.id)})
     logger.info(f"用户登录: {user.username}")
-    return Token(access_token=token, user=UserResponse.model_validate(user))
+    return Token(access_token=token, user=UserResponse.from_user(user))
 
 
 @router.get("/me", response_model=UserResponse, summary="获取当前用户信息")
 async def get_me(current_user: User = Depends(get_current_user)):
-    return UserResponse.model_validate(current_user)
+    return UserResponse.from_user(current_user)
 
 
 @router.put("/me", response_model=UserResponse, summary="更新当前用户信息")
@@ -78,7 +78,7 @@ async def update_me(
         setattr(current_user, field, value)
     db.commit()
     db.refresh(current_user)
-    return UserResponse.model_validate(current_user)
+    return UserResponse.from_user(current_user)
 
 
 # ==================== 用户管理 (管理员专用) ====================
@@ -105,7 +105,7 @@ async def list_users(
     users = query.order_by(User.created_at.desc()).offset((page - 1) * page_size).limit(page_size).all()
 
     return UserListResponse(
-        items=[UserResponse.model_validate(u) for u in users],
+        items=[UserResponse.from_user(u) for u in users],
         total=total,
         page=page,
         page_size=page_size,
@@ -135,7 +135,7 @@ async def create_user(
     db.commit()
     db.refresh(user)
     logger.info(f"管理员 {current_user.username} 创建用户: {user.username}")
-    return UserResponse.model_validate(user)
+    return UserResponse.from_user(user)
 
 
 @router.put("/users/{user_id}", response_model=UserResponse, summary="更新用户")
@@ -165,7 +165,7 @@ async def update_user(
     db.commit()
     db.refresh(user)
     logger.info(f"管理员 {current_user.username} 更新用户: {user.username}")
-    return UserResponse.model_validate(user)
+    return UserResponse.from_user(user)
 
 
 @router.delete("/users/{user_id}", summary="删除用户")

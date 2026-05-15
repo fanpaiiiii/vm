@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-  import { echarts } from '@/plugins/echarts'
+  import { loadEcharts } from '@/plugins/echarts'
   import { useSettingStore } from '@/store/modules/setting'
   import chinaMapJson from '@/mock/json/chinaMap.json'
   import type { MapChartProps } from '@/types/component/chart'
@@ -18,7 +18,7 @@
   defineOptions({ name: 'ArtMapChart' })
 
   const chinaMapRef = ref<HTMLElement | null>(null)
-  const chartInstance = shallowRef<echarts.ECharts | null>(null)
+  const chartInstance = shallowRef<any | null>(null)
   const settingStore = useSettingStore()
   const { isDark } = storeToRefs(settingStore)
 
@@ -199,6 +199,8 @@
   // 初始化并渲染地图
   const initMap = async (): Promise<void> => {
     if (!chinaMapRef.value) return
+
+    const echarts = await loadEcharts()
 
     chartInstance.value = echarts.init(chinaMapRef.value)
 

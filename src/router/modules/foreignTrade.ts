@@ -14,6 +14,15 @@ export const foreignTradeRoutes: AppRouteRecord = {
   },
   children: [
     {
+      path: 'country-lookup',
+      name: 'ForeignTradeCountryLookup',
+      component: '/foreign-trade/country-lookup',
+      meta: {
+        title: 'menus.foreignTrade.countryLookup',
+        icon: 'ep:search',
+      },
+    },
+    {
       path: 'dashboard',
       name: 'ForeignTradeDashboard',
       component: '/foreign-trade/dashboard',

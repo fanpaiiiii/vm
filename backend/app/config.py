@@ -1,6 +1,8 @@
 from pydantic_settings import BaseSettings
 from typing import List
 import json
+import os
+import secrets
 
 
 class Settings(BaseSettings):
@@ -9,11 +11,11 @@ class Settings(BaseSettings):
     DEBUG: bool = False
 
     DATABASE_URL: str = "sqlite:///./trade_team.db"
-    SECRET_KEY: str = "ft-toolkit-prod-secret-key-2026-change-me"
+    SECRET_KEY: str = os.getenv("SECRET_KEY", secrets.token_hex(32))
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 24 hours
     ALGORITHM: str = "HS256"
 
-    CORS_ORIGINS: str = '["http://localhost:5173","http://localhost:3000","http://localhost:3006","http://154.219.108.60:3006","http://154.219.108.60:3000"]'
+    CORS_ORIGINS: str = '["http://localhost:5173","http://localhost:3006","http://154.219.108.60","http://154.219.108.60:3006"]'
     FRANKFURTER_API_URL: str = "https://api.frankfurter.app"
 
     # Rate limiting
@@ -24,7 +26,7 @@ class Settings(BaseSettings):
         try:
             return json.loads(self.CORS_ORIGINS)
         except (json.JSONDecodeError, TypeError):
-            return ["http://localhost:5173", "http://localhost:3006", "http://154.219.108.60:3006"]
+            return ["http://localhost:5173", "http://localhost:3006"]
 
     class Config:
         env_file = ".env"

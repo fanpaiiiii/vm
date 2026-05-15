@@ -19,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-  import * as XLSX from 'xlsx'
   import FileSaver from 'file-saver'
   import { ref, computed, nextTick } from 'vue'
   import { Loading } from '@element-plus/icons-vue'
@@ -210,7 +209,7 @@
   }
 
   /** 计算列宽度 */
-  const calculateColumnWidths = (data: Record<string, string>[]): XLSX.ColInfo[] => {
+  const calculateColumnWidths = (data: Record<string, string>[]): any[] => {
     if (data.length === 0) return []
 
     const sampleSize = Math.min(data.length, 100) // 只取前100行计算列宽
@@ -243,6 +242,9 @@
     sheetName: string
   ): Promise<void> => {
     try {
+      // 懒加载 XLSX
+      const XLSX = await import('xlsx')
+
       emit('export-progress', 10)
 
       // 处理数据

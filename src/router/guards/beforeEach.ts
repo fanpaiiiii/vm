@@ -114,9 +114,12 @@ export function setupBeforeEachGuard(router: Router): void {
       try {
         await handleRouteGuard(to, from, next, router)
       } catch (error) {
+        const errMsg = error instanceof Error ? `${error.message}\n${error.stack}` : String(error)
         console.error('[RouteGuard] 路由守卫处理失败:', error)
         closeLoading()
-        next({ name: 'Exception500' })
+        // 临时：把错误信息写到页面上方便调试
+        document.title = 'ERROR: ' + errMsg
+        next({ name: 'Exception500', query: { msg: errMsg.substring(0, 200) } })
       }
     }
   )
@@ -360,7 +363,8 @@ async function handleDynamicRoutes(
     }
 
     // 跳转到 500 页面，使用 replace 避免产生历史记录
-    next({ name: 'Exception500', replace: true })
+    const detailMsg = isHttpError(error) ? `[${error.code}] ${error.message}` : (error instanceof Error ? error.message : String(error))
+    next({ name: 'Exception500', replace: true, query: { msg: detailMsg.substring(0, 200) } })
   }
 }
 

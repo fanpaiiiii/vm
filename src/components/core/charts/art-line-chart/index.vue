@@ -10,9 +10,10 @@
 </template>
 
 <script setup lang="ts">
-  import { graphic, type EChartsOption } from '@/plugins/echarts'
+  import { loadEcharts } from '@/plugins/echarts'
   import { getCssVar, hexToRgba } from '@/utils/ui'
   import { useChartOps, useChartComponent } from '@/hooks/core/useChart'
+  import type { EChartsOption } from 'echarts'
   import type { LineChartProps, LineDataItem } from '@/types/component/chart'
 
   defineOptions({ name: 'ArtLineChart' })
@@ -114,13 +115,14 @@
   }
 
   // 生成区域样式
-  const generateAreaStyle = (item: LineDataItem, color: string) => {
+  const generateAreaStyle = async (item: LineDataItem, color: string) => {
     // 如果有 areaStyle 配置，或者显式开启了区域颜色，则显示区域样式
     if (!item.areaStyle && !item.showAreaColor && !props.showAreaColor) return undefined
 
     const areaConfig = item.areaStyle || {}
     if (areaConfig.custom) return areaConfig.custom
 
+    const { graphic } = await loadEcharts()
     return {
       color: new graphic.LinearGradient(0, 0, 0, 1, [
         {
@@ -136,10 +138,11 @@
   }
 
   // 生成单数据区域样式
-  const generateSingleAreaStyle = () => {
+  const generateSingleAreaStyle = async () => {
     if (!props.showAreaColor) return undefined
 
     const color = getColor(props.colors[0])
+    const { graphic } = await loadEcharts()
     return {
       color: new graphic.LinearGradient(0, 0, 0, 1, [
         {
@@ -188,7 +191,7 @@
   }
 
   // 生成图表配置
-  const generateChartOptions = (isInitial = false): EChartsOption => {
+  const generateChartOptions = async (isInitial = false): Promise<EChartsOption> => {
     const options: EChartsOption = {
       animation: true,
       animationDuration: isInitial ? 0 : 1300,
@@ -225,9 +228,9 @@
     // 生成系列数据
     if (isMultipleData.value) {
       const multiData = animatedData.value as LineDataItem[]
-      options.series = multiData.map((item, index) => {
+      options.series = await Promise.all(multiData.map(async (item, index) => {
         const itemColor = getColor(props.colors[index], index)
-        const areaStyle = generateAreaStyle(item, itemColor)
+        const areaStyle = await generateAreaStyle(item, itemColor)
 
         return createSeriesItem({
           name: item.name,
@@ -238,12 +241,12 @@
           lineWidth: item.lineWidth,
           areaStyle
         })
-      })
+      }))
     } else {
       // 单数据情况
       const singleData = animatedData.value as number[]
       const computedColor = getColor(props.colors[0])
-      const areaStyle = generateSingleAreaStyle()
+      const areaStyle = await generateSingleAreaStyle()
 
       options.series = [
         createSeriesItem({
@@ -258,12 +261,12 @@
   }
 
   // 更新图表
-  const updateChartOptions = (options: EChartsOption) => {
-    initChart(options)
+  const updateChartOptions = async (options: EChartsOption | Promise<EChartsOption>) => {
+    initChart(await options)
   }
 
   // 初始化动画函数（优化：统一定时器管理，减少内存泄漏风险）
-  const initChartWithAnimation = () => {
+  const initChartWithAnimation = async () => {
     clearAnimationTimers()
     isAnimating.value = true
 

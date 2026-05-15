@@ -63,6 +63,31 @@ export default ({ mode }: { mode: string }) => {
         warnOnError: true,
         exclude: [],
         include: ['src/views/**/*.vue']
+      },
+      rollupOptions: {
+        output: {
+          // Manual chunk splitting for vendor libraries
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              // Vue ecosystem: vue, vue-router, pinia, @vue/*
+              if (/[\\/]node_modules[\\/](vue|vue-router|pinia|@vue)[\\/]/.test(id)) {
+                return 'vue-vendor'
+              }
+              // Element Plus
+              if (id.includes('node_modules/element-plus')) {
+                return 'element-plus'
+              }
+              // Echarts (core + sub-packages)
+              if (id.includes('node_modules/echarts')) {
+                return 'echarts'
+              }
+              // XLSX
+              if (id.includes('node_modules/xlsx')) {
+                return 'xlsx'
+              }
+            }
+          }
+        }
       }
     },
     plugins: [
@@ -97,7 +122,8 @@ export default ({ mode }: { mode: string }) => {
         threshold: 10240, // 只有大小大于该值的资源会被处理 10240B = 10KB
         deleteOriginFile: false // 压缩后是否删除原文件
       }),
-      vueDevTools()
+      // 仅开发环境启用 devtools
+      mode === 'development' ? vueDevTools() : null
       // 打包分析
       // visualizer({
       //   open: true,

@@ -1,9 +1,11 @@
 import io
 import csv
+import json
+import re
 from fastapi import APIRouter, Depends, HTTPException, Query, UploadFile, File
 from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
-from sqlalchemy import or_
+from sqlalchemy import or_, func as sql_func
 from typing import Optional
 from app.database import get_db
 from app.models.product import Product
@@ -20,14 +22,31 @@ from app.utils.logger import logger
 router = APIRouter(prefix="/api/products", tags=["产品"])
 
 
+def generate_next_sku(db: Session) -> str:
+    """自动生成下一个 FT-XXXX 格式的 SKU"""
+    # 查询当前最大的 FT-XXXX 编号
+    latest = (
+        db.query(Product.sku)
+        .filter(Product.sku.like("FT-%"))
+        .all()
+    )
+    max_num = 0
+    for (sku_val,) in latest:
+        match = re.match(r"FT-(\d+)", sku_val)
+        if match:
+            num = int(match.group(1))
+            if num > max_num:
+                max_num = num
+    return f"FT-{max_num + 1:04d}"
+
+
 @router.get("", response_model=ProductListResponse, summary="获取产品列表")
 async def list_products(
     page: int = Query(1, ge=1),
     page_size: int = Query(20, ge=1, le=100),
     keyword: Optional[str] = None,
-    category: Optional[str] = None,
     status: Optional[str] = None,
-    supplier_id: Optional[int] = None,
+    supplier_id: Optional[str] = Query(None),
     sort_by: Optional[str] = "created_at",
     sort_order: Optional[str] = "desc",
     db: Session = Depends(get_db),
@@ -43,12 +62,13 @@ async def list_products(
                 Product.description.contains(keyword),
             )
         )
-    if category:
-        query = query.filter(Product.category == category)
     if status:
         query = query.filter(Product.status == status)
-    if supplier_id:
-        query = query.filter(Product.supplier_id == supplier_id)
+    if supplier_id and supplier_id.strip():
+        try:
+            query = query.filter(Product.supplier_id == int(supplier_id))
+        except ValueError:
+            pass
 
     total = query.count()
 
@@ -69,20 +89,6 @@ async def list_products(
     )
 
 
-@router.get("/categories", summary="获取所有产品分类")
-async def get_categories(
-    db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user),
-):
-    categories = (
-        db.query(Product.category)
-        .filter(Product.category != "")
-        .distinct()
-        .all()
-    )
-    return [c[0] for c in categories]
-
-
 @router.get("/{product_id}", response_model=ProductResponse, summary="获取产品详情")
 async def get_product(
     product_id: int,
@@ -101,10 +107,11 @@ async def create_product(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    if db.query(Product).filter(Product.sku == data.sku).first():
-        raise HTTPException(status_code=400, detail=f"SKU '{data.sku}' 已存在")
+    # 自动生成 SKU
+    sku = data.sku if data.sku and data.sku.strip() else generate_next_sku(db)
 
-    product = Product(**data.model_dump(), created_by=current_user.id)
+    product_data = data.model_dump(exclude={"sku"})
+    product = Product(**product_data, sku=sku, created_by=current_user.id)
     db.add(product)
     db.commit()
     db.refresh(product)
@@ -157,7 +164,6 @@ async def import_products(
         raise HTTPException(status_code=400, detail="仅支持CSV文件")
 
     content = await file.read()
-    # Try UTF-8 BOM, then GBK
     try:
         text = content.decode("utf-8-sig")
     except UnicodeDecodeError:
@@ -171,23 +177,20 @@ async def import_products(
         try:
             sku = row.get("sku", "").strip()
             if not sku:
-                errors.append(f"第{i}行: SKU为空")
-                continue
-            if db.query(Product).filter(Product.sku == sku).first():
-                errors.append(f"第{i}行: SKU '{sku}' 已存在")
-                continue
+                sku = generate_next_sku(db)
 
             product = Product(
-                name=row.get("name", ""),
                 sku=sku,
-                category=row.get("category", ""),
+                name=row.get("name", ""),
+                link_1688=row.get("link_1688", ""),
+                image_url=row.get("image_url", ""),
+                spec=row.get("spec", ""),
+                box_spec=row.get("box_spec", ""),
+                size_variants=json.loads(row.get("size_variants", "null")) if row.get("size_variants") else None,
+                unit_price=float(row.get("unit_price", 0)),
+                sample_price=float(row.get("sample_price", 0)),
+                shipping_cost=float(row.get("shipping_cost", 0)),
                 description=row.get("description", ""),
-                price_cny=float(row.get("price_cny", 0)),
-                price_usd=float(row.get("price_usd", 0)),
-                cost=float(row.get("cost", 0)),
-                weight=float(row.get("weight", 0)),
-                stock=int(row.get("stock", 0)),
-                min_order_qty=int(row.get("min_order_qty", 1)),
                 status=row.get("status", "active"),
                 created_by=current_user.id,
             )
@@ -203,14 +206,11 @@ async def import_products(
 
 @router.get("/export/csv", summary="导出产品为CSV")
 async def export_products(
-    category: Optional[str] = None,
     status: Optional[str] = None,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
     query = db.query(Product)
-    if category:
-        query = query.filter(Product.category == category)
     if status:
         query = query.filter(Product.status == status)
 
@@ -219,13 +219,16 @@ async def export_products(
     output = io.StringIO()
     writer = csv.writer(output)
     writer.writerow([
-        "sku", "name", "category", "price_cny", "price_usd", "cost",
-        "weight", "stock", "min_order_qty", "status", "supplier_id",
+        "sku", "name", "link_1688", "image_url", "spec", "box_spec",
+        "size_variants", "unit_price", "sample_price", "shipping_cost",
+        "description", "status", "supplier_id",
     ])
     for p in products:
         writer.writerow([
-            p.sku, p.name, p.category, p.price_cny, p.price_usd, p.cost,
-            p.weight, p.stock, p.min_order_qty, p.status, p.supplier_id or "",
+            p.sku, p.name, p.link_1688, p.image_url, p.spec, p.box_spec,
+            json.dumps(p.size_variants, ensure_ascii=False) if p.size_variants else "",
+            p.unit_price, p.sample_price, p.shipping_cost,
+            p.description, p.status, p.supplier_id or "",
         ])
 
     output.seek(0)

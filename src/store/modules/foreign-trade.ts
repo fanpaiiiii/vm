@@ -24,7 +24,7 @@ import {
   fetchUpdateSupplier,
   fetchDeleteSupplier
 } from '@/api/foreign-trade/suppliers'
-import { fetchDashboardStats, fetchExchangeRate, fetchMultiExchangeRate } from '@/api/foreign-trade/statistics'
+import { fetchDashboardStats, fetchAllRates } from '@/api/foreign-trade/statistics'
 import { fetchCalculateShipping } from '@/api/foreign-trade/shipping'
 import type {
   ProductCreateParams,
@@ -71,28 +71,26 @@ export const useForeignTradeStore = defineStore(
       category_distribution: [],
       status_distribution: []
     })
-    const exchangeRates = ref<Record<string, number>>({
-      USD_CNY: 0,
-      EUR_CNY: 0,
-      GBP_CNY: 0,
-      JPY_CNY: 0
-    })
+
+    // 全量汇率（USD 为基准）
+    const allRates = ref<Record<string, number>>({ USD: 1 })
+    const currencyNames = ref<Record<string, string>>({})
+    const popularCurrencies = ref<string[]>([])
+    const ratesDate = ref('')
     const manualRates = ref<Record<string, number>>({})
     const ratesLoading = ref(false)
     const lastRateUpdate = ref('')
 
-    // 仪表盘使用的汇率（优先手动设置）
+    // 兼容旧的 4 币种显示卡片
     const effectiveRates = computed(() => {
-      const rates: Record<string, number> = {}
-      const apiKeys = ['USD_CNY', 'EUR_CNY', 'GBP_CNY', 'JPY_CNY']
-      for (const key of apiKeys) {
-        if (manualRates.value[key] && manualRates.value[key] > 0) {
-          rates[key] = manualRates.value[key]
-        } else {
-          rates[key] = exchangeRates.value[key]
-        }
+      const r = allRates.value
+      const usdCny = r['CNY'] || 0
+      return {
+        USD_CNY: usdCny,
+        EUR_CNY: r['EUR'] ? (usdCny / r['EUR']) : 0,
+        GBP_CNY: r['GBP'] ? (usdCny / r['GBP']) : 0,
+        JPY_CNY: r['JPY'] ? (usdCny / r['JPY']) : 0
       }
-      return rates
     })
 
     // ========== 运费计算状态 ==========
@@ -266,35 +264,16 @@ export const useForeignTradeStore = defineStore(
     async function loadExchangeRates() {
       ratesLoading.value = true
       try {
-        // 使用后端代理的 Frankfurter API，直接获取 USD 计价的各币种汇率
-        const res = await fetchExchangeRate('USD', 'CNY')
-        if (res && res.rate) {
-          // 获取 USD/CNY 汇率
-          const usdCny = res.rate
-          
-          // 获取其他币种对 USD 的汇率
-          const multiRes = await fetchMultiExchangeRate('USD', ['EUR', 'GBP', 'JPY'])
-          
-          if (multiRes && multiRes.rates) {
-            const rates = multiRes.rates
-            exchangeRates.value = {
-              USD_CNY: usdCny,
-              EUR_CNY: rates.EUR ? usdCny / rates.EUR : 0,
-              GBP_CNY: rates.GBP ? usdCny / rates.GBP : 0,
-              JPY_CNY: rates.JPY ? usdCny / rates.JPY : 0
-            }
-          } else {
-            exchangeRates.value = {
-              USD_CNY: usdCny,
-              EUR_CNY: 0,
-              GBP_CNY: 0,
-              JPY_CNY: 0
-            }
-          }
+        const res = await fetchAllRates('USD')
+        if (res && res.rates) {
+          allRates.value = { USD: 1, ...res.rates }
+          currencyNames.value = res.currencies || {}
+          popularCurrencies.value = res.popular || []
+          ratesDate.value = res.date || ''
           lastRateUpdate.value = new Date().toLocaleString('zh-CN')
         }
       } catch (e) {
-        console.error('加载汇率失败，使用默认值:', e)
+        console.error('加载汇率失败:', e)
       } finally {
         ratesLoading.value = false
       }
@@ -306,8 +285,8 @@ export const useForeignTradeStore = defineStore(
       try {
         const res = await fetchCalculateShipping(params)
         if (res) {
-          shippingResult.value = res.result
-          shippingChannels.value = res.channels || []
+          shippingResult.value = res as any
+          shippingChannels.value = (res as any).channels || (res as any).options || []
         }
         return res
       } catch (e) {
@@ -341,7 +320,11 @@ export const useForeignTradeStore = defineStore(
       deleteSupplier,
       // 仪表盘
       dashboardStats,
-      exchangeRates,
+      allRates,
+      currencyNames,
+      popularCurrencies,
+      ratesDate,
+      exchangeRates: allRates, // 兼容
       manualRates,
       effectiveRates,
       ratesLoading,

@@ -36,7 +36,7 @@
             <div class="channel-header">
               <div class="channel-title">
                 <el-tag :type="getTypeTagType(channel.type)" size="small">{{ channel.type }}</el-tag>
-                <el-tag :type="channel.code" size="small" style="margin-left: 4px">{{ channel.code }}</el-tag>
+                <el-tag size="small" style="margin-left: 4px">{{ channel.code }}</el-tag>
                 <span class="channel-name">{{ channel.name }}</span>
               </div>
               <div class="channel-actions">
@@ -245,16 +245,16 @@ async function resetToDefault() {
   }
 }
 
-const getTypeTagType = (type: string) => {
-  const map: Record<string, string> = {
-    '快递': '',
+const getTypeTagType = (type: string): 'success' | 'warning' | 'danger' | 'info' | 'primary' => {
+  const map: Record<string, 'success' | 'warning' | 'danger' | 'info' | 'primary'> = {
+    '快递': 'primary',
     '空运': 'warning',
     '海运': 'success',
     '铁路': 'info',
     '邮政': 'danger',
-    '专线': '',
+    '专线': 'primary',
   }
-  return map[type] || ''
+  return map[type] || 'primary'
 }
 
 onMounted(() => {

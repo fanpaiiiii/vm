@@ -18,27 +18,8 @@ async def get_dashboard(
     total_products = db.query(Product).count()
     active_products = db.query(Product).filter(Product.status == "active").count()
     total_suppliers = db.query(Supplier).filter(Supplier.is_active == True).count()
-    total_stock = db.query(func.coalesce(func.sum(Product.stock), 0)).scalar()
-    total_value_cny = db.query(
-        func.coalesce(func.sum(Product.price_cny * Product.stock), 0)
-    ).scalar()
-    total_value_usd = db.query(
-        func.coalesce(func.sum(Product.price_usd * Product.stock), 0)
-    ).scalar()
 
-    # Category distribution
-    categories = (
-        db.query(Product.category, func.count(Product.id))
-        .filter(Product.category != "")
-        .group_by(Product.category)
-        .all()
-    )
-
-    # Low stock products (stock < 10)
-    low_stock_count = db.query(Product).filter(Product.stock < 10, Product.stock > 0).count()
-    out_of_stock = db.query(Product).filter(Product.stock == 0).count()
-
-    # Status distribution
+    # 按状态统计
     statuses = (
         db.query(Product.status, func.count(Product.id))
         .group_by(Product.status)
@@ -50,17 +31,15 @@ async def get_dashboard(
             "total_products": total_products,
             "active_products": active_products,
             "total_suppliers": total_suppliers,
-            "total_stock": total_stock,
-            "total_value_cny": round(total_value_cny, 2),
-            "total_value_usd": round(total_value_usd, 2),
+            "total_stock": 0,
+            "total_value_cny": 0,
+            "total_value_usd": 0,
         },
         "stock_alerts": {
-            "low_stock": low_stock_count,
-            "out_of_stock": out_of_stock,
+            "low_stock": 0,
+            "out_of_stock": 0,
         },
-        "category_distribution": [
-            {"category": c[0], "count": c[1]} for c in categories
-        ],
+        "category_distribution": [],
         "status_distribution": [
             {"status": s[0], "count": s[1]} for s in statuses
         ],

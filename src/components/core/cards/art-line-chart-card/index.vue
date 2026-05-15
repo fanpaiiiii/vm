@@ -31,9 +31,10 @@
 </template>
 
 <script setup lang="ts">
-  import { graphic, type EChartsOption } from '@/plugins/echarts'
+  import { loadEcharts } from '@/plugins/echarts'
   import { getCssVar, hexToRgba } from '@/utils/ui'
   import { useChartOps, useChartComponent } from '@/hooks/core/useChart'
+  import type { EChartsOption } from 'echarts'
 
   defineOptions({ name: 'ArtLineChartCard' })
 
@@ -71,8 +72,9 @@
     },
     checkEmpty: () => !props.chartData?.length || props.chartData.every((val) => val === 0),
     watchSources: [() => props.chartData, () => props.color, () => props.showAreaColor],
-    generateOptions: (): EChartsOption => {
+    generateOptions: async (): Promise<EChartsOption> => {
       const computedColor = props.color || useChartOps().themeColor
+      const { graphic } = await loadEcharts()
 
       return {
         grid: {

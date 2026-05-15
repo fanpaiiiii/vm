@@ -195,7 +195,6 @@
 <script setup lang="ts">
 import { ref, reactive, nextTick, onMounted, onUnmounted } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import * as XLSX from 'xlsx'
 
 // ==================== 类型定义 ====================
 interface TableRow {
@@ -589,7 +588,9 @@ const handlePaste = async () => {
 }
 
 // ==================== 导入/导出 ====================
-const handleExport = () => {
+const handleExport = async () => {
+  const XLSX = await import('xlsx')
+
   const exportData = tableData.value.map(row => {
     const obj: any = {}
     columns.forEach(col => {
@@ -611,7 +612,9 @@ const handleExport = () => {
   ElMessage.success('导出成功')
 }
 
-const handleImportFile = (file: File) => {
+const handleImportFile = async (file: File) => {
+  const XLSX = await import('xlsx')
+
   const reader = new FileReader()
   
   reader.onload = (e) => {

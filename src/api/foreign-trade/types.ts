@@ -5,57 +5,51 @@
 
 // ==================== 产品相关 ====================
 
+export interface SizeVariant {
+  size: string
+  specs: string[]
+}
+
 export interface Product {
   id: number
-  name: string
   sku: string
-  category: string
-  description: string
-  price_cny: number
-  price_usd: number
-  cost: number
-  weight: number
-  length: number
-  width: number
-  height: number
-  stock: number
-  min_order_qty: number
+  name: string
+  link_1688: string
   image_url: string
+  spec: string
+  box_spec: string
+  size_variants: SizeVariant[]
+  unit_price: number
+  sample_price: number
+  shipping_cost: number
+  description: string
   status: 'active' | 'inactive' | 'draft'
   supplier_id?: number
-  tags: string
-  alibaba_link: string
   created_by?: number
   created_at?: string
   updated_at?: string
 }
 
 export interface ProductCreateParams {
+  sku?: string
   name: string
-  sku: string
-  category?: string
-  description?: string
-  price_cny?: number
-  price_usd?: number
-  cost?: number
-  weight?: number
-  length?: number
-  width?: number
-  height?: number
-  stock?: number
-  min_order_qty?: number
+  link_1688?: string
   image_url?: string
+  spec?: string
+  box_spec?: string
+  size_variants?: SizeVariant[]
+  unit_price?: number
+  sample_price?: number
+  shipping_cost?: number
+  description?: string
   status?: string
   supplier_id?: number
-  tags?: string
-  alibaba_link?: string
 }
 
 export interface ProductUpdateParams extends Partial<ProductCreateParams> {}
 
 export interface ProductSearchParams {
   keyword?: string
-  category?: string
   status?: string
   supplier_id?: number
   page?: number

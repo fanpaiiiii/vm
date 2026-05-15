@@ -13,108 +13,21 @@
         <el-divider content-position="left">基本信息</el-divider>
         <el-row :gutter="20">
           <el-col :span="12">
-            <el-form-item label="产品名称" prop="name">
-              <el-input v-model="form.name" placeholder="请输入产品名称" />
+            <el-form-item label="货号">
+              <el-input v-model="form.sku" placeholder="留空自动生成 FT-XXXX" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="SKU" prop="sku">
-              <el-input v-model="form.sku" placeholder="请输入SKU" />
+            <el-form-item label="货品名称" prop="name">
+              <el-input v-model="form.name" placeholder="请输入货品名称" />
             </el-form-item>
           </el-col>
         </el-row>
 
         <el-row :gutter="20">
           <el-col :span="12">
-            <el-form-item label="分类" prop="category">
-              <el-select v-model="form.category" placeholder="请选择分类" style="width: 100%">
-                <el-option label="电子产品" value="electronics" />
-                <el-option label="服装" value="clothing" />
-                <el-option label="家居" value="home" />
-                <el-option label="玩具" value="toys" />
-              </el-select>
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item label="图片URL">
-              <el-input v-model="form.image_url" placeholder="请输入产品图片URL" />
-            </el-form-item>
-          </el-col>
-        </el-row>
-
-        <el-form-item label="产品描述">
-          <el-input v-model="form.description" type="textarea" :rows="4" placeholder="请输入产品描述" />
-        </el-form-item>
-
-        <!-- 价格信息 -->
-        <el-divider content-position="left">价格信息</el-divider>
-        <el-row :gutter="20">
-          <el-col :span="8">
-            <el-form-item label="成本(CNY)" prop="price_cny">
-              <el-input-number v-model="form.price_cny" :min="0" :precision="2" style="width: 100%" />
-            </el-form-item>
-          </el-col>
-          <el-col :span="8">
-            <el-form-item label="售价(USD)" prop="price_usd">
-              <el-input-number v-model="form.price_usd" :min="0" :precision="2" style="width: 100%" />
-            </el-form-item>
-          </el-col>
-          <el-col :span="8">
-            <el-form-item label="利润率">
-              <el-input :value="calculateProfit + '%'" disabled />
-            </el-form-item>
-          </el-col>
-        </el-row>
-
-        <!-- 规格信息 -->
-        <el-divider content-position="left">规格信息</el-divider>
-        <el-row :gutter="20">
-          <el-col :span="6">
-            <el-form-item label="重量(kg)">
-              <el-input-number v-model="form.weight" :min="0" :precision="2" style="width: 100%" />
-            </el-form-item>
-          </el-col>
-          <el-col :span="6">
-            <el-form-item label="长(cm)">
-              <el-input-number v-model="form.length" :min="0" :precision="1" style="width: 100%" />
-            </el-form-item>
-          </el-col>
-          <el-col :span="6">
-            <el-form-item label="宽(cm)">
-              <el-input-number v-model="form.width" :min="0" :precision="1" style="width: 100%" />
-            </el-form-item>
-          </el-col>
-          <el-col :span="6">
-            <el-form-item label="高(cm)">
-              <el-input-number v-model="form.height" :min="0" :precision="1" style="width: 100%" />
-            </el-form-item>
-          </el-col>
-        </el-row>
-
-        <el-row :gutter="20">
-          <el-col :span="8">
-            <el-form-item label="库存数量">
-              <el-input-number v-model="form.stock" :min="0" style="width: 100%" />
-            </el-form-item>
-          </el-col>
-          <el-col :span="8">
-            <el-form-item label="最低起订量">
-              <el-input-number v-model="form.min_order_qty" :min="1" style="width: 100%" />
-            </el-form-item>
-          </el-col>
-          <el-col :span="8">
-            <el-form-item label="标签">
-              <el-input v-model="form.tags" placeholder="多个标签用逗号分隔" />
-            </el-form-item>
-          </el-col>
-        </el-row>
-
-        <!-- 其他信息 -->
-        <el-divider content-position="left">其他信息</el-divider>
-        <el-row :gutter="20">
-          <el-col :span="12">
-            <el-form-item label="阿里巴巴链接">
-              <el-input v-model="form.alibaba_link" placeholder="请输入阿里巴巴产品链接" />
+            <el-form-item label="1688链接">
+              <el-input v-model="form.link_1688" placeholder="请输入1688产品链接" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
@@ -128,6 +41,95 @@
           </el-col>
         </el-row>
 
+        <el-row :gutter="20">
+          <el-col :span="24">
+            <el-form-item label="货品图">
+              <el-input v-model="form.image_url" placeholder="请输入图片URL" />
+              <el-image v-if="form.image_url" :src="form.image_url" fit="contain" class="image-preview" :preview-src-list="[form.image_url]" />
+            </el-form-item>
+          </el-col>
+        </el-row>
+
+        <!-- 规格信息 -->
+        <el-divider content-position="left">规格信息</el-divider>
+        <el-row :gutter="20">
+          <el-col :span="12">
+            <el-form-item label="货品规格">
+              <el-input v-model="form.spec" type="textarea" :rows="3" placeholder="请输入货品规格" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="箱规">
+              <el-input v-model="form.box_spec" placeholder="请输入箱规" />
+            </el-form-item>
+          </el-col>
+        </el-row>
+
+        <!-- 尺码规格 -->
+        <el-divider content-position="left">尺码规格</el-divider>
+        <div class="size-variants-section">
+          <div v-for="(variant, index) in form.size_variants" :key="index" class="size-variant-row">
+            <div class="size-variant-content">
+              <div class="size-field">
+                <span class="field-label">尺码:</span>
+                <el-input v-model="variant.size" placeholder="如 S/M/L/XL" style="width: 120px" />
+              </div>
+              <div class="specs-field">
+                <span class="field-label">规格:</span>
+                <div class="spec-tags">
+                  <el-tag
+                    v-for="(spec, sIdx) in variant.specs"
+                    :key="sIdx"
+                    closable
+                    @close="removeSpec(index, sIdx)"
+                    class="spec-tag"
+                  >
+                    {{ spec }}
+                  </el-tag>
+                  <el-input
+                    v-if="variant._adding"
+                    ref="specInputRef"
+                    v-model="variant._newSpec"
+                    size="small"
+                    style="width: 80px"
+                    @keyup.enter="confirmAddSpec(index)"
+                    @blur="confirmAddSpec(index)"
+                  />
+                  <el-button v-else size="small" @click="startAddSpec(index)">+ 添加</el-button>
+                </div>
+              </div>
+            </div>
+            <el-button type="danger" text @click="removeSizeVariant(index)">
+              <el-icon><i class="ep-delete" /></el-icon> 删除
+            </el-button>
+          </div>
+          <el-button type="primary" text @click="addSizeVariant">
+            <el-icon><i class="ep-plus" /></el-icon> 添加尺码
+          </el-button>
+        </div>
+
+        <!-- 价格信息 -->
+        <el-divider content-position="left">价格信息</el-divider>
+        <el-row :gutter="20">
+          <el-col :span="8">
+            <el-form-item label="单价(¥)">
+              <el-input-number v-model="form.unit_price" :min="0" :precision="2" style="width: 100%" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item label="样品价(¥)">
+              <el-input-number v-model="form.sample_price" :min="0" :precision="2" style="width: 100%" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item label="运费(¥)">
+              <el-input-number v-model="form.shipping_cost" :min="0" :precision="2" style="width: 100%" />
+            </el-form-item>
+          </el-col>
+        </el-row>
+
+        <!-- 其他信息 -->
+        <el-divider content-position="left">其他信息</el-divider>
         <el-row :gutter="20">
           <el-col :span="12">
             <el-form-item label="供货商">
@@ -143,6 +145,10 @@
           </el-col>
         </el-row>
 
+        <el-form-item label="备注">
+          <el-input v-model="form.description" type="textarea" :rows="4" placeholder="请输入备注" />
+        </el-form-item>
+
         <el-form-item>
           <el-button type="primary" @click="handleSubmit" :loading="submitting">保存</el-button>
           <el-button @click="handleReset">重置</el-button>
@@ -153,55 +159,76 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed, onMounted } from 'vue'
+import { ref, reactive, onMounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { useForeignTradeStore } from '@/store/modules/foreign-trade'
 import { fetchSuppliers } from '@/api/foreign-trade/suppliers'
 import type { FormInstance } from 'element-plus'
 
+interface SizeVariantForm {
+  size: string
+  specs: string[]
+  _adding?: boolean
+  _newSpec?: string
+}
+
 const router = useRouter()
 const foreignTradeStore = useForeignTradeStore()
 const formRef = ref<FormInstance>()
 const submitting = ref(false)
 const supplierOptions = ref<any[]>([])
+const specInputRef = ref<any[]>([])
 
 const form = reactive({
-  name: '',
   sku: '',
-  category: '',
+  name: '',
+  link_1688: '',
   image_url: '',
+  spec: '',
+  box_spec: '',
+  size_variants: [] as SizeVariantForm[],
+  unit_price: 0,
+  sample_price: 0,
+  shipping_cost: 0,
   description: '',
-  price_cny: 0,
-  price_usd: 0,
-  cost: 0,
-  weight: 0,
-  length: 0,
-  width: 0,
-  height: 0,
-  stock: 0,
-  min_order_qty: 1,
-  tags: '',
-  alibaba_link: '',
-  status: 'active',
+  status: 'draft',
   supplier_id: null as number | null,
 })
 
 const rules = {
-  name: [{ required: true, message: '请输入产品名称', trigger: 'blur' }],
-  sku: [{ required: true, message: '请输入SKU', trigger: 'blur' }],
-  category: [{ required: true, message: '请选择分类', trigger: 'change' }],
-  price_cny: [{ required: true, message: '请输入成本价', trigger: 'blur' }],
-  price_usd: [{ required: true, message: '请输入售价', trigger: 'blur' }],
+  name: [{ required: true, message: '请输入货品名称', trigger: 'blur' }],
 }
 
-const calculateProfit = computed(() => {
-  if (form.price_cny === 0 || form.price_usd === 0) return 0
-  const rate = 7.2
-  const costInUSD = form.price_cny / rate
-  const profit = ((form.price_usd - costInUSD) / form.price_usd) * 100
-  return profit.toFixed(2)
-})
+const addSizeVariant = () => {
+  form.size_variants.push({ size: '', specs: [], _adding: false, _newSpec: '' })
+}
+
+const removeSizeVariant = (index: number) => {
+  form.size_variants.splice(index, 1)
+}
+
+const startAddSpec = (index: number) => {
+  form.size_variants[index]._adding = true
+  form.size_variants[index]._newSpec = ''
+  nextTick(() => {
+    // focus the input
+  })
+}
+
+const confirmAddSpec = (index: number) => {
+  const variant = form.size_variants[index]
+  const val = (variant._newSpec || '').trim()
+  if (val) {
+    variant.specs.push(val)
+  }
+  variant._adding = false
+  variant._newSpec = ''
+}
+
+const removeSpec = (variantIndex: number, specIndex: number) => {
+  form.size_variants[variantIndex].specs.splice(specIndex, 1)
+}
 
 const handleSubmit = async () => {
   if (!formRef.value) return
@@ -210,23 +237,22 @@ const handleSubmit = async () => {
     if (valid) {
       submitting.value = true
       try {
+        const size_variants = form.size_variants
+          .filter(v => v.size.trim())
+          .map(v => ({ size: v.size, specs: v.specs }))
+
         const result = await foreignTradeStore.createProduct({
+          sku: form.sku || undefined,
           name: form.name,
-          sku: form.sku,
-          category: form.category,
+          link_1688: form.link_1688 || undefined,
           image_url: form.image_url || undefined,
+          spec: form.spec || undefined,
+          box_spec: form.box_spec || undefined,
+          size_variants: size_variants.length ? size_variants : undefined,
+          unit_price: form.unit_price || undefined,
+          sample_price: form.sample_price || undefined,
+          shipping_cost: form.shipping_cost || undefined,
           description: form.description || undefined,
-          price_cny: form.price_cny,
-          price_usd: form.price_usd,
-          cost: form.cost || undefined,
-          weight: form.weight || undefined,
-          length: form.length || undefined,
-          width: form.width || undefined,
-          height: form.height || undefined,
-          stock: form.stock || undefined,
-          min_order_qty: form.min_order_qty || undefined,
-          tags: form.tags || undefined,
-          alibaba_link: form.alibaba_link || undefined,
           status: form.status,
           supplier_id: form.supplier_id || undefined,
         })
@@ -243,6 +269,7 @@ const handleSubmit = async () => {
 
 const handleReset = () => {
   formRef.value?.resetFields()
+  form.size_variants = []
 }
 
 const handleBack = () => {
@@ -250,7 +277,6 @@ const handleBack = () => {
 }
 
 onMounted(async () => {
-  // 加载供货商选项
   try {
     const res = await fetchSuppliers({ page_size: 100 })
     if (res) supplierOptions.value = res.items || []
@@ -273,5 +299,61 @@ onMounted(async () => {
 
 .product-form {
   max-width: 1000px;
+}
+
+.image-preview {
+  margin-top: 10px;
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 4px;
+  border: 1px solid #dcdfe6;
+}
+
+.size-variants-section {
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.size-variant-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  border: 1px solid #ebeef5;
+  border-radius: 4px;
+  background: #fafafa;
+}
+
+.size-variant-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.size-field,
+.specs-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.field-label {
+  font-size: 14px;
+  color: #606266;
+  white-space: nowrap;
+}
+
+.spec-tags {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.spec-tag {
+  margin: 0;
 }
 </style>

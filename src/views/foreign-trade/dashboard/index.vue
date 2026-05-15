@@ -76,6 +76,67 @@
       </el-col>
     </el-row>
 
+    <!-- 汇率计算器 -->
+    <el-row :gutter="20" class="mb-4">
+      <el-col :span="24">
+        <el-card shadow="hover">
+          <template #header>
+            <div class="card-header">
+              <span>💱 汇率计算器</span>
+              <span v-if="ratesDate" class="rate-date-tag">数据日期: {{ ratesDate }}</span>
+            </div>
+          </template>
+          <div class="calc-row">
+            <el-input-number
+              v-model="calcAmount"
+              :min="0"
+              :precision="2"
+              :step="100"
+              size="large"
+              style="width: 200px"
+            />
+            <el-select
+              v-model="calcFrom"
+              size="large"
+              filterable
+              style="width: 200px"
+              placeholder="选择币种"
+            >
+              <el-option
+                v-for="code in sortedCurrencies"
+                :key="code"
+                :label="`${code} ${currencyNames[code] || code}`"
+                :value="code"
+              />
+            </el-select>
+            <el-icon class="calc-swap" @click="swapCurrencies"><i class="ep-sort" /></el-icon>
+            <el-select
+              v-model="calcTo"
+              size="large"
+              filterable
+              style="width: 200px"
+              placeholder="选择币种"
+            >
+              <el-option
+                v-for="code in sortedCurrencies"
+                :key="code"
+                :label="`${code} ${currencyNames[code] || code}`"
+                :value="code"
+              />
+            </el-select>
+            <div class="calc-result">
+              <span class="calc-result-value">{{ calcResult }}</span>
+              <span class="calc-result-unit">{{ calcToLabel }}</span>
+            </div>
+          </div>
+          <div class="calc-rate-info">
+            汇率: 1 {{ calcFrom }} = {{ calcRate }} {{ calcTo }}
+            <span v-if="ratesDate" style="margin-left: 16px">来源: ECB via Frankfurter</span>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+
     <!-- 统计卡片 -->
     <el-row :gutter="20" class="mb-4">
       <el-col :span="8">
@@ -167,18 +228,61 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useForeignTradeStore } from '@/store/modules/foreign-trade'
 import { storeToRefs } from 'pinia'
 
 const foreignTradeStore = useForeignTradeStore()
-const { dashboardStats: stats, effectiveRates: exchangeRates, lastRateUpdate } = storeToRefs(foreignTradeStore)
+const { dashboardStats: stats, effectiveRates: exchangeRates, allRates, currencyNames, popularCurrencies, ratesDate, lastRateUpdate } = storeToRefs(foreignTradeStore)
 
 let refreshTimer: ReturnType<typeof setInterval> | null = null
 
 const formatMoney = (value: number) => {
   if (!value) return '0'
   return value.toLocaleString('zh-CN', { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+}
+
+// ========== 汇率计算器 ==========
+const calcAmount = ref(1000)
+const calcFrom = ref('USD')
+const calcTo = ref('CNY')
+
+// 排序：常用币种在前
+const sortedCurrencies = computed(() => {
+  const rates = allRates.value
+  const available = Object.keys(rates).filter(k => rates[k] > 0)
+  const popular = popularCurrencies.value.filter(c => available.includes(c))
+  const rest = available.filter(c => !popular.includes(c)).sort()
+  return [...popular, ...rest]
+})
+
+const calcToLabel = computed(() => {
+  const names = currencyNames.value
+  return names[calcTo.value] || calcTo.value
+})
+
+// 任意两种货币间的汇率（通过 USD 中转）
+const calcRate = computed(() => {
+  const rates = allRates.value
+  const fromRate = rates[calcFrom.value]
+  const toRate = rates[calcTo.value]
+  if (!fromRate || !toRate) return '0'
+  return (toRate / fromRate).toFixed(4)
+})
+
+const calcResult = computed(() => {
+  const rates = allRates.value
+  const fromRate = rates[calcFrom.value]
+  const toRate = rates[calcTo.value]
+  if (!fromRate || !toRate) return '0'
+  const result = (calcAmount.value / fromRate) * toRate
+  return result.toLocaleString('zh-CN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+})
+
+function swapCurrencies() {
+  const tmp = calcFrom.value
+  calcFrom.value = calcTo.value
+  calcTo.value = tmp
 }
 
 // ========== 待办事项 ==========
@@ -251,6 +355,11 @@ onUnmounted(() => {
     align-items: center;
   }
 
+  .rate-date-tag {
+    font-size: 12px;
+    color: #909399;
+  }
+
   .rate-value {
     display: flex;
     align-items: baseline;
@@ -318,6 +427,49 @@ onUnmounted(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+}
+
+.calc-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.calc-swap {
+  font-size: 20px;
+  color: #409eff;
+  cursor: pointer;
+  transition: transform 0.3s;
+  &:hover {
+    transform: rotate(180deg);
+  }
+}
+
+.calc-result {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-left: 16px;
+  padding-left: 16px;
+  border-left: 2px solid #e4e7ed;
+
+  .calc-result-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #409eff;
+  }
+
+  .calc-result-unit {
+    font-size: 14px;
+    color: #909399;
+  }
+}
+
+.calc-rate-info {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #909399;
 }
 
 .todo-list {

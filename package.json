@@ -1,5 +1,5 @@
 {
-  "name": "foreign-trade-toolkit",
+  "name": "vm",
   "version": "0.0.0",
   "type": "module",
   "engines": {
@@ -120,5 +120,11 @@
     "vue-img-cutter": "^3.0.5",
     "vue-tsc": "~2.1.6"
   },
-  "description": "外贸团队协作工具 - 产品管理、供货商、运费计算、汇率"
+  "description": "VM 外贸工具 - 产品管理、供货商、运费计算、汇率",
+  "author": "fanpaiiiii",
+  "homepage": "https://github.com/fanpaiiiii/vm",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fanpaiiiii/vm.git"
+  }
 }

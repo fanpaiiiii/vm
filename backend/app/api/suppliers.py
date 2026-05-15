@@ -21,7 +21,7 @@ async def list_suppliers(
     page: int = Query(1, ge=1),
     page_size: int = Query(20, ge=1, le=100),
     keyword: Optional[str] = None,
-    is_active: Optional[bool] = None,
+    is_active: Optional[str] = Query(None),
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
@@ -32,8 +32,8 @@ async def list_suppliers(
             | Supplier.contact_person.contains(keyword)
             | Supplier.city.contains(keyword)
         )
-    if is_active is not None:
-        query = query.filter(Supplier.is_active == is_active)
+    if is_active is not None and is_active.strip():
+        query = query.filter(Supplier.is_active == (is_active.lower() == "true"))
 
     total = query.count()
     items = query.order_by(Supplier.created_at.desc()).offset((page - 1) * page_size).limit(page_size).all()
