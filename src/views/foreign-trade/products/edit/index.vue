@@ -44,8 +44,24 @@
         <el-row :gutter="20">
           <el-col :span="24">
             <el-form-item label="货品图">
-              <el-input v-model="form.image_url" placeholder="请输入图片URL" />
-              <el-image v-if="form.image_url" :src="form.image_url" fit="contain" class="image-preview" :preview-src-list="[form.image_url]" />
+              <div class="image-upload-area">
+                <el-upload
+                  class="image-uploader"
+                  action="/api/upload/image"
+                  :headers="uploadHeaders"
+                  :show-file-list="false"
+                  :on-success="handleUploadSuccess"
+                  :before-upload="beforeUpload"
+                  accept="image/*"
+                >
+                  <el-image v-if="form.image_url" :src="form.image_url" fit="contain" class="image-preview" :preview-src-list="[form.image_url]" />
+                  <div v-else class="upload-placeholder">
+                    <el-icon size="40"><i class="ep-plus" /></el-icon>
+                    <span>点击上传图片</span>
+                  </div>
+                </el-upload>
+                <el-input v-model="form.image_url" placeholder="或直接输入图片URL" class="mt-2" />
+              </div>
             </el-form-item>
           </el-col>
         </el-row>
@@ -161,6 +177,7 @@ import { ElMessage } from 'element-plus'
 import { useForeignTradeStore } from '@/store/modules/foreign-trade'
 import { fetchSuppliers } from '@/api/foreign-trade/suppliers'
 import type { FormInstance } from 'element-plus'
+import { useUserStore } from '@/store/modules/user'
 
 interface SizeVariantForm {
   size: string
@@ -176,6 +193,23 @@ const formRef = ref<FormInstance>()
 const submitting = ref(false)
 const supplierOptions = ref<any[]>([])
 const formLoaded = ref(false)
+const userStore = useUserStore()
+const uploadHeaders = { Authorization: `Bearer ${userStore.accessToken}` }
+
+const beforeUpload = (file: File) => {
+  const isImage = file.type.startsWith('image/')
+  const isLt10M = file.size / 1024 / 1024 < 10
+  if (!isImage) { ElMessage.error('只能上传图片文件'); return false }
+  if (!isLt10M) { ElMessage.error('图片大小不能超过10MB'); return false }
+  return true
+}
+
+const handleUploadSuccess = (response: any) => {
+  if (response?.url) {
+    form.image_url = response.url
+    ElMessage.success('图片上传成功')
+  }
+}
 
 const form = reactive({
   sku: '',
@@ -324,6 +358,28 @@ onMounted(async () => {
   max-height: 200px;
   border-radius: 4px;
   border: 1px solid #dcdfe6;
+}
+
+.image-upload-area {
+  width: 100%;
+}
+
+.upload-placeholder {
+  width: 200px;
+  height: 150px;
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #8c939d;
+  gap: 8px;
+  &:hover {
+    border-color: #409eff;
+    color: #409eff;
+  }
 }
 
 .size-variants-section {

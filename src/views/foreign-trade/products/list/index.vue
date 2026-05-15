@@ -18,6 +18,11 @@
         <el-form-item label="关键词">
           <el-input v-model="searchForm.keyword" placeholder="名称/货号" clearable />
         </el-form-item>
+        <el-form-item label="供货商">
+          <el-select v-model="searchForm.supplier_id" placeholder="请选择供货商" clearable style="width: 180px">
+            <el-option v-for="s in supplierOptions" :key="s.id" :label="s.name" :value="s.id" />
+          </el-select>
+        </el-form-item>
         <el-form-item label="状态">
           <el-select v-model="searchForm.status" placeholder="请选择状态" clearable>
             <el-option label="在售" value="active" />
@@ -103,6 +108,8 @@
 import { ref, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useForeignTradeStore } from '@/store/modules/foreign-trade'
+import { fetchSuppliers } from '@/api/foreign-trade/suppliers'
+import type { Supplier } from '@/api/foreign-trade/types'
 
 const router = useRouter()
 const foreignTradeStore = useForeignTradeStore()
@@ -112,10 +119,12 @@ const currentPage = ref(1)
 const pageSize = ref(10)
 const total = ref(0)
 const tableData = ref<any[]>([])
+const supplierOptions = ref<Supplier[]>([])
 
 const searchForm = reactive({
   keyword: '',
   status: '',
+  supplier_id: undefined as number | undefined,
 })
 
 const loadData = async () => {
@@ -124,6 +133,7 @@ const loadData = async () => {
     await foreignTradeStore.loadProducts({
       keyword: searchForm.keyword || undefined,
       status: searchForm.status || undefined,
+      supplier_id: searchForm.supplier_id || undefined,
       page: currentPage.value,
       page_size: pageSize.value,
     })
@@ -142,6 +152,7 @@ const handleSearch = () => {
 const handleReset = () => {
   searchForm.keyword = ''
   searchForm.status = ''
+  searchForm.supplier_id = undefined
   handleSearch()
 }
 
@@ -176,7 +187,17 @@ const handleCurrentChange = (val: number) => {
 
 onMounted(() => {
   loadData()
+  loadSupplierOptions()
 })
+
+const loadSupplierOptions = async () => {
+  try {
+    const res = await fetchSuppliers({ page: 1, page_size: 200 })
+    if (res?.items) supplierOptions.value = res.items
+  } catch (e) {
+    console.error('加载供货商列表失败:', e)
+  }
+}
 </script>
 
 <style scoped lang="scss">

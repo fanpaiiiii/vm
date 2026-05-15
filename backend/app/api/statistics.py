@@ -26,20 +26,35 @@ async def get_dashboard(
         .all()
     )
 
+    # 总价值（单价汇总，无库存字段时作为参考）
+    total_value_cny = db.query(func.coalesce(func.sum(Product.unit_price), 0)).scalar() or 0
+
+    # 按供货商统计产品数量（top 10）
+    supplier_dist = (
+        db.query(Supplier.name, func.count(Product.id))
+        .outerjoin(Product, Product.supplier_id == Supplier.id)
+        .group_by(Supplier.id)
+        .order_by(func.count(Product.id).desc())
+        .limit(10)
+        .all()
+    )
+
     return {
         "overview": {
             "total_products": total_products,
             "active_products": active_products,
             "total_suppliers": total_suppliers,
             "total_stock": 0,
-            "total_value_cny": 0,
+            "total_value_cny": round(total_value_cny, 2),
             "total_value_usd": 0,
         },
         "stock_alerts": {
             "low_stock": 0,
             "out_of_stock": 0,
         },
-        "category_distribution": [],
+        "category_distribution": [
+            {"category": s[0] or "未分配", "count": s[1]} for s in supplier_dist
+        ],
         "status_distribution": [
             {"status": s[0], "count": s[1]} for s in statuses
         ],
