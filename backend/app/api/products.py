@@ -60,6 +60,9 @@ async def list_products(
     current_user: User = Depends(get_current_user),
 ):
     query = db.query(Product)
+    # 非管理员只看自己的数据
+    if current_user.role != "admin":
+        query = query.filter(Product.created_by == current_user.id)
 
     if keyword:
         query = query.filter(
@@ -107,6 +110,8 @@ async def get_product(
     product = db.query(Product).filter(Product.id == product_id).first()
     if not product:
         raise HTTPException(status_code=404, detail="产品不存在")
+    if product.created_by != current_user.id and current_user.role != 'admin':
+        raise HTTPException(status_code=403, detail='无权查看此产品')
     return ProductResponse.model_validate(product)
 
 
@@ -233,6 +238,9 @@ async def export_products(
     current_user: User = Depends(get_current_user),
 ):
     query = db.query(Product)
+    # 非管理员只导出自己的数据
+    if current_user.role != "admin":
+        query = query.filter(Product.created_by == current_user.id)
     if status:
         query = query.filter(Product.status == status)
 

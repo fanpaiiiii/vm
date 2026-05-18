@@ -15,8 +15,15 @@ async def get_dashboard(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
+    # 非管理员只统计自己的数据
+    product_query = db.query(Product)
+    supplier_query = db.query(Supplier)
+    if current_user.role != "admin":
+        product_query = product_query.filter(Product.created_by == current_user.id)
+        supplier_query = supplier_query.filter(Supplier.created_by == current_user.id)
+
     # Combined query for total_products, active_products, and total_value
-    stats = db.query(
+    stats = product_query.with_entities(
         func.count(Product.id).label('total'),
         func.count(case((Product.status == 'active', 1))).label('active'),
         func.coalesce(func.sum(Product.unit_price), 0).label('total_value'),
@@ -24,18 +31,18 @@ async def get_dashboard(
     total_products = stats.total
     active_products = stats.active
     total_value_cny = round(float(stats.total_value or 0), 2)
-    total_suppliers = db.query(Supplier).filter(Supplier.is_active == True).count()
+    total_suppliers = supplier_query.filter(Supplier.is_active == True).count()
 
     # 按状态统计
     statuses = (
-        db.query(Product.status, func.count(Product.id))
+        product_query.with_entities(Product.status, func.count(Product.id))
         .group_by(Product.status)
         .all()
     )
 
     # 按供货商统计产品数量（top 10）
     supplier_dist = (
-        db.query(Supplier.name, func.count(Product.id))
+        supplier_query.with_entities(Supplier.name, func.count(Product.id))
         .outerjoin(Product, Product.supplier_id == Supplier.id)
         .group_by(Supplier.id)
         .order_by(func.count(Product.id).desc())

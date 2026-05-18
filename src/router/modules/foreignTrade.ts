@@ -129,12 +129,39 @@ export const foreignTradeRoutes: AppRouteRecord = {
       },
     },
     {
+      path: 'quotation',
+      name: 'ForeignTradeQuotation',
+      component: '/foreign-trade/quotation',
+      meta: {
+        title: '报价单生成',
+        icon: 'ep:document-checked',
+      },
+    },
+    {
+      path: 'incoterms',
+      name: 'ForeignTradeIncoterms',
+      component: '/foreign-trade/incoterms',
+      meta: {
+        title: '贸易术语',
+        icon: 'ep:collection',
+      },
+    },
+    {
       path: 'spreadsheet',
       name: 'ForeignTradeSpreadsheet',
       component: '/foreign-trade/spreadsheet',
       meta: {
         title: 'menus.foreignTrade.spreadsheet',
         icon: 'ep:document',
+      },
+    },
+    {
+      path: 'cbm-calculator',
+      name: 'ForeignTradeCBMCalculator',
+      component: '/foreign-trade/cbm-calculator',
+      meta: {
+        title: '装箱计算器',
+        icon: 'ep:box',
       },
     },
     {

@@ -2,7 +2,7 @@
   "AI": {
     "iso2": "AI",
     "iso3": "AIA",
-    "name_cn": "Anguilla",
+    "name_cn": "安圭拉",
     "name_en": "Anguilla",
     "capital": "The Valley",
     "capital_en": "The Valley",
@@ -118,7 +118,7 @@
   "GT": {
     "iso2": "GT",
     "iso3": "GTM",
-    "name_cn": "Guatemala",
+    "name_cn": "危地马拉",
     "name_en": "Guatemala",
     "capital": "Guatemala City",
     "capital_en": "Guatemala City",
@@ -234,7 +234,7 @@
   "GM": {
     "iso2": "GM",
     "iso3": "GMB",
-    "name_cn": "Gambia",
+    "name_cn": "冈比亚",
     "name_en": "Gambia",
     "capital": "Banjul",
     "capital_en": "Banjul",
@@ -465,7 +465,7 @@
   "MW": {
     "iso2": "MW",
     "iso3": "MWI",
-    "name_cn": "Malawi",
+    "name_cn": "马拉维",
     "name_en": "Malawi",
     "capital": "Lilongwe",
     "capital_en": "Lilongwe",
@@ -564,7 +564,7 @@
   "PN": {
     "iso2": "PN",
     "iso3": "PCN",
-    "name_cn": "Pitcairn Islands",
+    "name_cn": "皮特凯恩群岛",
     "name_en": "Pitcairn Islands",
     "capital": "Adamstown",
     "capital_en": "Adamstown",
@@ -663,7 +663,7 @@
   "AR": {
     "iso2": "AR",
     "iso3": "ARG",
-    "name_cn": "Argentina",
+    "name_cn": "阿根廷",
     "name_en": "Argentina",
     "capital": "Buenos Aires",
     "capital_en": "Buenos Aires",
@@ -780,7 +780,7 @@
   "GU": {
     "iso2": "GU",
     "iso3": "GUM",
-    "name_cn": "Guam",
+    "name_cn": "关岛",
     "name_en": "Guam",
     "capital": "Hagåtña",
     "capital_en": "Hagåtña",
@@ -881,7 +881,7 @@
   "BG": {
     "iso2": "BG",
     "iso3": "BGR",
-    "name_cn": "Bulgaria",
+    "name_cn": "保加利亚",
     "name_en": "Bulgaria",
     "capital": "Sofia",
     "capital_en": "Sofia",
@@ -999,7 +999,7 @@
   "DM": {
     "iso2": "DM",
     "iso3": "DMA",
-    "name_cn": "Dominica",
+    "name_cn": "多米尼克",
     "name_en": "Dominica",
     "capital": "Roseau",
     "capital_en": "Roseau",
@@ -1250,7 +1250,7 @@
   "FM": {
     "iso2": "FM",
     "iso3": "FSM",
-    "name_cn": "Micronesia",
+    "name_cn": "密克罗尼西亚",
     "name_en": "Micronesia",
     "capital": "Palikir",
     "capital_en": "Palikir",
@@ -1349,7 +1349,7 @@
   "PS": {
     "iso2": "PS",
     "iso3": "PSE",
-    "name_cn": "Palestine",
+    "name_cn": "巴勒斯坦",
     "name_en": "Palestine",
     "capital": "Ramallah",
     "capital_en": "Ramallah",
@@ -1456,7 +1456,7 @@
   "CW": {
     "iso2": "CW",
     "iso3": "CUW",
-    "name_cn": "Curaçao",
+    "name_cn": "库拉索",
     "name_en": "Curaçao",
     "capital": "Willemstad",
     "capital_en": "Willemstad",
@@ -1574,7 +1574,7 @@
   "RW": {
     "iso2": "RW",
     "iso3": "RWA",
-    "name_cn": "Rwanda",
+    "name_cn": "卢旺达",
     "name_en": "Rwanda",
     "capital": "Kigali",
     "capital_en": "Kigali",
@@ -1674,7 +1674,7 @@
   "HK": {
     "iso2": "HK",
     "iso3": "HKG",
-    "name_cn": "Hong Kong",
+    "name_cn": "中国香港",
     "name_en": "Hong Kong",
     "capital": "City of Victoria",
     "capital_en": "City of Victoria",
@@ -1782,7 +1782,7 @@
   "UZ": {
     "iso2": "UZ",
     "iso3": "UZB",
-    "name_cn": "Uzbekistan",
+    "name_cn": "乌兹别克斯坦",
     "name_en": "Uzbekistan",
     "capital": "Tashkent",
     "capital_en": "Tashkent",
@@ -1900,7 +1900,7 @@
   "CN": {
     "iso2": "CN",
     "iso3": "CHN",
-    "name_cn": "China",
+    "name_cn": "中国",
     "name_en": "China",
     "capital": "Beijing",
     "capital_en": "Beijing",
@@ -2007,7 +2007,7 @@
   "CY": {
     "iso2": "CY",
     "iso3": "CYP",
-    "name_cn": "Cyprus",
+    "name_cn": "塞浦路斯",
     "name_en": "Cyprus",
     "capital": "Nicosia",
     "capital_en": "Nicosia",
@@ -2126,7 +2126,7 @@
   "AW": {
     "iso2": "AW",
     "iso3": "ABW",
-    "name_cn": "Aruba",
+    "name_cn": "阿鲁巴",
     "name_en": "Aruba",
     "capital": "Oranjestad",
     "capital_en": "Oranjestad",
@@ -2243,7 +2243,7 @@
   "RE": {
     "iso2": "RE",
     "iso3": "REU",
-    "name_cn": "Réunion",
+    "name_cn": "留尼汪",
     "name_en": "Réunion",
     "capital": "Saint-Denis",
     "capital_en": "Saint-Denis",
@@ -2465,7 +2465,7 @@
   "AQ": {
     "iso2": "AQ",
     "iso3": "ATA",
-    "name_cn": "Antarctica",
+    "name_cn": "南极洲",
     "name_en": "Antarctica",
     "capital": "",
     "capital_en": "",
@@ -2515,7 +2515,7 @@
   "SO": {
     "iso2": "SO",
     "iso3": "SOM",
-    "name_cn": "Somalia",
+    "name_cn": "索马里",
     "name_en": "Somalia",
     "capital": "Mogadishu",
     "capital_en": "Mogadishu",
@@ -2614,7 +2614,7 @@
   "LB": {
     "iso2": "LB",
     "iso3": "LBN",
-    "name_cn": "Lebanon",
+    "name_cn": "黎巴嫩",
     "name_en": "Lebanon",
     "capital": "Beirut",
     "capital_en": "Beirut",
@@ -2722,7 +2722,7 @@
   "GN": {
     "iso2": "GN",
     "iso3": "GIN",
-    "name_cn": "Guinea",
+    "name_cn": "几内亚",
     "name_en": "Guinea",
     "capital": "Conakry",
     "capital_en": "Conakry",
@@ -2820,7 +2820,7 @@
   "TJ": {
     "iso2": "TJ",
     "iso3": "TJK",
-    "name_cn": "Tajikistan",
+    "name_cn": "塔吉克斯坦",
     "name_en": "Tajikistan",
     "capital": "Dushanbe",
     "capital_en": "Dushanbe",
@@ -3061,7 +3061,7 @@
   "KP": {
     "iso2": "KP",
     "iso3": "PRK",
-    "name_cn": "North Korea",
+    "name_cn": "朝鲜",
     "name_en": "North Korea",
     "capital": "Pyongyang",
     "capital_en": "Pyongyang",
@@ -3168,7 +3168,7 @@
   "SL": {
     "iso2": "SL",
     "iso3": "SLE",
-    "name_cn": "Sierra Leone",
+    "name_cn": "塞拉利昂",
     "name_en": "Sierra Leone",
     "capital": "Freetown",
     "capital_en": "Freetown",
@@ -3266,7 +3266,7 @@
   "BJ": {
     "iso2": "BJ",
     "iso3": "BEN",
-    "name_cn": "Benin",
+    "name_cn": "贝宁",
     "name_en": "Benin",
     "capital": "Porto-Novo",
     "capital_en": "Porto-Novo",
@@ -3364,7 +3364,7 @@
   "IT": {
     "iso2": "IT",
     "iso3": "ITA",
-    "name_cn": "Italy",
+    "name_cn": "意大利",
     "name_en": "Italy",
     "capital": "Rome",
     "capital_en": "Rome",
@@ -3483,7 +3483,7 @@
   "TT": {
     "iso2": "TT",
     "iso3": "TTO",
-    "name_cn": "Trinidad and Tobago",
+    "name_cn": "特立尼达和多巴哥",
     "name_en": "Trinidad and Tobago",
     "capital": "Port of Spain",
     "capital_en": "Port of Spain",
@@ -3721,7 +3721,7 @@
   "CR": {
     "iso2": "CR",
     "iso3": "CRI",
-    "name_cn": "Costa Rica",
+    "name_cn": "哥斯达黎加",
     "name_en": "Costa Rica",
     "capital": "San José",
     "capital_en": "San José",
@@ -3837,7 +3837,7 @@
   "RS": {
     "iso2": "RS",
     "iso3": "SRB",
-    "name_cn": "Serbia",
+    "name_cn": "塞尔维亚",
     "name_en": "Serbia",
     "capital": "Belgrade",
     "capital_en": "Belgrade",
@@ -3955,7 +3955,7 @@
   "TK": {
     "iso2": "TK",
     "iso3": "TKL",
-    "name_cn": "Tokelau",
+    "name_cn": "托克劳",
     "name_en": "Tokelau",
     "capital": "Fakaofo",
     "capital_en": "Fakaofo",
@@ -4056,7 +4056,7 @@
   "MN": {
     "iso2": "MN",
     "iso3": "MNG",
-    "name_cn": "Mongolia",
+    "name_cn": "蒙古",
     "name_en": "Mongolia",
     "capital": "Ulan Bator",
     "capital_en": "Ulan Bator",
@@ -4163,7 +4163,7 @@
   "BN": {
     "iso2": "BN",
     "iso3": "BRN",
-    "name_cn": "Brunei",
+    "name_cn": "文莱",
     "name_en": "Brunei",
     "capital": "Bandar Seri Begawan",
     "capital_en": "Bandar Seri Begawan",
@@ -4270,7 +4270,7 @@
   "HU": {
     "iso2": "HU",
     "iso3": "HUN",
-    "name_cn": "Hungary",
+    "name_cn": "匈牙利",
     "name_en": "Hungary",
     "capital": "Budapest",
     "capital_en": "Budapest",
@@ -4388,7 +4388,7 @@
   "MZ": {
     "iso2": "MZ",
     "iso3": "MOZ",
-    "name_cn": "Mozambique",
+    "name_cn": "莫桑比克",
     "name_en": "Mozambique",
     "capital": "Maputo",
     "capital_en": "Maputo",
@@ -4486,7 +4486,7 @@
   "KI": {
     "iso2": "KI",
     "iso3": "KIR",
-    "name_cn": "Kiribati",
+    "name_cn": "基里巴斯",
     "name_en": "Kiribati",
     "capital": "South Tarawa",
     "capital_en": "South Tarawa",
@@ -4586,7 +4586,7 @@
   "HT": {
     "iso2": "HT",
     "iso3": "HTI",
-    "name_cn": "Haiti",
+    "name_cn": "海地",
     "name_en": "Haiti",
     "capital": "Port-au-Prince",
     "capital_en": "Port-au-Prince",
@@ -4703,7 +4703,7 @@
   "KH": {
     "iso2": "KH",
     "iso3": "KHM",
-    "name_cn": "Cambodia",
+    "name_cn": "柬埔寨",
     "name_en": "Cambodia",
     "capital": "Phnom Penh",
     "capital_en": "Phnom Penh",
@@ -4924,7 +4924,7 @@
   "TM": {
     "iso2": "TM",
     "iso3": "TKM",
-    "name_cn": "Turkmenistan",
+    "name_cn": "土库曼斯坦",
     "name_en": "Turkmenistan",
     "capital": "Ashgabat",
     "capital_en": "Ashgabat",
@@ -5042,7 +5042,7 @@
   "OM": {
     "iso2": "OM",
     "iso3": "OMN",
-    "name_cn": "Oman",
+    "name_cn": "阿曼",
     "name_en": "Oman",
     "capital": "Muscat",
     "capital_en": "Muscat",
@@ -5149,7 +5149,7 @@
   "JM": {
     "iso2": "JM",
     "iso3": "JAM",
-    "name_cn": "Jamaica",
+    "name_cn": "牙买加",
     "name_en": "Jamaica",
     "capital": "Kingston",
     "capital_en": "Kingston",
@@ -5266,7 +5266,7 @@
   "AZ": {
     "iso2": "AZ",
     "iso3": "AZE",
-    "name_cn": "Azerbaijan",
+    "name_cn": "阿塞拜疆",
     "name_en": "Azerbaijan",
     "capital": "Baku",
     "capital_en": "Baku",
@@ -5373,7 +5373,7 @@
   "SK": {
     "iso2": "SK",
     "iso3": "SVK",
-    "name_cn": "Slovakia",
+    "name_cn": "斯洛伐克",
     "name_en": "Slovakia",
     "capital": "Bratislava",
     "capital_en": "Bratislava",
@@ -5491,7 +5491,7 @@
   "BY": {
     "iso2": "BY",
     "iso3": "BLR",
-    "name_cn": "Belarus",
+    "name_cn": "白俄罗斯",
     "name_en": "Belarus",
     "capital": "Minsk",
     "capital_en": "Minsk",
@@ -5733,7 +5733,7 @@
   "VI": {
     "iso2": "VI",
     "iso3": "VIR",
-    "name_cn": "United States Virgin Islands",
+    "name_cn": "美属维尔京群岛",
     "name_en": "United States Virgin Islands",
     "capital": "Charlotte Amalie",
     "capital_en": "Charlotte Amalie",
@@ -5849,7 +5849,7 @@
   "GI": {
     "iso2": "GI",
     "iso3": "GIB",
-    "name_cn": "Gibraltar",
+    "name_cn": "直布罗陀",
     "name_en": "Gibraltar",
     "capital": "Gibraltar",
     "capital_en": "Gibraltar",
@@ -5967,7 +5967,7 @@
   "SX": {
     "iso2": "SX",
     "iso3": "SXM",
-    "name_cn": "Sint Maarten",
+    "name_cn": "荷属圣马丁",
     "name_en": "Sint Maarten",
     "capital": "Philipsburg",
     "capital_en": "Philipsburg",
@@ -6085,7 +6085,7 @@
   "AX": {
     "iso2": "AX",
     "iso3": "ALA",
-    "name_cn": "Åland Islands",
+    "name_cn": "奥兰群岛",
     "name_en": "Åland Islands",
     "capital": "Mariehamn",
     "capital_en": "Mariehamn",
@@ -6203,7 +6203,7 @@
   "SY": {
     "iso2": "SY",
     "iso3": "SYR",
-    "name_cn": "Syria",
+    "name_cn": "叙利亚",
     "name_en": "Syria",
     "capital": "Damascus",
     "capital_en": "Damascus",
@@ -6310,7 +6310,7 @@
   "MQ": {
     "iso2": "MQ",
     "iso3": "MTQ",
-    "name_cn": "Martinique",
+    "name_cn": "马提尼克",
     "name_en": "Martinique",
     "capital": "Fort-de-France",
     "capital_en": "Fort-de-France",
@@ -6426,7 +6426,7 @@
   "GL": {
     "iso2": "GL",
     "iso3": "GRL",
-    "name_cn": "Greenland",
+    "name_cn": "格陵兰",
     "name_en": "Greenland",
     "capital": "Nuuk",
     "capital_en": "Nuuk",
@@ -6542,7 +6542,7 @@
   "HN": {
     "iso2": "HN",
     "iso3": "HND",
-    "name_cn": "Honduras",
+    "name_cn": "洪都拉斯",
     "name_en": "Honduras",
     "capital": "Tegucigalpa",
     "capital_en": "Tegucigalpa",
@@ -6658,7 +6658,7 @@
   "TN": {
     "iso2": "TN",
     "iso3": "TUN",
-    "name_cn": "Tunisia",
+    "name_cn": "突尼斯",
     "name_en": "Tunisia",
     "capital": "Tunis",
     "capital_en": "Tunis",
@@ -6756,7 +6756,7 @@
   "KM": {
     "iso2": "KM",
     "iso3": "COM",
-    "name_cn": "Comoros",
+    "name_cn": "科摩罗",
     "name_en": "Comoros",
     "capital": "Moroni",
     "capital_en": "Moroni",
@@ -6856,7 +6856,7 @@
   "SI": {
     "iso2": "SI",
     "iso3": "SVN",
-    "name_cn": "Slovenia",
+    "name_cn": "斯洛文尼亚",
     "name_en": "Slovenia",
     "capital": "Ljubljana",
     "capital_en": "Ljubljana",
@@ -6974,7 +6974,7 @@
   "CH": {
     "iso2": "CH",
     "iso3": "CHE",
-    "name_cn": "Switzerland",
+    "name_cn": "瑞士",
     "name_en": "Switzerland",
     "capital": "Bern",
     "capital_en": "Bern",
@@ -7095,7 +7095,7 @@
   "GG": {
     "iso2": "GG",
     "iso3": "GGY",
-    "name_cn": "Guernsey",
+    "name_cn": "根西岛",
     "name_en": "Guernsey",
     "capital": "St. Peter Port",
     "capital_en": "St. Peter Port",
@@ -7215,7 +7215,7 @@
   "MM": {
     "iso2": "MM",
     "iso3": "MMR",
-    "name_cn": "Myanmar",
+    "name_cn": "缅甸",
     "name_en": "Myanmar",
     "capital": "Naypyidaw",
     "capital_en": "Naypyidaw",
@@ -7322,7 +7322,7 @@
   "PY": {
     "iso2": "PY",
     "iso3": "PRY",
-    "name_cn": "Paraguay",
+    "name_cn": "巴拉圭",
     "name_en": "Paraguay",
     "capital": "Asunción",
     "capital_en": "Asunción",
@@ -7439,7 +7439,7 @@
   "BQ": {
     "iso2": "BQ",
     "iso3": "BES",
-    "name_cn": "Caribbean Netherlands",
+    "name_cn": "博奈尔圣尤斯特歇斯和萨巴",
     "name_en": "Caribbean Netherlands",
     "capital": "Kralendijk",
     "capital_en": "Kralendijk",
@@ -7557,7 +7557,7 @@
   "BB": {
     "iso2": "BB",
     "iso3": "BRB",
-    "name_cn": "Barbados",
+    "name_cn": "巴巴多斯",
     "name_en": "Barbados",
     "capital": "Bridgetown",
     "capital_en": "Bridgetown",
@@ -7673,7 +7673,7 @@
   "MO": {
     "iso2": "MO",
     "iso3": "MAC",
-    "name_cn": "Macau",
+    "name_cn": "中国澳门",
     "name_en": "Macau",
     "capital": "",
     "capital_en": "",
@@ -7781,7 +7781,7 @@
   "JO": {
     "iso2": "JO",
     "iso3": "JOR",
-    "name_cn": "Jordan",
+    "name_cn": "约旦",
     "name_en": "Jordan",
     "capital": "Amman",
     "capital_en": "Amman",
@@ -7888,7 +7888,7 @@
   "LA": {
     "iso2": "LA",
     "iso3": "LAO",
-    "name_cn": "Laos",
+    "name_cn": "老挝",
     "name_en": "Laos",
     "capital": "Vientiane",
     "capital_en": "Vientiane",
@@ -7995,7 +7995,7 @@
   "TG": {
     "iso2": "TG",
     "iso3": "TGO",
-    "name_cn": "Togo",
+    "name_cn": "多哥",
     "name_en": "Togo",
     "capital": "Lomé",
     "capital_en": "Lomé",
@@ -8093,7 +8093,7 @@
   "MA": {
     "iso2": "MA",
     "iso3": "MAR",
-    "name_cn": "Morocco",
+    "name_cn": "摩洛哥",
     "name_en": "Morocco",
     "capital": "Rabat",
     "capital_en": "Rabat",
@@ -8192,7 +8192,7 @@
   "PR": {
     "iso2": "PR",
     "iso3": "PRI",
-    "name_cn": "Puerto Rico",
+    "name_cn": "波多黎各",
     "name_en": "Puerto Rico",
     "capital": "San Juan",
     "capital_en": "San Juan",
@@ -8309,7 +8309,7 @@
   "GF": {
     "iso2": "GF",
     "iso3": "GUF",
-    "name_cn": "French Guiana",
+    "name_cn": "法属圭亚那",
     "name_en": "French Guiana",
     "capital": "Cayenne",
     "capital_en": "Cayenne",
@@ -8425,7 +8425,7 @@
   "PM": {
     "iso2": "PM",
     "iso3": "SPM",
-    "name_cn": "Saint Pierre and Miquelon",
+    "name_cn": "圣皮埃尔和密克隆",
     "name_en": "Saint Pierre and Miquelon",
     "capital": "Saint-Pierre",
     "capital_en": "Saint-Pierre",
@@ -8541,7 +8541,7 @@
   "MF": {
     "iso2": "MF",
     "iso3": "MAF",
-    "name_cn": "Saint Martin",
+    "name_cn": "法属圣马丁",
     "name_en": "Saint Martin",
     "capital": "Marigot",
     "capital_en": "Marigot",
@@ -8657,7 +8657,7 @@
   "EE": {
     "iso2": "EE",
     "iso3": "EST",
-    "name_cn": "Estonia",
+    "name_cn": "爱沙尼亚",
     "name_en": "Estonia",
     "capital": "Tallinn",
     "capital_en": "Tallinn",
@@ -8900,7 +8900,7 @@
   "SC": {
     "iso2": "SC",
     "iso3": "SYC",
-    "name_cn": "Seychelles",
+    "name_cn": "塞舌尔",
     "name_en": "Seychelles",
     "capital": "Victoria",
     "capital_en": "Victoria",
@@ -9000,7 +9000,7 @@
   "ML": {
     "iso2": "ML",
     "iso3": "MLI",
-    "name_cn": "Mali",
+    "name_cn": "马里",
     "name_en": "Mali",
     "capital": "Bamako",
     "capital_en": "Bamako",
@@ -9098,7 +9098,7 @@
   "TL": {
     "iso2": "TL",
     "iso3": "TLS",
-    "name_cn": "Timor-Leste",
+    "name_cn": "东帝汶",
     "name_en": "Timor-Leste",
     "capital": "Dili",
     "capital_en": "Dili",
@@ -9339,7 +9339,7 @@
   "GH": {
     "iso2": "GH",
     "iso3": "GHA",
-    "name_cn": "Ghana",
+    "name_cn": "加纳",
     "name_en": "Ghana",
     "capital": "Accra",
     "capital_en": "Accra",
@@ -9545,7 +9545,7 @@
   "IS": {
     "iso2": "IS",
     "iso3": "ISL",
-    "name_cn": "Iceland",
+    "name_cn": "冰岛",
     "name_en": "Iceland",
     "capital": "Reykjavik",
     "capital_en": "Reykjavik",
@@ -9663,7 +9663,7 @@
   "MG": {
     "iso2": "MG",
     "iso3": "MDG",
-    "name_cn": "Madagascar",
+    "name_cn": "马达加斯加",
     "name_en": "Madagascar",
     "capital": "Antananarivo",
     "capital_en": "Antananarivo",
@@ -9762,7 +9762,7 @@
   "BD": {
     "iso2": "BD",
     "iso3": "BGD",
-    "name_cn": "Bangladesh",
+    "name_cn": "孟加拉国",
     "name_en": "Bangladesh",
     "capital": "Dhaka",
     "capital_en": "Dhaka",
@@ -9869,7 +9869,7 @@
   "CD": {
     "iso2": "CD",
     "iso3": "COD",
-    "name_cn": "DR Congo",
+    "name_cn": "刚果(金)",
     "name_en": "DR Congo",
     "capital": "Kinshasa",
     "capital_en": "Kinshasa",
@@ -9971,7 +9971,7 @@
   "ZW": {
     "iso2": "ZW",
     "iso3": "ZWE",
-    "name_cn": "Zimbabwe",
+    "name_cn": "津巴布韦",
     "name_en": "Zimbabwe",
     "capital": "Harare",
     "capital_en": "Harare",
@@ -10083,7 +10083,7 @@
   "PF": {
     "iso2": "PF",
     "iso3": "PYF",
-    "name_cn": "French Polynesia",
+    "name_cn": "法属波利尼西亚",
     "name_en": "French Polynesia",
     "capital": "Papeetē",
     "capital_en": "Papeetē",
@@ -10305,7 +10305,7 @@
   "CV": {
     "iso2": "CV",
     "iso3": "CPV",
-    "name_cn": "Cape Verde",
+    "name_cn": "佛得角",
     "name_en": "Cape Verde",
     "capital": "Praia",
     "capital_en": "Praia",
@@ -10403,7 +10403,7 @@
   "DO": {
     "iso2": "DO",
     "iso3": "DOM",
-    "name_cn": "Dominican Republic",
+    "name_cn": "多米尼加共和国",
     "name_en": "Dominican Republic",
     "capital": "Santo Domingo",
     "capital_en": "Santo Domingo",
@@ -10519,7 +10519,7 @@
   "BS": {
     "iso2": "BS",
     "iso3": "BHS",
-    "name_cn": "Bahamas",
+    "name_cn": "巴哈马",
     "name_en": "Bahamas",
     "capital": "Nassau",
     "capital_en": "Nassau",
@@ -10771,7 +10771,7 @@
   "SR": {
     "iso2": "SR",
     "iso3": "SUR",
-    "name_cn": "Suriname",
+    "name_cn": "苏里南",
     "name_en": "Suriname",
     "capital": "Paramaribo",
     "capital_en": "Paramaribo",
@@ -10887,7 +10887,7 @@
   "TO": {
     "iso2": "TO",
     "iso3": "TON",
-    "name_cn": "Tonga",
+    "name_cn": "汤加",
     "name_en": "Tonga",
     "capital": "Nuku'alofa",
     "capital_en": "Nuku'alofa",
@@ -10987,7 +10987,7 @@
   "IO": {
     "iso2": "IO",
     "iso3": "IOT",
-    "name_cn": "British Indian Ocean Territory",
+    "name_cn": "英属印度洋领地",
     "name_en": "British Indian Ocean Territory",
     "capital": "Diego Garcia",
     "capital_en": "Diego Garcia",
@@ -11085,7 +11085,7 @@
   "LC": {
     "iso2": "LC",
     "iso3": "LCA",
-    "name_cn": "Saint Lucia",
+    "name_cn": "圣卢西亚",
     "name_en": "Saint Lucia",
     "capital": "Castries",
     "capital_en": "Castries",
@@ -11201,7 +11201,7 @@
   "IE": {
     "iso2": "IE",
     "iso3": "IRL",
-    "name_cn": "Ireland",
+    "name_cn": "爱尔兰",
     "name_en": "Ireland",
     "capital": "Dublin",
     "capital_en": "Dublin",
@@ -11320,7 +11320,7 @@
   "VA": {
     "iso2": "VA",
     "iso3": "VAT",
-    "name_cn": "Vatican City",
+    "name_cn": "梵蒂冈",
     "name_en": "Vatican City",
     "capital": "Vatican City",
     "capital_en": "Vatican City",
@@ -11439,7 +11439,7 @@
   "CO": {
     "iso2": "CO",
     "iso3": "COL",
-    "name_cn": "Colombia",
+    "name_cn": "哥伦比亚",
     "name_en": "Colombia",
     "capital": "Bogotá",
     "capital_en": "Bogotá",
@@ -11555,7 +11555,7 @@
   "PT": {
     "iso2": "PT",
     "iso3": "PRT",
-    "name_cn": "Portugal",
+    "name_cn": "葡萄牙",
     "name_en": "Portugal",
     "capital": "Lisbon",
     "capital_en": "Lisbon",
@@ -11673,7 +11673,7 @@
   "FO": {
     "iso2": "FO",
     "iso3": "FRO",
-    "name_cn": "Faroe Islands",
+    "name_cn": "法罗群岛",
     "name_en": "Faroe Islands",
     "capital": "Tórshavn",
     "capital_en": "Tórshavn",
@@ -11792,7 +11792,7 @@
   "ST": {
     "iso2": "ST",
     "iso3": "STP",
-    "name_cn": "São Tomé and Príncipe",
+    "name_cn": "圣多美和普林西比",
     "name_en": "São Tomé and Príncipe",
     "capital": "São Tomé",
     "capital_en": "São Tomé",
@@ -11890,7 +11890,7 @@
   "MP": {
     "iso2": "MP",
     "iso3": "MNP",
-    "name_cn": "Northern Mariana Islands",
+    "name_cn": "北马里亚纳群岛",
     "name_en": "Northern Mariana Islands",
     "capital": "Saipan",
     "capital_en": "Saipan",
@@ -11991,7 +11991,7 @@
   "JE": {
     "iso2": "JE",
     "iso3": "JEY",
-    "name_cn": "Jersey",
+    "name_cn": "泽西岛",
     "name_en": "Jersey",
     "capital": "Saint Helier",
     "capital_en": "Saint Helier",
@@ -12111,7 +12111,7 @@
   "YT": {
     "iso2": "YT",
     "iso3": "MYT",
-    "name_cn": "Mayotte",
+    "name_cn": "马约特",
     "name_en": "Mayotte",
     "capital": "Mamoudzou",
     "capital_en": "Mamoudzou",
@@ -12209,7 +12209,7 @@
   "YE": {
     "iso2": "YE",
     "iso3": "YEM",
-    "name_cn": "Yemen",
+    "name_cn": "也门",
     "name_en": "Yemen",
     "capital": "Sana'a",
     "capital_en": "Sana'a",
@@ -12426,7 +12426,7 @@
   "AF": {
     "iso2": "AF",
     "iso3": "AFG",
-    "name_cn": "Afghanistan",
+    "name_cn": "阿富汗",
     "name_en": "Afghanistan",
     "capital": "Kabul",
     "capital_en": "Kabul",
@@ -12535,7 +12535,7 @@
   "BW": {
     "iso2": "BW",
     "iso3": "BWA",
-    "name_cn": "Botswana",
+    "name_cn": "博茨瓦纳",
     "name_en": "Botswana",
     "capital": "Gaborone",
     "capital_en": "Gaborone",
@@ -12634,7 +12634,7 @@
   "IM": {
     "iso2": "IM",
     "iso3": "IMN",
-    "name_cn": "Isle of Man",
+    "name_cn": "马恩岛",
     "name_en": "Isle of Man",
     "capital": "Douglas",
     "capital_en": "Douglas",
@@ -12753,7 +12753,7 @@
   "SV": {
     "iso2": "SV",
     "iso3": "SLV",
-    "name_cn": "El Salvador",
+    "name_cn": "萨尔瓦多",
     "name_en": "El Salvador",
     "capital": "San Salvador",
     "capital_en": "San Salvador",
@@ -12869,7 +12869,7 @@
   "UG": {
     "iso2": "UG",
     "iso3": "UGA",
-    "name_cn": "Uganda",
+    "name_cn": "乌干达",
     "name_en": "Uganda",
     "capital": "Kampala",
     "capital_en": "Kampala",
@@ -12968,7 +12968,7 @@
   "AD": {
     "iso2": "AD",
     "iso3": "AND",
-    "name_cn": "Andorra",
+    "name_cn": "安道尔",
     "name_en": "Andorra",
     "capital": "Andorra la Vella",
     "capital_en": "Andorra la Vella",
@@ -13086,7 +13086,7 @@
   "TC": {
     "iso2": "TC",
     "iso3": "TCA",
-    "name_cn": "Turks and Caicos Islands",
+    "name_cn": "特克斯和凯科斯群岛",
     "name_en": "Turks and Caicos Islands",
     "capital": "Cockburn Town",
     "capital_en": "Cockburn Town",
@@ -13202,7 +13202,7 @@
   "TD": {
     "iso2": "TD",
     "iso3": "TCD",
-    "name_cn": "Chad",
+    "name_cn": "乍得",
     "name_en": "Chad",
     "capital": "N'Djamena",
     "capital_en": "N'Djamena",
@@ -13301,7 +13301,7 @@
   "FI": {
     "iso2": "FI",
     "iso3": "FIN",
-    "name_cn": "Finland",
+    "name_cn": "芬兰",
     "name_en": "Finland",
     "capital": "Helsinki",
     "capital_en": "Helsinki",
@@ -13551,7 +13551,7 @@
   "KZ": {
     "iso2": "KZ",
     "iso3": "KAZ",
-    "name_cn": "Kazakhstan",
+    "name_cn": "哈萨克斯坦",
     "name_en": "Kazakhstan",
     "capital": "Astana",
     "capital_en": "Astana",
@@ -13669,7 +13669,7 @@
   "SJ": {
     "iso2": "SJ",
     "iso3": "SJM",
-    "name_cn": "Svalbard and Jan Mayen",
+    "name_cn": "斯瓦尔巴和扬马延",
     "name_en": "Svalbard and Jan Mayen",
     "capital": "Longyearbyen",
     "capital_en": "Longyearbyen",
@@ -13787,7 +13787,7 @@
   "VE": {
     "iso2": "VE",
     "iso3": "VEN",
-    "name_cn": "Venezuela",
+    "name_cn": "委内瑞拉",
     "name_en": "Venezuela",
     "capital": "Caracas",
     "capital_en": "Caracas",
@@ -13903,7 +13903,7 @@
   "MC": {
     "iso2": "MC",
     "iso3": "MCO",
-    "name_cn": "Monaco",
+    "name_cn": "摩纳哥",
     "name_en": "Monaco",
     "capital": "Monaco",
     "capital_en": "Monaco",
@@ -14021,7 +14021,7 @@
   "SN": {
     "iso2": "SN",
     "iso3": "SEN",
-    "name_cn": "Senegal",
+    "name_cn": "塞内加尔",
     "name_en": "Senegal",
     "capital": "Dakar",
     "capital_en": "Dakar",
@@ -14119,7 +14119,7 @@
   "NP": {
     "iso2": "NP",
     "iso3": "NPL",
-    "name_cn": "Nepal",
+    "name_cn": "尼泊尔",
     "name_en": "Nepal",
     "capital": "Kathmandu",
     "capital_en": "Kathmandu",
@@ -14347,7 +14347,7 @@
   "TW": {
     "iso2": "TW",
     "iso3": "TWN",
-    "name_cn": "Taiwan",
+    "name_cn": "中国台湾",
     "name_en": "Taiwan",
     "capital": "Taipei",
     "capital_en": "Taipei",
@@ -14454,7 +14454,7 @@
   "NC": {
     "iso2": "NC",
     "iso3": "NCL",
-    "name_cn": "New Caledonia",
+    "name_cn": "新喀里多尼亚",
     "name_en": "New Caledonia",
     "capital": "Nouméa",
     "capital_en": "Nouméa",
@@ -14553,7 +14553,7 @@
   "BO": {
     "iso2": "BO",
     "iso3": "BOL",
-    "name_cn": "Bolivia",
+    "name_cn": "玻利维亚",
     "name_en": "Bolivia",
     "capital": "Sucre",
     "capital_en": "Sucre",
@@ -14672,7 +14672,7 @@
   "CL": {
     "iso2": "CL",
     "iso3": "CHL",
-    "name_cn": "Chile",
+    "name_cn": "智利",
     "name_en": "Chile",
     "capital": "Santiago",
     "capital_en": "Santiago",
@@ -14788,7 +14788,7 @@
   "CI": {
     "iso2": "CI",
     "iso3": "CIV",
-    "name_cn": "Ivory Coast",
+    "name_cn": "科特迪瓦",
     "name_en": "Ivory Coast",
     "capital": "Yamoussoukro",
     "capital_en": "Yamoussoukro",
@@ -14886,7 +14886,7 @@
   "LY": {
     "iso2": "LY",
     "iso3": "LBY",
-    "name_cn": "Libya",
+    "name_cn": "利比亚",
     "name_en": "Libya",
     "capital": "Tripoli",
     "capital_en": "Tripoli",
@@ -14984,7 +14984,7 @@
   "PE": {
     "iso2": "PE",
     "iso3": "PER",
-    "name_cn": "Peru",
+    "name_cn": "秘鲁",
     "name_en": "Peru",
     "capital": "Lima",
     "capital_en": "Lima",
@@ -15102,7 +15102,7 @@
   "CA": {
     "iso2": "CA",
     "iso3": "CAN",
-    "name_cn": "Canada",
+    "name_cn": "加拿大",
     "name_en": "Canada",
     "capital": "Ottawa",
     "capital_en": "Ottawa",
@@ -15219,7 +15219,7 @@
   "FR": {
     "iso2": "FR",
     "iso3": "FRA",
-    "name_cn": "France",
+    "name_cn": "法国",
     "name_en": "France",
     "capital": "Paris",
     "capital_en": "Paris",
@@ -15337,7 +15337,7 @@
   "DJ": {
     "iso2": "DJ",
     "iso3": "DJI",
-    "name_cn": "Djibouti",
+    "name_cn": "吉布提",
     "name_en": "Djibouti",
     "capital": "Djibouti",
     "capital_en": "Djibouti",
@@ -15436,7 +15436,7 @@
   "BI": {
     "iso2": "BI",
     "iso3": "BDI",
-    "name_cn": "Burundi",
+    "name_cn": "布隆迪",
     "name_en": "Burundi",
     "capital": "Gitega",
     "capital_en": "Gitega",
@@ -15535,7 +15535,7 @@
   "XK": {
     "iso2": "XK",
     "iso3": "UNK",
-    "name_cn": "Kosovo",
+    "name_cn": "科索沃",
     "name_en": "Kosovo",
     "capital": "Pristina",
     "capital_en": "Pristina",
@@ -15654,7 +15654,7 @@
   "DK": {
     "iso2": "DK",
     "iso3": "DNK",
-    "name_cn": "Denmark",
+    "name_cn": "丹麦",
     "name_en": "Denmark",
     "capital": "Copenhagen",
     "capital_en": "Copenhagen",
@@ -15772,7 +15772,7 @@
   "GR": {
     "iso2": "GR",
     "iso3": "GRC",
-    "name_cn": "Greece",
+    "name_cn": "希腊",
     "name_en": "Greece",
     "capital": "Athens",
     "capital_en": "Athens",
@@ -15890,7 +15890,7 @@
   "CZ": {
     "iso2": "CZ",
     "iso3": "CZE",
-    "name_cn": "Czechia",
+    "name_cn": "捷克",
     "name_en": "Czechia",
     "capital": "Prague",
     "capital_en": "Prague",
@@ -16009,7 +16009,7 @@
   "ER": {
     "iso2": "ER",
     "iso3": "ERI",
-    "name_cn": "Eritrea",
+    "name_cn": "厄立特里亚",
     "name_en": "Eritrea",
     "capital": "Asmara",
     "capital_en": "Asmara",
@@ -16109,7 +16109,7 @@
   "NA": {
     "iso2": "NA",
     "iso3": "NAM",
-    "name_cn": "Namibia",
+    "name_cn": "纳米比亚",
     "name_en": "Namibia",
     "capital": "Windhoek",
     "capital_en": "Windhoek",
@@ -16215,7 +16215,7 @@
   "VG": {
     "iso2": "VG",
     "iso3": "VGB",
-    "name_cn": "British Virgin Islands",
+    "name_cn": "英属维尔京群岛",
     "name_en": "British Virgin Islands",
     "capital": "Road Town",
     "capital_en": "Road Town",
@@ -16331,7 +16331,7 @@
   "IR": {
     "iso2": "IR",
     "iso3": "IRN",
-    "name_cn": "Iran",
+    "name_cn": "伊朗",
     "name_en": "Iran",
     "capital": "Tehran",
     "capital_en": "Tehran",
@@ -16438,7 +16438,7 @@
   "GQ": {
     "iso2": "GQ",
     "iso3": "GNQ",
-    "name_cn": "Equatorial Guinea",
+    "name_cn": "赤道几内亚",
     "name_en": "Equatorial Guinea",
     "capital": "Ciudad de la Paz",
     "capital_en": "Ciudad de la Paz",
@@ -16538,7 +16538,7 @@
   "MR": {
     "iso2": "MR",
     "iso3": "MRT",
-    "name_cn": "Mauritania",
+    "name_cn": "毛里塔尼亚",
     "name_en": "Mauritania",
     "capital": "Nouakchott",
     "capital_en": "Nouakchott",
@@ -16636,7 +16636,7 @@
   "BH": {
     "iso2": "BH",
     "iso3": "BHR",
-    "name_cn": "Bahrain",
+    "name_cn": "巴林",
     "name_en": "Bahrain",
     "capital": "Manama",
     "capital_en": "Manama",
@@ -16743,7 +16743,7 @@
   "CC": {
     "iso2": "CC",
     "iso3": "CCK",
-    "name_cn": "Cocos (Keeling) Islands",
+    "name_cn": "科科斯群岛",
     "name_en": "Cocos (Keeling) Islands",
     "capital": "West Island",
     "capital_en": "West Island",
@@ -16842,7 +16842,7 @@
   "ET": {
     "iso2": "ET",
     "iso3": "ETH",
-    "name_cn": "Ethiopia",
+    "name_cn": "埃塞俄比亚",
     "name_en": "Ethiopia",
     "capital": "Addis Ababa",
     "capital_en": "Addis Ababa",
@@ -16940,7 +16940,7 @@
   "ZM": {
     "iso2": "ZM",
     "iso3": "ZMB",
-    "name_cn": "Zambia",
+    "name_cn": "赞比亚",
     "name_en": "Zambia",
     "capital": "Lusaka",
     "capital_en": "Lusaka",
@@ -17038,7 +17038,7 @@
   "BA": {
     "iso2": "BA",
     "iso3": "BIH",
-    "name_cn": "Bosnia and Herzegovina",
+    "name_cn": "波斯尼亚和黑塞哥维那",
     "name_en": "Bosnia and Herzegovina",
     "capital": "Sarajevo",
     "capital_en": "Sarajevo",
@@ -17158,7 +17158,7 @@
   "FK": {
     "iso2": "FK",
     "iso3": "FLK",
-    "name_cn": "Falkland Islands",
+    "name_cn": "福克兰群岛",
     "name_en": "Falkland Islands",
     "capital": "Stanley",
     "capital_en": "Stanley",
@@ -17274,7 +17274,7 @@
   "GD": {
     "iso2": "GD",
     "iso3": "GRD",
-    "name_cn": "Grenada",
+    "name_cn": "格林纳达",
     "name_en": "Grenada",
     "capital": "St. George's",
     "capital_en": "St. George's",
@@ -17510,7 +17510,7 @@
   "RO": {
     "iso2": "RO",
     "iso3": "ROU",
-    "name_cn": "Romania",
+    "name_cn": "罗马尼亚",
     "name_en": "Romania",
     "capital": "Bucharest",
     "capital_en": "Bucharest",
@@ -17628,7 +17628,7 @@
   "VC": {
     "iso2": "VC",
     "iso3": "VCT",
-    "name_cn": "Saint Vincent and the Grenadines",
+    "name_cn": "圣文森特和格林纳丁斯",
     "name_en": "Saint Vincent and the Grenadines",
     "capital": "Kingstown",
     "capital_en": "Kingstown",
@@ -17744,7 +17744,7 @@
   "LR": {
     "iso2": "LR",
     "iso3": "LBR",
-    "name_cn": "Liberia",
+    "name_cn": "利比里亚",
     "name_en": "Liberia",
     "capital": "Monrovia",
     "capital_en": "Monrovia",
@@ -17982,7 +17982,7 @@
   "SS": {
     "iso2": "SS",
     "iso3": "SSD",
-    "name_cn": "South Sudan",
+    "name_cn": "南苏丹",
     "name_en": "South Sudan",
     "capital": "Juba",
     "capital_en": "Juba",
@@ -18080,7 +18080,7 @@
   "BV": {
     "iso2": "BV",
     "iso3": "BVT",
-    "name_cn": "Bouvet Island",
+    "name_cn": "布韦岛",
     "name_en": "Bouvet Island",
     "capital": "",
     "capital_en": "",
@@ -18132,7 +18132,7 @@
   "AM": {
     "iso2": "AM",
     "iso3": "ARM",
-    "name_cn": "Armenia",
+    "name_cn": "亚美尼亚",
     "name_en": "Armenia",
     "capital": "Yerevan",
     "capital_en": "Yerevan",
@@ -18363,7 +18363,7 @@
   "PK": {
     "iso2": "PK",
     "iso3": "PAK",
-    "name_cn": "Pakistan",
+    "name_cn": "巴基斯坦",
     "name_en": "Pakistan",
     "capital": "Islamabad",
     "capital_en": "Islamabad",
@@ -18471,7 +18471,7 @@
   "SZ": {
     "iso2": "SZ",
     "iso3": "SWZ",
-    "name_cn": "Eswatini",
+    "name_cn": "斯威士兰",
     "name_en": "Eswatini",
     "capital": "Mbabane",
     "capital_en": "Mbabane",
@@ -18570,7 +18570,7 @@
   "LI": {
     "iso2": "LI",
     "iso3": "LIE",
-    "name_cn": "Liechtenstein",
+    "name_cn": "列支敦士登",
     "name_en": "Liechtenstein",
     "capital": "Vaduz",
     "capital_en": "Vaduz",
@@ -18688,7 +18688,7 @@
   "IL": {
     "iso2": "IL",
     "iso3": "ISR",
-    "name_cn": "Israel",
+    "name_cn": "以色列",
     "name_en": "Israel",
     "capital": "Jerusalem",
     "capital_en": "Jerusalem",
@@ -18796,7 +18796,7 @@
   "AS": {
     "iso2": "AS",
     "iso3": "ASM",
-    "name_cn": "American Samoa",
+    "name_cn": "美属萨摩亚",
     "name_en": "American Samoa",
     "capital": "Pago Pago",
     "capital_en": "Pago Pago",
@@ -18896,7 +18896,7 @@
   "LK": {
     "iso2": "LK",
     "iso3": "LKA",
-    "name_cn": "Sri Lanka",
+    "name_cn": "斯里兰卡",
     "name_en": "Sri Lanka",
     "capital": "Sri Jayawardenepura Kotte",
     "capital_en": "Sri Jayawardenepura Kotte",
@@ -19004,7 +19004,7 @@
   "GS": {
     "iso2": "GS",
     "iso3": "SGS",
-    "name_cn": "South Georgia",
+    "name_cn": "南乔治亚和南桑威奇群岛",
     "name_en": "South Georgia",
     "capital": "King Edward Point",
     "capital_en": "King Edward Point",
@@ -19056,7 +19056,7 @@
   "AL": {
     "iso2": "AL",
     "iso3": "ALB",
-    "name_cn": "Albania",
+    "name_cn": "阿尔巴尼亚",
     "name_en": "Albania",
     "capital": "Tirana",
     "capital_en": "Tirana",
@@ -19174,7 +19174,7 @@
   "DZ": {
     "iso2": "DZ",
     "iso3": "DZA",
-    "name_cn": "Algeria",
+    "name_cn": "阿尔及利亚",
     "name_en": "Algeria",
     "capital": "Algiers",
     "capital_en": "Algiers",
@@ -19272,7 +19272,7 @@
   "UA": {
     "iso2": "UA",
     "iso3": "UKR",
-    "name_cn": "Ukraine",
+    "name_cn": "乌克兰",
     "name_en": "Ukraine",
     "capital": "Kyiv",
     "capital_en": "Kyiv",
@@ -19390,7 +19390,7 @@
   "SH": {
     "iso2": "SH",
     "iso3": "SHN",
-    "name_cn": "Saint Helena, Ascension and Tristan da Cunha",
+    "name_cn": "圣赫勒拿",
     "name_en": "Saint Helena, Ascension and Tristan da Cunha",
     "capital": "Jamestown",
     "capital_en": "Jamestown",
@@ -19488,7 +19488,7 @@
   "HM": {
     "iso2": "HM",
     "iso3": "HMD",
-    "name_cn": "Heard Island and McDonald Islands",
+    "name_cn": "赫德岛和麦克唐纳群岛",
     "name_en": "Heard Island and McDonald Islands",
     "capital": "",
     "capital_en": "",
@@ -19540,7 +19540,7 @@
   "SM": {
     "iso2": "SM",
     "iso3": "SMR",
-    "name_cn": "San Marino",
+    "name_cn": "圣马力诺",
     "name_en": "San Marino",
     "capital": "City of San Marino",
     "capital_en": "City of San Marino",
@@ -19658,7 +19658,7 @@
   "CU": {
     "iso2": "CU",
     "iso3": "CUB",
-    "name_cn": "Cuba",
+    "name_cn": "古巴",
     "name_en": "Cuba",
     "capital": "Havana",
     "capital_en": "Havana",
@@ -19774,7 +19774,7 @@
   "NR": {
     "iso2": "NR",
     "iso3": "NRU",
-    "name_cn": "Nauru",
+    "name_cn": "瑙鲁",
     "name_en": "Nauru",
     "capital": "Yaren",
     "capital_en": "Yaren",
@@ -19874,7 +19874,7 @@
   "ES": {
     "iso2": "ES",
     "iso3": "ESP",
-    "name_cn": "Spain",
+    "name_cn": "西班牙",
     "name_en": "Spain",
     "capital": "Madrid",
     "capital_en": "Madrid",
@@ -19995,7 +19995,7 @@
   "KW": {
     "iso2": "KW",
     "iso3": "KWT",
-    "name_cn": "Kuwait",
+    "name_cn": "科威特",
     "name_en": "Kuwait",
     "capital": "Kuwait City",
     "capital_en": "Kuwait City",
@@ -20102,7 +20102,7 @@
   "MS": {
     "iso2": "MS",
     "iso3": "MSR",
-    "name_cn": "Montserrat",
+    "name_cn": "蒙特塞拉特",
     "name_en": "Montserrat",
     "capital": "Plymouth",
     "capital_en": "Plymouth",
@@ -20218,7 +20218,7 @@
   "MU": {
     "iso2": "MU",
     "iso3": "MUS",
-    "name_cn": "Mauritius",
+    "name_cn": "毛里求斯",
     "name_en": "Mauritius",
     "capital": "Port Louis",
     "capital_en": "Port Louis",
@@ -20318,7 +20318,7 @@
   "SE": {
     "iso2": "SE",
     "iso3": "SWE",
-    "name_cn": "Sweden",
+    "name_cn": "瑞典",
     "name_en": "Sweden",
     "capital": "Stockholm",
     "capital_en": "Stockholm",
@@ -20553,7 +20553,7 @@
   "CM": {
     "iso2": "CM",
     "iso3": "CMR",
-    "name_cn": "Cameroon",
+    "name_cn": "喀麦隆",
     "name_en": "Cameroon",
     "capital": "Yaoundé",
     "capital_en": "Yaoundé",
@@ -20652,7 +20652,7 @@
   "EC": {
     "iso2": "EC",
     "iso3": "ECU",
-    "name_cn": "Ecuador",
+    "name_cn": "厄瓜多尔",
     "name_en": "Ecuador",
     "capital": "Quito",
     "capital_en": "Quito",
@@ -20768,7 +20768,7 @@
   "QA": {
     "iso2": "QA",
     "iso3": "QAT",
-    "name_cn": "Qatar",
+    "name_cn": "卡塔尔",
     "name_en": "Qatar",
     "capital": "Doha",
     "capital_en": "Doha",
@@ -20875,7 +20875,7 @@
   "MH": {
     "iso2": "MH",
     "iso3": "MHL",
-    "name_cn": "Marshall Islands",
+    "name_cn": "马绍尔群岛",
     "name_en": "Marshall Islands",
     "capital": "Majuro",
     "capital_en": "Majuro",
@@ -20975,7 +20975,7 @@
   "PL": {
     "iso2": "PL",
     "iso3": "POL",
-    "name_cn": "Poland",
+    "name_cn": "波兰",
     "name_en": "Poland",
     "capital": "Warsaw",
     "capital_en": "Warsaw",
@@ -21093,7 +21093,7 @@
   "KY": {
     "iso2": "KY",
     "iso3": "CYM",
-    "name_cn": "Cayman Islands",
+    "name_cn": "开曼群岛",
     "name_en": "Cayman Islands",
     "capital": "George Town",
     "capital_en": "George Town",
@@ -21334,7 +21334,7 @@
   "WF": {
     "iso2": "WF",
     "iso3": "WLF",
-    "name_cn": "Wallis and Futuna",
+    "name_cn": "瓦利斯和富图纳",
     "name_en": "Wallis and Futuna",
     "capital": "Mata-Utu",
     "capital_en": "Mata-Utu",
@@ -21433,7 +21433,7 @@
   "WS": {
     "iso2": "WS",
     "iso3": "WSM",
-    "name_cn": "Samoa",
+    "name_cn": "萨摩亚",
     "name_en": "Samoa",
     "capital": "Apia",
     "capital_en": "Apia",
@@ -21533,7 +21533,7 @@
   "NL": {
     "iso2": "NL",
     "iso3": "NLD",
-    "name_cn": "Netherlands",
+    "name_cn": "荷兰",
     "name_en": "Netherlands",
     "capital": "Amsterdam",
     "capital_en": "Amsterdam",
@@ -21651,7 +21651,7 @@
   "EH": {
     "iso2": "EH",
     "iso3": "ESH",
-    "name_cn": "Western Sahara",
+    "name_cn": "西撒哈拉",
     "name_en": "Western Sahara",
     "capital": "El Aaiún",
     "capital_en": "El Aaiún",
@@ -21751,7 +21751,7 @@
   "ME": {
     "iso2": "ME",
     "iso3": "MNE",
-    "name_cn": "Montenegro",
+    "name_cn": "黑山",
     "name_en": "Montenegro",
     "capital": "Podgorica",
     "capital_en": "Podgorica",
@@ -21869,7 +21869,7 @@
   "BT": {
     "iso2": "BT",
     "iso3": "BTN",
-    "name_cn": "Bhutan",
+    "name_cn": "不丹",
     "name_en": "Bhutan",
     "capital": "Thimphu",
     "capital_en": "Thimphu",
@@ -21976,7 +21976,7 @@
   "MT": {
     "iso2": "MT",
     "iso3": "MLT",
-    "name_cn": "Malta",
+    "name_cn": "马耳他",
     "name_en": "Malta",
     "capital": "Valletta",
     "capital_en": "Valletta",
@@ -22095,7 +22095,7 @@
   "VU": {
     "iso2": "VU",
     "iso3": "VUT",
-    "name_cn": "Vanuatu",
+    "name_cn": "瓦努阿图",
     "name_en": "Vanuatu",
     "capital": "Port Vila",
     "capital_en": "Port Vila",
@@ -22196,7 +22196,7 @@
   "TZ": {
     "iso2": "TZ",
     "iso3": "TZA",
-    "name_cn": "Tanzania",
+    "name_cn": "坦桑尼亚",
     "name_en": "Tanzania",
     "capital": "Dodoma",
     "capital_en": "Dodoma",
@@ -22295,7 +22295,7 @@
   "NZ": {
     "iso2": "NZ",
     "iso3": "NZL",
-    "name_cn": "New Zealand",
+    "name_cn": "新西兰",
     "name_en": "New Zealand",
     "capital": "Wellington",
     "capital_en": "Wellington",
@@ -22396,7 +22396,7 @@
   "PW": {
     "iso2": "PW",
     "iso3": "PLW",
-    "name_cn": "Palau",
+    "name_cn": "帕劳",
     "name_en": "Palau",
     "capital": "Ngerulmud",
     "capital_en": "Ngerulmud",
@@ -22496,7 +22496,7 @@
   "PA": {
     "iso2": "PA",
     "iso3": "PAN",
-    "name_cn": "Panama",
+    "name_cn": "巴拿马",
     "name_en": "Panama",
     "capital": "Panama City",
     "capital_en": "Panama City",
@@ -22612,7 +22612,7 @@
   "TV": {
     "iso2": "TV",
     "iso3": "TUV",
-    "name_cn": "Tuvalu",
+    "name_cn": "图瓦卢",
     "name_en": "Tuvalu",
     "capital": "Funafuti",
     "capital_en": "Funafuti",
@@ -22712,7 +22712,7 @@
   "FJ": {
     "iso2": "FJ",
     "iso3": "FJI",
-    "name_cn": "Fiji",
+    "name_cn": "斐济",
     "name_en": "Fiji",
     "capital": "Suva",
     "capital_en": "Suva",
@@ -22813,7 +22813,7 @@
   "NI": {
     "iso2": "NI",
     "iso3": "NIC",
-    "name_cn": "Nicaragua",
+    "name_cn": "尼加拉瓜",
     "name_en": "Nicaragua",
     "capital": "Managua",
     "capital_en": "Managua",
@@ -22929,7 +22929,7 @@
   "KG": {
     "iso2": "KG",
     "iso3": "KGZ",
-    "name_cn": "Kyrgyzstan",
+    "name_cn": "吉尔吉斯斯坦",
     "name_en": "Kyrgyzstan",
     "capital": "Bishkek",
     "capital_en": "Bishkek",
@@ -23047,7 +23047,7 @@
   "TF": {
     "iso2": "TF",
     "iso3": "ATF",
-    "name_cn": "French Southern and Antarctic Lands",
+    "name_cn": "法属南部领地",
     "name_en": "French Southern and Antarctic Lands",
     "capital": "Port-aux-Français",
     "capital_en": "Port-aux-Français",
@@ -23099,7 +23099,7 @@
   "LV": {
     "iso2": "LV",
     "iso3": "LVA",
-    "name_cn": "Latvia",
+    "name_cn": "拉脱维亚",
     "name_en": "Latvia",
     "capital": "Riga",
     "capital_en": "Riga",
@@ -23217,7 +23217,7 @@
   "GE": {
     "iso2": "GE",
     "iso3": "GEO",
-    "name_cn": "Georgia",
+    "name_cn": "格鲁吉亚",
     "name_en": "Georgia",
     "capital": "Tbilisi",
     "capital_en": "Tbilisi",
@@ -23324,7 +23324,7 @@
   "LU": {
     "iso2": "LU",
     "iso3": "LUX",
-    "name_cn": "Luxembourg",
+    "name_cn": "卢森堡",
     "name_en": "Luxembourg",
     "capital": "Luxembourg",
     "capital_en": "Luxembourg",
@@ -23444,7 +23444,7 @@
   "AT": {
     "iso2": "AT",
     "iso3": "AUT",
-    "name_cn": "Austria",
+    "name_cn": "奥地利",
     "name_en": "Austria",
     "capital": "Vienna",
     "capital_en": "Vienna",
@@ -23562,7 +23562,7 @@
   "MK": {
     "iso2": "MK",
     "iso3": "MKD",
-    "name_cn": "North Macedonia",
+    "name_cn": "北马其顿",
     "name_en": "North Macedonia",
     "capital": "Skopje",
     "capital_en": "Skopje",
@@ -23680,7 +23680,7 @@
   "BL": {
     "iso2": "BL",
     "iso3": "BLM",
-    "name_cn": "Saint Barthélemy",
+    "name_cn": "圣巴泰勒米",
     "name_en": "Saint Barthélemy",
     "capital": "Gustavia",
     "capital_en": "Gustavia",
@@ -23796,7 +23796,7 @@
   "CX": {
     "iso2": "CX",
     "iso3": "CXR",
-    "name_cn": "Christmas Island",
+    "name_cn": "圣诞岛",
     "name_en": "Christmas Island",
     "capital": "Flying Fish Cove",
     "capital_en": "Flying Fish Cove",
@@ -23895,7 +23895,7 @@
   "SB": {
     "iso2": "SB",
     "iso3": "SLB",
-    "name_cn": "Solomon Islands",
+    "name_cn": "所罗门群岛",
     "name_en": "Solomon Islands",
     "capital": "Honiara",
     "capital_en": "Honiara",
@@ -23994,7 +23994,7 @@
   "AG": {
     "iso2": "AG",
     "iso3": "ATG",
-    "name_cn": "Antigua and Barbuda",
+    "name_cn": "安提瓜和巴布达",
     "name_en": "Antigua and Barbuda",
     "capital": "Saint John's",
     "capital_en": "Saint John's",
@@ -24110,7 +24110,7 @@
   "IQ": {
     "iso2": "IQ",
     "iso3": "IRQ",
-    "name_cn": "Iraq",
+    "name_cn": "伊拉克",
     "name_en": "Iraq",
     "capital": "Baghdad",
     "capital_en": "Baghdad",
@@ -24219,7 +24219,7 @@
   "MD": {
     "iso2": "MD",
     "iso3": "MDA",
-    "name_cn": "Moldova",
+    "name_cn": "摩尔多瓦",
     "name_en": "Moldova",
     "capital": "Chișinău",
     "capital_en": "Chișinău",
@@ -24337,7 +24337,7 @@
   "NF": {
     "iso2": "NF",
     "iso3": "NFK",
-    "name_cn": "Norfolk Island",
+    "name_cn": "诺福克岛",
     "name_en": "Norfolk Island",
     "capital": "Kingston",
     "capital_en": "Kingston",
@@ -24437,7 +24437,7 @@
   "CG": {
     "iso2": "CG",
     "iso3": "COG",
-    "name_cn": "Republic of the Congo",
+    "name_cn": "刚果(布)",
     "name_en": "Republic of the Congo",
     "capital": "Brazzaville",
     "capital_en": "Brazzaville",
@@ -24537,7 +24537,7 @@
   "NU": {
     "iso2": "NU",
     "iso3": "NIU",
-    "name_cn": "Niue",
+    "name_cn": "纽埃",
     "name_en": "Niue",
     "capital": "Alofi",
     "capital_en": "Alofi",
@@ -24637,7 +24637,7 @@
   "LT": {
     "iso2": "LT",
     "iso3": "LTU",
-    "name_cn": "Lithuania",
+    "name_cn": "立陶宛",
     "name_en": "Lithuania",
     "capital": "Vilnius",
     "capital_en": "Vilnius",
@@ -24755,7 +24755,7 @@
   "NE": {
     "iso2": "NE",
     "iso3": "NER",
-    "name_cn": "Niger",
+    "name_cn": "尼日尔",
     "name_en": "Niger",
     "capital": "Niamey",
     "capital_en": "Niamey",
@@ -24853,7 +24853,7 @@
   "GY": {
     "iso2": "GY",
     "iso3": "GUY",
-    "name_cn": "Guyana",
+    "name_cn": "圭亚那",
     "name_en": "Guyana",
     "capital": "Georgetown",
     "capital_en": "Georgetown",
@@ -24969,7 +24969,7 @@
   "BM": {
     "iso2": "BM",
     "iso3": "BMU",
-    "name_cn": "Bermuda",
+    "name_cn": "百慕大",
     "name_en": "Bermuda",
     "capital": "Hamilton",
     "capital_en": "Hamilton",
@@ -25085,7 +25085,7 @@
   "GA": {
     "iso2": "GA",
     "iso3": "GAB",
-    "name_cn": "Gabon",
+    "name_cn": "加蓬",
     "name_en": "Gabon",
     "capital": "Libreville",
     "capital_en": "Libreville",
@@ -25183,7 +25183,7 @@
   "CK": {
     "iso2": "CK",
     "iso3": "COK",
-    "name_cn": "Cook Islands",
+    "name_cn": "库克群岛",
     "name_en": "Cook Islands",
     "capital": "Avarua",
     "capital_en": "Avarua",
@@ -25283,7 +25283,7 @@
   "AO": {
     "iso2": "AO",
     "iso3": "AGO",
-    "name_cn": "Angola",
+    "name_cn": "安哥拉",
     "name_en": "Angola",
     "capital": "Luanda",
     "capital_en": "Luanda",
@@ -25381,7 +25381,7 @@
   "NO": {
     "iso2": "NO",
     "iso3": "NOR",
-    "name_cn": "Norway",
+    "name_cn": "挪威",
     "name_en": "Norway",
     "capital": "Oslo",
     "capital_en": "Oslo",
@@ -25501,7 +25501,7 @@
   "GP": {
     "iso2": "GP",
     "iso3": "GLP",
-    "name_cn": "Guadeloupe",
+    "name_cn": "瓜德罗普",
     "name_en": "Guadeloupe",
     "capital": "Basse-Terre",
     "capital_en": "Basse-Terre",
@@ -25617,7 +25617,7 @@
   "MV": {
     "iso2": "MV",
     "iso3": "MDV",
-    "name_cn": "Maldives",
+    "name_cn": "马尔代夫",
     "name_en": "Maldives",
     "capital": "Malé",
     "capital_en": "Malé",
@@ -25724,7 +25724,7 @@
   "BE": {
     "iso2": "BE",
     "iso3": "BEL",
-    "name_cn": "Belgium",
+    "name_cn": "比利时",
     "name_en": "Belgium",
     "capital": "Brussels",
     "capital_en": "Brussels",
@@ -25844,7 +25844,7 @@
   "HR": {
     "iso2": "HR",
     "iso3": "HRV",
-    "name_cn": "Croatia",
+    "name_cn": "克罗地亚",
     "name_en": "Croatia",
     "capital": "Zagreb",
     "capital_en": "Zagreb",
@@ -25962,7 +25962,7 @@
   "BZ": {
     "iso2": "BZ",
     "iso3": "BLZ",
-    "name_cn": "Belize",
+    "name_cn": "伯利兹",
     "name_en": "Belize",
     "capital": "Belmopan",
     "capital_en": "Belmopan",
@@ -26080,7 +26080,7 @@
   "KN": {
     "iso2": "KN",
     "iso3": "KNA",
-    "name_cn": "Saint Kitts and Nevis",
+    "name_cn": "圣基茨和尼维斯",
     "name_en": "Saint Kitts and Nevis",
     "capital": "Basseterre",
     "capital_en": "Basseterre",
@@ -26314,7 +26314,7 @@
   "LS": {
     "iso2": "LS",
     "iso3": "LSO",
-    "name_cn": "Lesotho",
+    "name_cn": "莱索托",
     "name_en": "Lesotho",
     "capital": "Maseru",
     "capital_en": "Maseru",
@@ -26413,7 +26413,7 @@
   "UY": {
     "iso2": "UY",
     "iso3": "URY",
-    "name_cn": "Uruguay",
+    "name_cn": "乌拉圭",
     "name_en": "Uruguay",
     "capital": "Montevideo",
     "capital_en": "Montevideo",
@@ -26529,7 +26529,7 @@
   "BF": {
     "iso2": "BF",
     "iso3": "BFA",
-    "name_cn": "Burkina Faso",
+    "name_cn": "布基纳法索",
     "name_en": "Burkina Faso",
     "capital": "Ouagadougou",
     "capital_en": "Ouagadougou",
@@ -26880,7 +26880,7 @@
   "CF": {
     "iso2": "CF",
     "iso3": "CAF",
-    "name_cn": "Central African Republic",
+    "name_cn": "中非共和国",
     "name_en": "Central African Republic",
     "capital": "Bangui",
     "capital_en": "Bangui",
@@ -26979,7 +26979,7 @@
   "SD": {
     "iso2": "SD",
     "iso3": "SDN",
-    "name_cn": "Sudan",
+    "name_cn": "苏丹",
     "name_en": "Sudan",
     "capital": "Khartoum",
     "capital_en": "Khartoum",
@@ -27078,7 +27078,7 @@
   "GW": {
     "iso2": "GW",
     "iso3": "GNB",
-    "name_cn": "Guinea-Bissau",
+    "name_cn": "几内亚比绍",
     "name_en": "Guinea-Bissau",
     "capital": "Bissau",
     "capital_en": "Bissau",
@@ -27177,7 +27177,7 @@
   "PG": {
     "iso2": "PG",
     "iso3": "PNG",
-    "name_cn": "Papua New Guinea",
+    "name_cn": "巴布亚新几内亚",
     "name_en": "Papua New Guinea",
     "capital": "Port Moresby",
     "capital_en": "Port Moresby",
@@ -27278,7 +27278,7 @@
   "UM": {
     "iso2": "UM",
     "iso3": "UMI",
-    "name_cn": "United States Minor Outlying Islands",
+    "name_cn": "美国本土外小岛屿",
     "name_en": "United States Minor Outlying Islands",
     "capital": "Washington DC",
     "capital_en": "Washington DC",

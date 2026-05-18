@@ -185,18 +185,18 @@ const handleCurrentChange = (val: number) => {
   loadData()
 }
 
-onMounted(() => {
-  loadData()
-  loadSupplierOptions()
-})
-
 const loadSupplierOptions = async () => {
   try {
-    const res = await fetchSuppliers({ page: 1, page_size: 200 })
+    const res = await fetchSuppliers({ page: 1, page_size: 100 })
     if (res?.items) supplierOptions.value = res.items
   } catch (e) {
   }
 }
+
+onMounted(() => {
+  loadData()
+  loadSupplierOptions()
+})
 </script>
 
 <style scoped lang="scss">

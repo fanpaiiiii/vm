@@ -24,6 +24,9 @@ export default ({ mode }: { mode: string }) => {
       __APP_VERSION__: JSON.stringify(VITE_VERSION)
     },
     base: VITE_BASE_URL,
+    preview: {
+      allowedHosts: true
+    },
     server: {
       port: Number(VITE_PORT),
       proxy: {
